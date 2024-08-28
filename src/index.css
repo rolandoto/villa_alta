@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Raleway', Helvetica, Arial, Lucida, sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.image{
+
+  transition: transform .5s ease, -webkit-transform .5s ease;
+  
+}
+.image:hover{
+  transform:  scale(1.1);
+  animation-duration: 5ms;
+  transition: transform .5s ease, -webkit-transform .5s ease;
+  cursor: pointer;
+}
+
+.header-navbar{
+  backdrop-filter: blur(10px);
+  background-color: rgba(142, 146, 140, 0.342);
+}
+
+.Search-Reservation{
+  position: absolute;
+    left: 0;
+    right: 0;
+    top: 90%;
+    z-index: 10000;
+}
+
+.loading-opacity {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 1000;
+  background: black;
+  color: white;
+}
+
+
+.cart{
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateX(0%);
+}
+
+
+.cart.active{
+  transform: translateX(250%);
+}
+
+.cartIcon{
+  align-items: center;
+  background:orangered;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  padding: 4px;
+  position: fixed;
+  right: 8px;
+  top: 120px;
+  transition: all .3s ease;
+  width: 42px;
+  z-index: 20;
+}
+
+.cartIcon-Number{
+  background: black;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  height: 18px;
+  justify-content: center;
+  padding: 4px;
+  align-items: center;
+  position: fixed;
+  right: 8px;
+  top: 120px;
+  transition: all .3s ease;
+  width: 21px;
+  z-index: 20;
+  color: white;
+}
+
+.wordButton{
+  font-family: Raleway;
+}
+
+.iconsFeature{
+  padding: 0.6rem; /* Set a specific padding value for better control */
+  background-color: white; /* Use background-color for clarity */
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.PriceRoomDetail{
+  border-radius: 26px;
+  padding: 4px;
+  position: absolute;
+  bottom: -48px;
+}
+
+
+
+.font-lora{
+  font-family: 'Lora', Georgia, "Times New Roman", serif;
+}
+
+.words{
+  font-weight: 400;
+}
+
+.scroll-container {
+  width: 350px;
+  height: 500px;
+  margin-top: 50px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.cart-shadow{
+  background: white;
+  box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) ;
+}
+
+.font-weit{
+  font-weight: 600 !important;
+}

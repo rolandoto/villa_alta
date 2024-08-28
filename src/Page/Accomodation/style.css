@@ -1,0 +1,72 @@
+.border-calender{
+    border: solid 1px orange;
+  }
+  
+
+  .Button-Search{
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    justify-content: center;
+  }
+  
+  .calender-search-Acoomodation {
+    background: #fff;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition:  0.3s;
+  }
+  
+  .rdrMonth{
+    width: 100% !;
+  }
+  
+
+  .calender-search-Acoomodation{
+    font-size: 16px !important;
+    box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) !important;
+    border-radius: 2.35rem;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 778px;
+    position: absolute;
+    right: 186px;;
+    left: 0;
+    margin: auto;
+    top: 190px;
+    transition: 0.3s;
+    z-index: 1000;
+  }
+
+  /* Para pantallas medianas (tablets) */
+@media (max-width: 1020px) {
+  .calender-search-Acoomodation {
+    width: 98%;
+    top: 100px;
+    left: 0px;
+    right: 0px;
+  }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 640px) {
+  .calender-search-Acoomodation {
+    width: 98%;
+    top: 100px;
+    left: 0px;
+    right: 0px;
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, .21) !important; /* Ajusta la sombra */
+  }
+} 
+  
+  .border-header{
+    border-bottom: 1px solid rgb(224, 224, 224);
+    }
+  
+
+  
