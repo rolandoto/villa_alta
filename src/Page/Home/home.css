@@ -10,6 +10,17 @@
     user-select: none;
     transition:  0.3s;
   }
+
+    /* Define la animación fadeIn usando @keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
   
   .rdrMonth{
     width: 100% !;
@@ -109,6 +120,9 @@
     width: 100% !;
   }
   
+
+
+
   .calender-search-home{
     font-size: 16px !important;
     box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) !important;
@@ -120,7 +134,8 @@
     right: 186px;;
     left: 0;
     margin: auto;
-    top: 633px;
+    animation: fadeIn 0.3s ease forwards; 
+    top: 558px;
     transition: 0.3s;
     z-index: 1000;
   }
@@ -151,12 +166,12 @@
   }
   
   .rdrStartEdge{
-    background-color: #f97316;
+    background-color: black;
    
   }
 
   .rdrEndEdge{
-    background-color: #f97316;
+    background-color: black;
   
   }
 

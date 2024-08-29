@@ -14,11 +14,11 @@ const CalenderSearch =({HandClickMenuPeople,
         <MainAccomodationRoomSearch className=" lg:flex  mt-[68px]  mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
             <MainProduct className="mx-auto lg:flex opacity-80  bg-white  items-center justify-between  rounded-full shadow-2xl ">
                             <BorderInputInitial className="flex flex-col hover-punter "  onClick={HandClickMenu}>
-                                    <span className="mb-2 ml-8 font-bold text-[#24262b]" >Check-in :</span>
+                                    <span className="mb-2  ml-8 font-bold text-[#24262b]" >Check-in :</span>
                                     <span className="ml-8" >  {formattedStartDateToString === 'fecha inválida' ? '-- / -- / --' : formattedStartDateToString}</span>
                             </BorderInputInitial>
                             <BorderInput className="flex flex-col  hover-punter" onClick={HandClickMenuEnd}>
-                                    <span className="ml-8 mb-2 font-bold text-[#24262b]">Check-out :</span>
+                                    <span className="ml-8 mb-2  font-bold text-[#24262b]">Check-out :</span>
                                     <span className="ml-8 mb-2" >{formattedEndDateToString === 'fecha inválida' ? '-- / -- / --' : formattedEndDateToString}</span>
                             </BorderInput>
                         

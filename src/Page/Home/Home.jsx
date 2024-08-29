@@ -523,7 +523,7 @@ useEffect(() => {
               <div className="hidden lg:block  ">
                 {contextShowMenuPeople && 
                   <Search contextShowMenuPeople={contextShowMenuPeople}
-                  top={633}
+                  top={558}
                   adults={adults}
                   childrem={childrem}
                   handChangeAdults={handChangeAdults}
@@ -571,8 +571,7 @@ useEffect(() => {
       </div>
     </div>
     </>
-    )
-    
+    )   
 }
 
 export default Home

@@ -118,6 +118,9 @@ export const StyleGroup= styled.div`
 `
 
 export const MainProduct = styled.div`
+display: flex;
+    background: white;
+    max-width: 1000px;
 width: 100%;
 box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) ;
 justify-content: space-between;
@@ -225,30 +228,32 @@ export const  ContainerFooter = styled.footer`
 `
 
 
-export const  BorderInput = styled.div`
-cursos:pointer;
-width:100%;
-@media(max-width: 1024px) {
-  border-left:none;
+export const BorderInput = styled.div`
+  cursor: pointer;
+  width: 100%;
+  font-size: 100%;
+  color: black;
+  @media (max-width: 1024px) {
+    border-left: none;
+  }
+`;
 
-}
-`
-
-export const  BorderInputInitial = styled.div`
-cursos:pointer;
-width:100%;
-padding:20px;
-background: white;
-    box-shadow: 17px 20px 40px rgba(0, 0, 0, .21);
-    border-radius: 39px;
-@media(max-width: 1024px) {
-  border-left:none;
-
-}
-`
-
+export const BorderInputInitial = styled(BorderInput)`
+  padding: 13px;
+  background: white;
+  box-shadow: 17px 20px 40px rgba(0, 0, 0, 0.21);
+  border-radius: 39px;
+`;
 export const MainAccomodation = styled.main`
-  width:100%;
+display: flex;
+flex-direction: column;
+height: auto;
+margin: auto;
+max-width: 600px;
+overflow: auto;
+padding: 29px;
+text-align: center;
+width: 100vw;
 `;
 
 export const MainAccomodationRoomSearch = styled.main`
@@ -266,13 +271,13 @@ export const BorderSearch = styled.div`
   border-bottom: 1px solid rgb(224, 224, 224)
 }
 `
-
 export const ContainerButtonSearch = styled.div`
-
+padding: 13px;
 `
 export const ButtonSearch = styled.button`
 border-radius: 25px;
-width:191px;
+width:100px;
+margin:auto;
 @media(max-width: 1500px) {
   
 }
