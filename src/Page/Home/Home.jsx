@@ -3,7 +3,7 @@ import UseCalenderSearch from "../../Hooks/UseCalenderSearch";
 import { DateRange } from 'react-date-range';
 import esLocale from 'date-fns/locale/es';
 import Search from "../../Component/Search/Search";
-import {useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import Header from "../../Component/Header/Header";
 import CalenderSearchHome from "../../Component/CalenderSearch/CalenderSearchHome";
 import TitleWelcome from "../../Component/TitleWelcome/TitleWelcome";
@@ -187,7 +187,7 @@ const subtotal = getCartSubtotal()
       setContextShowMenuPeople(false)
     }             
 
-    const faqs = [
+   /* const faqs = [
       {
         question: '¿Cuáles son los sitios turísticos de la ciudad y si están cerca al hotel?',
         answer: (
@@ -228,7 +228,7 @@ const subtotal = getCartSubtotal()
       { title: 'Room Box Aire',price:109000, image: "https://grupo-hoteles.com/storage/app/4/rooms/1046121300-11-rooms-slider-1-habitacion_Aire_Hotel_en_Medellin_Gallery_Hotel-01.webp", features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado'] },
       { title: 'Room Box Jacuzzi',price:169000, image: "https://grupo-hoteles.com/storage/app/4/rooms/1563326590-12-rooms-slider-1-habitacion_Jacuzzi_Hotel_en_Medellin_Gallery_Hotel-02.webp", features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado','Jacuzzi'] },
     ];
-
+*/
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1; // Cambia 768 según tu punto de ruptura deseado
 
     const videoRef = useRef(null);
@@ -268,54 +268,164 @@ const subtotal = getCartSubtotal()
       return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
     }, []);
 
+/**
+ * 
+ * 
+             
+ * 
+*/
+
+
+
+/**
+ * 
+ * <div className="relative w-full h-screen  flex items-center justify-center">
+  <div className="relative w-[750px] h-[750px]">
+ 
+    <img 
+        src="https://kiinliving.com/C01.svg" 
+        alt="Circular line decoration" 
+        className="absolute z-40 top-[-20%] left-[-1%] w-[160%] h-[142%] object-cover"
+      />
+    <div className="relative w-full h-full rounded-full overflow-hidden">
+      <img 
+        src="https://github.com/rolandoto/image-pms/blob/main/WhatsApp%20Image%202024-08-08%20at%2010.22.01%20PM.jpeg?raw=true" 
+        alt="Luxury bedroom" 
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+  
+    <div className="absolute top-[15%] left-[-10%] text-left">
+      <h2 className="text-6xl text-white font-serif">The</h2>
+      <h1 className="text-9xl text-white font-serif">Ultimate</h1>
+      <p className="text-xl text-white mt-2">Mid and long term</p>
+    </div>
+    
+   
+    <div className="absolute bottom-[20%] right-[-10%] text-right">
+      <h3 className="text-6xl text-white font-serif">Rental</h3>
+      <h3 className="text-6xl text-white font-serif">paradise.</h3>
+    </div>
+  </div>
+
+  <section className="relative flex items-center h-screen  text-white">
+      <div className="absolute inset-x-0 right-[10%] top-[0%] flex justify-center">
+        <div className="h-[300px] w-[1px] bg-white"></div>
+      </div>
+      <div className="text-center">
+        <h1 className="text-lg sm:text-xl lg:text-2xl font-serif mb-4">
+          "An all-inclusive resort living in Medellín"
+        </h1>
+        <p className="text-sm sm:text-base lg:text-lg font-serif">
+          Fully furnished<br />Luxury apartments
+        </p>
+      </div>
+    </section>
+  </div>
+
+
+
+  <div className="relative w-full h-screen  flex items-center justify-center">
+  <div className="relative w-[900px] h-[450px] flex">
+   
+    <div className="absolute left-[160px] top-[80px] text-right z-10 w-1/2">
+      <h1 className="text-5xl text-white font-serif leading-tight">
+        Unmatch social-centric<br />
+        building for nomads.
+      </h1>
+      <p className="text-lg text-white  mt-4">
+        The first hypermenized residential project in town.
+      </p>
+    </div>
+
+    <div className="absolute right-0 w-[40%] h-full overflow-hidden rounded-3xl">
+      <img
+        src="https://cms.kiinliving.com/uploads/attachments/clthpgiai008f6hqs3gad32b2-home002.webp"
+        alt="Social space for nomads"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <img 
+      src="https://kiinliving.com/C02.svg"
+      alt="Decorative curve"
+      className="absolute z-20 top-[-20%] right-[-50%] w-[140%] h-[140%] object-contain"
+    />
+  </div>
+</div>
+
+ * 
+ */
+
+
+const [menuOpen, setMenuOpen] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50);
+  };
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
     return (
       <>
-     <div className="relative w-full h-screen">
-  {/* Background Video */}
-  <video
-                  ref={videoRef}
-                  src="https://galleryhotel.co/static/media/vuelo.bc10cc2282c8f1da5fcc.mp4"
-                  className="w-full h-auto shadow-lg"
-                  muted
-                  loop
-                  playsInline
-                />
-    
-  <header
-      className={`fixed z-50 top-0 left-0 right-0 transition-colors duration-300 ${
-        scrolled ? "bg-[#8f592c] text-white" : "bg-transparent text-white"
-      }`}
-    >
-      <nav className="border-b  p-2 border-white flex justify-between items-center space-x-6 max-w-[97%] mx-auto">
-        <div className="text-2xl   sm:text-3xl font-lora">Hotel Gallery</div>
-        <div className="hidden sm:flex space-x-6">
-          <a href="#" className="text-[13px] hover:underline">
-            APARTMENTS
-          </a>
-          <a href="#" className=" text-[13px] hover:underline">
-            AMENITIES
-          </a>
-          <a href="#" className=" text-[13px] hover:underline">
-            KIIN
-          </a>
-          <a href="#" className=" text-[13px] hover:underline">
-            BLOG
-          </a>
-        </div>
-        <button className="bg-black text-white rounded-full px-3 sm:px-4 py-2 sm:ml-auto text-xs sm:text-base">
-          BOOK NOW
-        </button>
-      </nav>
-    </header>
+         <div className="relative w-full h-screen">
+      <video
+        ref={videoRef}
+        src="https://galleryhotel.co/static/media/vuelo.bc10cc2282c8f1da5fcc.mp4"
+        className="w-full h-full object-cover"
+        muted
+        loop
+        playsInline
+        autoPlay
+      />
+      <header
+        className={`fixed z-50 top-0 left-0 right-0 transition-colors duration-300 ${
+          scrolled ? "bg-[#8f592c] text-white" : "bg-transparent text-white"
+        }`}
+      >
+        <nav className="border-b p-2 border-white flex justify-between items-center space-x-6 max-w-[97%] mx-auto">
+          <div className="text-2xl sm:text-3xl font-lora"><Link to="/"  > Hotel Gallery</Link> </div>
+          <div className="hidden md:flex space-x-6">
+            <a href="#" className="text-[15px] hover:underline">
+            HABITACIONES
+            </a>
+            <a href="#" className="text-[15px]hover:underline">
+            COMODIDADES
+            </a>
+            <a href="#" className="text-[15px] hover:underline">
+              EVENTOS
+            </a>
+          
+          </div>
+          <button className="bg-black text-white rounded-full px-3 sm:px-4 py-2 text-xs sm:text-base">
+            COMO LLEGAR
+          </button>
+          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+            <span>Menu</span>
+          </button>
+        </nav>
+        {menuOpen && (
+          <div className="md:hidden bg-[#8f592c] text-white py-2">
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              Habitaciones
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              AMENITIES
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              KIIN
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              BLOG
+            </a>
+          </div>
+        )}
+      </header>
 
-  {visible &&   <CalenderSearchHome HandClickMenuPeople={HandClickMenuPeople} 
-                                 formattedStartDateToString={formattedStartDateToString}
-                                 formattedEndDateToString={formattedEndDateToString}
-                                  HandClickMenuEnd={HandClickMenuEnd}
-                                  HandClickMenu={HandClickMenu}
-                                  onsubmit={PostHotelByIdHotel}
-                                  totalCountAdults={totalCountAdults}/>
-        }
+
+    
        <div className="hidden lg:block  ">
               {contextMenuPosition && (
                 <DateRange
@@ -422,110 +532,41 @@ const subtotal = getCartSubtotal()
                   handDecreaseChildren={handDecreaseChildren}
                   setContextShowMenuPeople={setContextShowMenuPeople}  />}
               </div>
-             
+
+
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
         <h1 className="font-davinci text-4xl sm:text-6xl md:text-7xl mb-2 sm:mb-4"></h1>
         <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Hotel Gallery</h2>
         <p className="mt-2 text-base opacity-90 md:text-xl lg:text-3xl font-lora font-normal">
-                    Más que un hotel, una experiencia artística
-                </p>
-      </div>
-
- 
-
-  <div className="absolute bottom-4 left-4 flex space-x-4">
-    <button className="rounded-full p-2">
-      <img src="https://kiinliving.com/arrow.svg" width={50}  alt="Arrow" />
-    </button>
-    <button className="bg-white rounded-full p-2">
-      <svg 
-        className="w-4 h-4 sm:w-6 sm:h-6" 
-        fill="none" 
-        stroke="currentColor" 
-        viewBox="0 0 24 24" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    </button>
-  </div>
-</div>
-
-<div className="relative w-full h-screen  flex items-center justify-center">
-  <div className="relative w-[750px] h-[750px]">
-    {/* Imagen circular con borde */}
-    <img 
-        src="https://kiinliving.com/C01.svg" 
-        alt="Circular line decoration" 
-        className="absolute z-40 top-[-20%] left-[-1%] w-[160%] h-[142%] object-cover"
-      />
-    <div className="relative w-full h-full rounded-full overflow-hidden">
-      <img 
-        src="https://github.com/rolandoto/image-pms/blob/main/WhatsApp%20Image%202024-08-08%20at%2010.22.01%20PM.jpeg?raw=true" 
-        alt="Luxury bedroom" 
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-    {/* Texto en la parte superior izquierda */}
-    <div className="absolute top-[15%] left-[-10%] text-left">
-      <h2 className="text-6xl text-white font-serif">The</h2>
-      <h1 className="text-9xl text-white font-serif">Ultimate</h1>
-      <p className="text-xl text-white mt-2">Mid and long term</p>
-    </div>
-    
-    {/* Texto en la parte inferior derecha */}
-    <div className="absolute bottom-[20%] right-[-10%] text-right">
-      <h3 className="text-6xl text-white font-serif">Rental</h3>
-      <h3 className="text-6xl text-white font-serif">paradise.</h3>
-    </div>
-  </div>
-
-  <section className="relative flex items-center h-screen  text-white">
-      <div className="absolute inset-x-0 right-[10%] top-[0%] flex justify-center">
-        <div className="h-[300px] w-[1px] bg-white"></div>
-      </div>
-      <div className="text-center">
-        <h1 className="text-lg sm:text-xl lg:text-2xl font-serif mb-4">
-          "An all-inclusive resort living in Medellín"
-        </h1>
-        <p className="text-sm sm:text-base lg:text-lg font-serif">
-          Fully furnished<br />Luxury apartments
+          Más que un hotel, una experiencia artística
         </p>
       </div>
-    </section>
-  </div>
 
-
-
-  <div className="relative w-full h-screen  flex items-center justify-center">
-  <div className="relative w-[900px] h-[450px] flex">
-    {/* Text on the left */}
-    <div className="absolute left-[160px] top-[80px] text-right z-10 w-1/2">
-      <h1 className="text-5xl text-white font-serif leading-tight">
-        Unmatch social-centric<br />
-        building for nomads.
-      </h1>
-      <p className="text-lg text-white  mt-4">
-        The first hypermenized residential project in town.
-      </p>
+      {visible &&   <CalenderSearchHome HandClickMenuPeople={HandClickMenuPeople} 
+                                 formattedStartDateToString={formattedStartDateToString}
+                                 formattedEndDateToString={formattedEndDateToString}
+                                  HandClickMenuEnd={HandClickMenuEnd}
+                                  HandClickMenu={HandClickMenu}
+                                  onsubmit={PostHotelByIdHotel}
+                                  totalCountAdults={totalCountAdults}/>
+        }
+      <div className="absolute bottom-4 left-4 flex space-x-4">
+        <button className="rounded-full p-2">
+          <img src="https://kiinliving.com/arrow.svg" width={30} height={30} alt="Arrow" className="w-8 h-8 sm:w-12 sm:h-12" />
+        </button>
+        <button className="bg-white rounded-full p-2">
+          <svg
+            className="w-4 h-4 sm:w-6 sm:h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </button>
+      </div>
     </div>
-
-    <div className="absolute right-0 w-[40%] h-full overflow-hidden rounded-3xl">
-      <img
-        src="https://cms.kiinliving.com/uploads/attachments/clthpgiai008f6hqs3gad32b2-home002.webp"
-        alt="Social space for nomads"
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-    <img 
-      src="https://kiinliving.com/C02.svg"
-      alt="Decorative curve"
-      className="absolute z-20 top-[-20%] right-[-50%] w-[140%] h-[140%] object-contain"
-    />
-  </div>
-</div>
     </>
     )
     

@@ -25,6 +25,7 @@ import Footer from "../../Component/Footer/Footer";
 import useRoomsPromotions from "../../Actions/useRoomsPromotions";
 import WhatsappButton from "../../Component/WhatsappButton/WhatsappButton";
 import { Environment } from "../../Config/Config";
+import { Link } from "react-router-dom";
 
 const Accommodation = () => {
 
@@ -220,35 +221,52 @@ const Accommodation = () => {
     }
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1;
 
-   
+    const [menuOpen, setMenuOpen] = useState(false);
     return (<div >
              <SectionSearch  >
              <header
-      className={`fixed z-50 top-0 left-0 right-0 transition-colors duration-300 ${
-        scrolled ? "bg-[#8f592c] text-white" : "bg-transparent text-white"
-      }`}
-    >
-      <nav className="border-b  p-2 border-white flex justify-between items-center space-x-6 max-w-[97%] mx-auto">
-        <div className="text-2xl sm:text-3xl font-lora">Hotel Gallery</div>
-        <div className="hidden sm:flex space-x-6">
-          <a href="#" className="text-[13px] hover:underline">
-            APARTMENTS
-          </a>
-          <a href="#" className=" text-[13px] hover:underline">
-            AMENITIES
-          </a>
-          <a href="#" className=" text-[13px] hover:underline">
-            KIIN
-          </a>
-          <a href="#" className=" text-[13px] hover:underline">
-            BLOG
-          </a>
-        </div>
-        <button className="bg-black text-white rounded-full px-3 sm:px-4 py-2 sm:ml-auto text-xs sm:text-base">
-          BOOK NOW
-        </button>
-      </nav>
-    </header>
+        className={`fixed z-50 top-0 left-0 right-0 transition-colors duration-300 ${
+          scrolled ? "bg-[#8f592c] text-white" : "bg-transparent text-white"
+        }`}
+      >
+        <nav className="border-b p-2 border-white flex justify-between items-center space-x-6 max-w-[97%] mx-auto">
+          <div className="text-2xl sm:text-3xl font-lora"><Link to="/"  > Hotel Gallery</Link> </div>
+          <div className="hidden md:flex space-x-6">
+            <a href="#" className="text-[15px] hover:underline">
+            HABITACIONES
+            </a>
+            <a href="#" className="text-[15px]hover:underline">
+            COMODIDADES
+            </a>
+            <a href="#" className="text-[15px] hover:underline">
+              EVENTOS
+            </a>
+          
+          </div>
+          <button className="bg-black text-white rounded-full px-3 sm:px-4 py-2 text-xs sm:text-base">
+            COMO LLEGAR
+          </button>
+          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+            <span>Menu</span>
+          </button>
+        </nav>
+        {menuOpen && (
+          <div className="md:hidden bg-[#8f592c] text-white py-2">
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              Habitaciones
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              AMENITIES
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              KIIN
+            </a>
+            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
+              BLOG
+            </a>
+          </div>
+        )}
+      </header>
           </SectionSearch>
             <Toaster position="bottom-right"  richColors   />
             {loadingCart && <LoadingOverlay title={"Cargando..."} />}

@@ -248,7 +248,7 @@ background: white;
 `
 
 export const MainAccomodation = styled.main`
-margin-top: -500px;
+margin-top: -394px;
 position: absolute;
 left: 0;
 right: 0;
