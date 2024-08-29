@@ -109,7 +109,6 @@
     width: 100% !;
   }
   
-
   .calender-search-home{
     font-size: 16px !important;
     box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) !important;
@@ -121,7 +120,7 @@
     right: 186px;;
     left: 0;
     margin: auto;
-    top: 690px;
+    top: 633px;
     transition: 0.3s;
     z-index: 1000;
   }

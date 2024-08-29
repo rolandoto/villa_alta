@@ -425,7 +425,7 @@ useEffect(() => {
       </header>
 
 
-    
+     
        <div className="hidden lg:block  ">
               {contextMenuPosition && (
                 <DateRange
@@ -523,7 +523,7 @@ useEffect(() => {
               <div className="hidden lg:block  ">
                 {contextShowMenuPeople && 
                   <Search contextShowMenuPeople={contextShowMenuPeople}
-                  top={690}
+                  top={633}
                   adults={adults}
                   childrem={childrem}
                   handChangeAdults={handChangeAdults}
@@ -534,22 +534,25 @@ useEffect(() => {
               </div>
 
 
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
-        <h1 className="font-davinci text-4xl sm:text-6xl md:text-7xl mb-2 sm:mb-4"></h1>
-        <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Hotel Gallery</h2>
-        <p className="mt-2 text-base opacity-90 md:text-xl lg:text-3xl font-lora font-normal">
-          Más que un hotel, una experiencia artística
-        </p>
-      </div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
+                  <h1 className="font-davinci text-4xl sm:text-6xl md:text-7xl mb-2 sm:mb-4"></h1>
+                  <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Hotel Gallery</h2>
+                  <p className="mt-2 text-base opacity-90 md:text-xl lg:text-3xl font-lora font-normal">
+                    Más que un hotel, una experiencia artística
+                  </p>
 
-      {visible &&   <CalenderSearchHome HandClickMenuPeople={HandClickMenuPeople} 
-                                 formattedStartDateToString={formattedStartDateToString}
-                                 formattedEndDateToString={formattedEndDateToString}
-                                  HandClickMenuEnd={HandClickMenuEnd}
-                                  HandClickMenu={HandClickMenu}
-                                  onsubmit={PostHotelByIdHotel}
-                                  totalCountAdults={totalCountAdults}/>
-        }
+                  {visible && (
+                    <CalenderSearchHome 
+                      HandClickMenuPeople={HandClickMenuPeople} 
+                      formattedStartDateToString={formattedStartDateToString}
+                      formattedEndDateToString={formattedEndDateToString}
+                      HandClickMenuEnd={HandClickMenuEnd}
+                      HandClickMenu={HandClickMenu}
+                      onsubmit={PostHotelByIdHotel}
+                      totalCountAdults={totalCountAdults}
+                    />
+                  )}
+</div>
       <div className="absolute bottom-4 left-4 flex space-x-4">
         <button className="rounded-full p-2">
           <img src="https://kiinliving.com/arrow.svg" width={30} height={30} alt="Arrow" className="w-8 h-8 sm:w-12 sm:h-12" />

@@ -230,7 +230,7 @@ cursos:pointer;
 width:100%;
 @media(max-width: 1024px) {
   border-left:none;
-  border-bottom: 1px solid rgb(224, 224, 224)
+
 }
 `
 
@@ -243,17 +243,13 @@ background: white;
     border-radius: 39px;
 @media(max-width: 1024px) {
   border-left:none;
-  border-bottom: 1px solid rgb(224, 224, 224)
+
 }
 `
 
 export const MainAccomodation = styled.main`
-margin-top: -394px;
-position: absolute;
-left: 0;
-right: 0;
-
-`
+  width:100%;
+`;
 
 export const MainAccomodationRoomSearch = styled.main`
 
