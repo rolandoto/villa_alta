@@ -355,7 +355,38 @@ const subtotal = getCartSubtotal()
   </div>
 </div>
 
- * 
+
+*
+
+  <div className="relative w-full h-screen  flex items-center justify-center">
+  <div className="relative w-[900px] h-[450px] flex">
+   
+    <div className="absolute left-[160px] top-[80px] text-right z-10 w-1/2">
+      <h1 className="text-5xl text-white font-serif leading-tight">
+        Unmatch social-centric<br />
+        building for nomads.
+      </h1>
+      <p className="text-lg text-white  mt-4">
+        The first hypermenized residential project in town.
+      </p>
+    </div>
+
+    <div className="absolute right-0 w-[40%] h-full overflow-hidden rounded-3xl">
+      <img
+        src="https://cms.kiinliving.com/uploads/attachments/clthpgiai008f6hqs3gad32b2-home002.webp"
+        alt="Social space for nomads"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <img 
+      src="https://kiinliving.com/C02.svg"
+      alt="Decorative curve"
+      className="absolute z-20 top-[-20%] right-[-50%] w-[140%] h-[140%] object-contain"
+    />
+  </div>
+</div> 
+
  */
 const [menuOpen, setMenuOpen] = useState(false);
 
@@ -623,34 +654,6 @@ useEffect(() => {
 
 
 
-  <div className="relative w-full h-screen  flex items-center justify-center">
-  <div className="relative w-[900px] h-[450px] flex">
-   
-    <div className="absolute left-[160px] top-[80px] text-right z-10 w-1/2">
-      <h1 className="text-5xl text-white font-serif leading-tight">
-        Unmatch social-centric<br />
-        building for nomads.
-      </h1>
-      <p className="text-lg text-white  mt-4">
-        The first hypermenized residential project in town.
-      </p>
-    </div>
-
-    <div className="absolute right-0 w-[40%] h-full overflow-hidden rounded-3xl">
-      <img
-        src="https://cms.kiinliving.com/uploads/attachments/clthpgiai008f6hqs3gad32b2-home002.webp"
-        alt="Social space for nomads"
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-    <img 
-      src="https://kiinliving.com/C02.svg"
-      alt="Decorative curve"
-      className="absolute z-20 top-[-20%] right-[-50%] w-[140%] h-[140%] object-contain"
-    />
-  </div>
-</div>
     </>
     )   
 }
