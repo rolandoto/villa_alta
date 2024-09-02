@@ -77,120 +77,113 @@ const CardAccomodation =({  roomTypeName,
 
     return (   
 
-        
-    <div className="max-w-5xl mx-auto p-8">
-    <div className="bg-white accomodation shadow-lg">
-      {/* sección superior con la imagen y detalles */}
-      <div className="flex items-center">
-        <div className="p-4">
-          <img
-            src={roomTypePhotos[0].image}
-            alt="room"
-            className="max-w-[390px] accomodation rounded-lg"
-          />
-        </div>
-
-        <div className="w-1/2 p-4 items-center">
-          <h2 className="text-2xl text-center font-bold">{roomTypeName}</h2>
-          <div className="flex justify-between mt-4">
-            <div className="text-center ">
-              <p className="text-gray-600">Máxima ocupación</p>
-              <div className="flex" >
+      <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+      <div className="bg-white shadow-lg accomodation overflow-hidden">
+        {/* Upper section with image and details */}
+        <div className="flex flex-col md:flex-row items-start md:items-center">
+          <div className="w-full md:w-1/2 p-4">
+            <img
+              src={roomTypePhotos[0].image}
+              alt="room"
+              className="w-full h-auto accomodation"
+            />
+          </div>
+    
+          <div className="w-full md:w-1/2 p-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">{roomTypeName}</h2>
+            <div className="flex flex-col sm:flex-row justify-between mt-4">
+              <div className="text-center mb-4 sm:mb-0">
+                <p className="text-gray-600">Máxima ocupación</p>
+                <div className="flex justify-center">
                   {[...Array(counPeople)].map((_, i) => (
-                            <IconFaUser key={i} color="black" />
-                            ))}
-                            {counPeople < maxGuests && (
-                            [...Array(maxGuests - counPeople)].map((_, i) => (
-                                <IconFaUser key={i + counPeople} color="#b3b3b3" />
-                            ))
-                            )}
+                    <IconFaUser key={i} color="black" />
+                  ))}
+                  {counPeople < maxGuests && (
+                    [...Array(maxGuests - counPeople)].map((_, i) => (
+                      <IconFaUser key={i + counPeople} color="#b3b3b3" />
+                    ))
+                  )}
+                </div>
               </div>
-            
+              <div className="text-center">
+                <p className="text-gray-600">Estancia</p>
+                <p className="font-bold">Noches: {nightsToday}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-gray-600">Estancia</p>
-              <p className="font-bold" >Noches: {nightsToday} </p>
-            </div>
-          </div>
-          <div className="mt-4">
-            <div className="flex px-3 rounded-full items-center justify-between border">
-              <button className="py-1 mr-2">Tarifa estándar</button>
-              <p className="font-bold">${parseInt(validPromotions).toLocaleString('es-CO')} cop</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Contenido de las pestañas */}
-      <div className="p-4">
-        <div className="border-b flex max-w-[91%] m-auto justify-between">
-          {['Alojamiento', 'Descripción', 'Comodidades', 'Fotos'].map((tab) => (
-            <button
-              key={tab}
-              className={`text-gray-600 pb-2 ${activeTab === tab ? 'border-b-2 border-black' : ''}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-        
-        {/* Renderizado condicional del contenido según la pestaña activa */}
-        {activeTab === 'Alojamiento' && (
-          <div className="mt-4 max-w-[90%] m-auto">
-            <span className="text-center font-bold" >{roomTypeName}</span>
-          </div>
-        )}
-        {activeTab === 'Descripción' && (
-          <div className="mt-4 max-w-[90%] m-auto">
-            <span className="text-center font-bold" >{roomTypeName}</span>
-            <p className="mt-5" dangerouslySetInnerHTML={{__html: roomTypeDescription}} ></p>
-          </div>
-        )}
-        {activeTab === 'Comodidades' && (
-          <div className="mt-4 ml-11 max-w-[80%] ">
-             <div className="bg-white   mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {roomTypeFeatures.map((Service, index) => {
-
-                const wifi = Service=="Internet inalámbrico (WiFi)" && <IconsWifi  />
-
-                const Aire = Service=="Aire Condicionado" && <IconsSnow  />
-
-                const tv = Service=="Televisión por cable" && <IconsTv  />
-
-                const bathRoom = Service=="baño privado" &&  <IconShower  />
-
-                  return<div key={index} className="flex items-center space-x-3">
-                    <span className={` flex items-center ${Service}`}>
-                    {bathRoom} {tv} {Aire} {wifi} {Service} 
-                    </span>
-                  </div>
-                })}
+            <div className="mt-4">
+              <div className="flex px-3 py-2 rounded-full items-center justify-between border">
+                <button className="text-sm sm:text-base">Tarifa estándar</button>
+                <p className="font-bold">${parseInt(validPromotions).toLocaleString('es-CO')} cop</p>
               </div>
             </div>
           </div>
-        )}
-        {activeTab === 'Fotos' && (
-          <div className="grid grid-cols-4 gap-4 max-w-[90%] m-auto mt-4">
-            {/* Aquí van las imágenes de las fotos */}
-            {roomTypePhotos.map((itemImg, index) => (
-              <img
-                key={index}
-                src={itemImg.image}
-                alt="room"
-                className="accomodation"
-              />
+        </div>
+    
+        {/* Tabs content */}
+        <div className="p-4">
+          <div className="border-b flex flex-wrap justify-between max-w-[91%] mx-auto">
+            {['Alojamiento', 'Descripción', 'Comodidades', 'Fotos'].map((tab) => (
+              <button
+                key={tab}
+                className={`text-gray-600 pb-2 mb-2 text-sm sm:text-base ${activeTab === tab ? 'border-b-2 border-black' : ''}`}
+                onClick={() => setActiveTab(tab)}
+              >
+                {tab}
+              </button>
             ))}
           </div>
-        )}
-      </div>
-      {/* footer con botón */}
-      <div className="p-4 flex justify-between underline">
-        <button className="bg-black text-white py-4 px-4 rounded-">Reservar Habitacion</button>
+          
+          {/* Conditional rendering of content based on active tab */}
+          <div className="mt-4 max-w-[90%] mx-auto">
+            {activeTab === 'Alojamiento' && (
+              <span className="text-center font-bold block">{roomTypeName}</span>
+            )}
+            {activeTab === 'Descripción' && (
+              <>
+                <span className="text-center font-bold block mb-4">{roomTypeName}</span>
+                <p className="mt-5" dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
+              </>
+            )}
+            {activeTab === 'Comodidades' && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {roomTypeFeatures.map((Service, index) => {
+                  const wifi = Service === "Internet inalámbrico (WiFi)" && <IconsWifi />;
+                  const Aire = Service === "Aire Condicionado" && <IconsSnow />;
+                  const tv = Service === "Televisión por cable" && <IconsTv />;
+                  const bathRoom = Service === "baño privado" && <IconShower />;
+    
+                  return (
+                    <div key={index} className="flex items-center space-x-3">
+                      <span className={`flex items-center ${Service}`}>
+                        {bathRoom || tv || Aire || wifi} {Service}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {activeTab === 'Fotos' && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {roomTypePhotos.map((itemImg, index) => (
+                  <img
+                    key={index}
+                    src={itemImg.image}
+                    alt="room"
+                    className="w-full h-auto accomodation"
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        {/* Footer with button */}
+        <div className="p-4 flex justify-between">
+          <button className="bg-black text-white py-2 px-4 rounded text-sm sm:text-base">
+            Reservar Habitacion
+          </button>
+        </div>
       </div>
     </div>
-  </div>
   )
 }
 

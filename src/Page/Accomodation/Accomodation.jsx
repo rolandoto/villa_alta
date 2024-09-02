@@ -277,17 +277,19 @@ const Accommodation = () => {
                             checkbxo={checkbox} 
                             handClickCart={handClickCart} /> } 
           
-
-          <CalenderSearch  HandClickMenuPeople={HandClickMenuPeople} 
-                          formattedStartDateToString={formattedStartDateToString}
-                          formattedEndDateToString={formattedEndDateToString}
-                          HandClickMenuEnd={HandClickMenuEnd}
-                          HandClickMenu={HandClickMenu}
-                          onsubmit={PostHotelByIdHotel} 
-                          totalCountAdults={totalCountAdults}
-                          />
-            <MainAccomodationRoomSearch className="  lg:flex  he  mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
-              <MainProduct className="flex bg-[#eaeaea]  m-auto  items-center justify-between space-x-2 mb-8">
+          <div className="p-2 lg:px-8" >
+            <CalenderSearch  HandClickMenuPeople={HandClickMenuPeople} 
+                            formattedStartDateToString={formattedStartDateToString}
+                            formattedEndDateToString={formattedEndDateToString}
+                            HandClickMenuEnd={HandClickMenuEnd}
+                            HandClickMenu={HandClickMenu}
+                            onsubmit={PostHotelByIdHotel} 
+                            totalCountAdults={totalCountAdults}
+                            />
+          </div>
+      
+            <MainAccomodationRoomSearch className="  lg:flex  he  mx-auto   max-w-5xl items-center justify-between p-2 ">
+              <MainProduct className="flex bg-[#eaeaea]  m-auto  items-center justify-between space-x-2 ">
                 <div className="flex border-chose  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
