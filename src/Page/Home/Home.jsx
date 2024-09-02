@@ -607,51 +607,45 @@ useEffect(() => {
     </div>
 
 
-          <div className="relative w-full h-screen  flex items-center justify-center">
-        <div className="relative w-[750px] h-[750px]">
-      
-          <img 
-              src="https://kiinliving.com/C01.svg" 
-              alt="Circular line decoration" 
-              className="absolute z-40 top-[-20%] left-[-1%] w-[160%] h-[142%] object-cover"
-            />
-          <div className="relative w-full h-full rounded-full overflow-hidden">
-            <img 
-              src="https://github.com/rolandoto/image-pms/blob/main/WhatsApp%20Image%202024-08-08%20at%2010.22.01%20PM.jpeg?raw=true" 
-              alt="Luxury bedroom" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-        
-          <div className="absolute top-[15%] left-[-10%] text-left">
-            <h2 className="text-6xl text-white font-serif">The</h2>
-            <h1 className="text-9xl text-white font-serif">Ultimate</h1>
-            <p className="text-xl text-white mt-2">Mid and long term</p>
-          </div>
-          
-        
-          <div className="absolute bottom-[20%] right-[-10%] text-right">
-            <h3 className="text-6xl text-white font-serif">Rental</h3>
-            <h3 className="text-6xl text-white font-serif">paradise.</h3>
-          </div>
-        </div>
-
-        <section className="relative flex items-center h-screen  text-white">
-            <div className="absolute inset-x-0 right-[10%] top-[0%] flex justify-center">
-              <div className="h-[300px] w-[1px] bg-white"></div>
-            </div>
-            <div className="text-center">
-              <h1 className="text-lg sm:text-xl lg:text-2xl font-serif mb-4">
-                "An all-inclusive resort living in Medellín"
-              </h1>
-              <p className="text-sm sm:text-base lg:text-lg font-serif">
-                Fully furnished<br />Luxury apartments
-              </p>
-            </div>
-          </section>
-        </div>
-
+    <div className="relative w-full min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 lg:p-8 overflow-hidden">
+  <div className="relative w-full max-w-[750px] aspect-square mb-8 lg:mb-0">
+    <img
+      src="https://kiinliving.com/C01.svg"
+      alt="Circular line decoration"
+      className="absolute z-40 top-[-20%] left-[-1%] w-[160%] h-[142%] object-cover"
+    />
+    <div className="relative w-full h-full rounded-full overflow-hidden">
+      <img
+        src="https://github.com/rolandoto/image-pms/blob/main/WhatsApp%20Image%202024-08-08%20at%2010.22.01%20PM.jpeg?raw=true"
+        alt="Luxury bedroom"
+        className="w-full h-full object-cover"
+      />
+    </div>
+      <div className="absolute top-[5%] left-[-5%] text-left">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-serif">The</h2>
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl text-white font-serif">Ultimate</h1>
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white mt-2">Mid and long term</p>
+      </div>
+      <div className="absolute bottom-[10%] right-[-5%] text-right">
+        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-serif">Rental</h3>
+        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-serif">paradise.</h3>
+      </div>
+    </div>
+  
+    <section className="relative flex items-center text-white">
+                <div className="hidden lg:block absolute  top-[-420%] right-[0%] flex justify-start">
+                  <div className="h-[300px] w-[1px] bg-white"></div>
+                </div>
+                <div className="text-center">
+                  <h1 className="text-lg sm:text-xl lg:text-2xl font-serif mb-4">
+                    "An all-inclusive resort living in Medellín"
+                  </h1>
+                  <p className="text-sm sm:text-base lg:text-lg font-serif">
+                    Fully furnished<br />Luxury apartments
+                  </p>
+                </div>
+    </section>
+</div>
 
 
     </>

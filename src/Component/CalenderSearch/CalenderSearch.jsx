@@ -30,7 +30,6 @@ const CalenderSearch =({HandClickMenuPeople,
                                 <ButtonSearch className=" lg:hidden mr-4  block  w-full bg-black text-white py-4    rounded-full hover:bg-[ff7a45px] transition duration-200" onClick={onsubmit}>
                                         Search
                                 </ButtonSearch>
-
                                 <ButtonSearch className=" hidden  mr-4    p-4 lg:block w-[150px]   bg-black text-white py-4     rounded-full  hover:bg-[ff7a45px] transition duration-200" onClick={onsubmit}>
                                 Search
                                 </ButtonSearch>
