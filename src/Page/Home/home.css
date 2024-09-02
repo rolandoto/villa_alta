@@ -87,22 +87,6 @@
   }
   
 
-  
-  .calender-search-home{
-    font-size: 16px !important;
-    box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) !important;
-    border-radius: 1.25rem;
-    -webkit-user-select: none;
-    user-select: none;
-    width: 778px;
-    position: absolute;
-    right: 186px;;
-    left: 0;
-    margin: auto;
-    top:715px;
-    transition: 0.3s;
-    z-index: 1000;;
-  }
 
   .calender-search-Acoomodation {
     background: #fff;
@@ -124,19 +108,18 @@
 
 
   .calender-search-home{
+    border-radius: 1.25rem;
+    box-shadow: 17px 20px 40px #00000036 !important;
     font-size: 16px !important;
-    box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) !important;
-    border-radius: 2.25rem;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 186px;
+    top: 625px;
+    transition: .3s;
     -webkit-user-select: none;
     user-select: none;
     width: 778px;
-    position: absolute;
-    right: 186px;;
-    left: 0;
-    margin: auto;
-    animation: fadeIn 0.3s ease forwards; 
-    top: 558px;
-    transition: 0.3s;
     z-index: 1000;
   }
 
