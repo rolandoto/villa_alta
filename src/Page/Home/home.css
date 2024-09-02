@@ -115,12 +115,13 @@
     margin: auto;
     position: absolute;
     right: 186px;
-    top: 625px;
+    top: 585px;
     transition: .3s;
     -webkit-user-select: none;
     user-select: none;
     width: 778px;
     z-index: 1000;
+
   }
 
   /* Para pantallas medianas (tablets) */
