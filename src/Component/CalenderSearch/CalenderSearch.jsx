@@ -12,7 +12,7 @@ const CalenderSearch =({HandClickMenuPeople,
 
     return (
        
-            <MainProduct className=" mt-24 m-auto   ">
+            <MainProduct className=" mt-[90px] m-auto   ">
                            <BorderInputInitial className=" flex text-start flex-col hover-punter "  onClick={HandClickMenu}>
                             <span className="mb-1  font-bold   " >Check-in :</span>
                             <span className=" mb-1  " >  {formattedStartDateToString === 'fecha inválida' ? '-- / -- / --' : formattedStartDateToString}</span>

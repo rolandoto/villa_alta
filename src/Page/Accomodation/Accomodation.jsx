@@ -288,8 +288,8 @@ const Accommodation = () => {
                             />
           </div>
       
-            <MainAccomodationRoomSearch className="  lg:flex  he  mx-auto   max-w-5xl items-center justify-between p-2 ">
-              <MainProduct className="flex bg-[#eaeaea]  m-auto  items-center justify-between space-x-2 ">
+          <div className="p-2 lg:px-8" >
+              <MainProduct className="m-auto ">
                 <div className="flex border-chose  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
@@ -301,7 +301,7 @@ const Accommodation = () => {
                   <span className="text-gray-700">Confirmación</span>
                 </div>
               </MainProduct>
-            </MainAccomodationRoomSearch>
+              </div>
 
           <div className="hidden lg:block  ">
               {contextMenuPosition && (
