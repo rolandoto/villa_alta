@@ -368,7 +368,7 @@ useEffect(() => {
 }, []);
     return (
       <>
-         <div className="relative w-full h-[880px]">
+         <div className="relative w-full h-[100%]">
       <video
         ref={videoRef}
         src="https://galleryhotel.co/static/media/vuelo.bc10cc2282c8f1da5fcc.mp4"
