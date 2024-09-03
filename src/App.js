@@ -11,6 +11,7 @@ import DetailEvents from './Page/DetailEvents/DetailEvents';
 import EventsNext from './Page/Events/EventsNext';
 import Login from './Page/Login/Login';
 import Somethingwrong from './Page/somethingwrong/Somethingwrong';
+import Rooms from './Page/Rooms/Rooms';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route  exact path="Events/DetailEvents/:userId" element={<DetailEvents />} />
           <Route  exact path="/DetailEvents/:userId" element={<DetailEvents />} />
           <Route  exact path="/Login" element={<Login />} />
+          <Route  exact path="/Rooms" element={<Rooms />} />
           <Route  exact path="/Somethingwrong" element={<Somethingwrong />} />
           <Route path='/*'  element={<NoFound/> } />
         </Routes> 
