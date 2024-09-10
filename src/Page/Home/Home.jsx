@@ -400,15 +400,15 @@ useEffect(() => {
     return (
       <>
          <div className="relative w-full h-[1000px]">
-      <video
-        ref={videoRef}
-        src="https://galleryhotel.co/static/media/vuelo.bc10cc2282c8f1da5fcc.mp4"
-        className="w-full h-full object-cover"
-        muted
-        loop
-        playsInline
-        autoPlay
-      />
+          <video
+            ref={videoRef}
+            src="https://galleryhotel.co/static/media/vuelo.bc10cc2282c8f1da5fcc.mp4"
+            className="w-full h-full object-cover"
+            muted
+            loop
+            playsInline
+            autoPlay
+          />
       <header
         className={`fixed z-50 top-0 left-0 right-0 transition-colors duration-300 ${
           scrolled ? "bg-[#8f592c] text-white" : "bg-transparent text-white"

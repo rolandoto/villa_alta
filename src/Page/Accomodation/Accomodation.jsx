@@ -290,10 +290,9 @@ const Accommodation = () => {
       
           <div className="p-2 lg:px-8" >
               <MainProduct className="m-auto ">
-                <div className="flex border-chose  p-4  items-center space-x-1">
+                <div className="flex lg:w-[47%] w-[47%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
-
                   </span>
                 </div>
                 <div className="flex border-confirme  p-4 items-center space-x-1">
@@ -301,7 +300,7 @@ const Accommodation = () => {
                   <span className="text-gray-700">Confirmación</span>
                 </div>
               </MainProduct>
-              </div>
+            </div>
 
           <div className="hidden lg:block  ">
               {contextMenuPosition && (

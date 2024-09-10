@@ -133,7 +133,6 @@ const Rooms =() =>{
             />
             ))}
         </div>
-        <CurvedLine />
         </section>
         </div>
             </>

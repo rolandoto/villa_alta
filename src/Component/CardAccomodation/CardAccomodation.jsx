@@ -9,6 +9,7 @@ import {toast} from "sonner"
 import { IconFaUser } from "../Icons/Icons";
 import { IconShower, IconTowels, IconsPiBedThin, IconsSnow, IconsTv, IconsWifi } from "../Icons/Icons"
 
+import { FiChevronLeft,FiChevronRight  } from "react-icons/fi";
 
 
 const CardAccomodation =({  roomTypeName,
@@ -34,7 +35,7 @@ const CardAccomodation =({  roomTypeName,
          
     const {AddCart } =useCartActions()
 
-    const [activeTab, setActiveTab] = useState('accommodation');
+    const [activeTab, setActiveTab] = useState('Comodidades');
 
     const handleAddToCart = () => {
         const existingRoom = cart.find(item => item.roomTypeID === roomTypeID);
@@ -73,7 +74,22 @@ const CardAccomodation =({  roomTypeName,
             </MainAccomodationRoom>
  * 
  */
-          
+        
+      const [currentIndex, setCurrentIndex] = useState(0);
+
+      const handleNext = () => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === roomTypePhotos.length - 1 ? 0 : prevIndex + 1
+        );
+      };
+    
+      const handlePrev = () => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === 0 ? roomTypePhotos.length - 1 : prevIndex - 1
+        );
+      };
+
+    
 
     return (   
 
@@ -83,12 +99,42 @@ const CardAccomodation =({  roomTypeName,
         <div className="flex flex-col md:flex-row items-start md:items-center">
           <div className="w-full md:w-1/2 p-4">
             <img
-              src={roomTypePhotos[0].image}
+              src={roomTypePhotos[currentIndex].image}
               alt="room"
-              className="w-full h-auto accomodation"
+              className="w-full h-auto transition duration-20  accomodation"
             />
+             <div className="relative w-full   p-4">
+              <button
+                onClick={handlePrev}
+                className="absolute -top-36 md:-top-44 lg:-top-44 left-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
+                              transition duration-200 hover:scale-110 hover:bg-white
+                              hover:text-sm hover:duration-200"
+              >
+                <FiChevronLeft fontSize={25} color="black" />
+              </button>
+              <button
+                    onClick={handleNext}
+                    className="absolute -top-36 md:-top-44 lg:-top-44 right-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
+                              transition duration-200 hover:scale-110 hover:bg-white
+                              hover:text-sm hover:duration-200"
+                  >
+                    
+                <FiChevronRight fontSize={25} color="black"/>
+              </button>
+
+              {/* Puntos de paginación */}
+              <div className="flex justify-center mt-0">
+                {roomTypePhotos.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-2 w-2 mx-1 rounded-full ${
+                      index === currentIndex ? "bg-gray-800" : "bg-gray-400"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-    
           <div className="w-full md:w-1/2 p-4">
             <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">{roomTypeName}</h2>
             <div className="flex flex-col sm:flex-row justify-between mt-4">
@@ -122,7 +168,7 @@ const CardAccomodation =({  roomTypeName,
         {/* Tabs content */}
         <div className="p-4">
           <div className="border-b flex flex-wrap justify-between max-w-[91%] mx-auto">
-            {['Alojamiento', 'Descripción', 'Comodidades', 'Fotos'].map((tab) => (
+            {['Descripción', 'Comodidades'].map((tab) => (
               <button
                 key={tab}
                 className={`text-gray-600 pb-2 mb-2 text-sm sm:text-base ${activeTab === tab ? 'border-b-2 border-black' : ''}`}
@@ -162,23 +208,12 @@ const CardAccomodation =({  roomTypeName,
                 })}
               </div>
             )}
-            {activeTab === 'Fotos' && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {roomTypePhotos.map((itemImg, index) => (
-                  <img
-                    key={index}
-                    src={itemImg.image}
-                    alt="room"
-                    className="w-full h-auto accomodation"
-                  />
-                ))}
-              </div>
-            )}
+           
           </div>
         </div>
         {/* Footer with button */}
         <div className="p-4 flex justify-between">
-          <button className="bg-black text-white py-2 px-4 rounded text-sm sm:text-base">
+          <button className="bg-black text-white py-2 px-4 rounded text-sm sm:text-base" onClick={handleAddToCart} >
             Reservar Habitacion
           </button>
         </div>
