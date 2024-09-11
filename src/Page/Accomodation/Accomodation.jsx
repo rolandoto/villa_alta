@@ -317,7 +317,7 @@ const Accommodation = () => {
 
             <div className="lg:hidden flex  p-2 lg:px-8" >
               <MainProduct className="m-auto ">
-                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
+                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#3f6969] rounded-[40px]  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
                   </span>
@@ -366,7 +366,7 @@ const Accommodation = () => {
                           rangeColors={["rgb(255 104 0 / 36%);"]}
                           minDate={new Date()}
                           onChange={handleSelect}
-                          editableDateInputs={true}
+                          editableDateInputs={false}
                           months={monthsToShow}
                           dayContentRenderer={(date) => {
                             const className = getClassNameForDate(date);
@@ -380,13 +380,13 @@ const Accommodation = () => {
                           moveRangeOnFirstSelection={false} // No mueve el rango en la primera selección
                           showSelectionPreview={false} // Muestra la selección previa
                           startDatePlaceholder="Early"
-                          showDateDisplay={true}
+                          showDateDisplay={false}
                           ranges={state}
                           direction="horizontal"
                           locale={esLocale}
                       />
                      <button
-                      className="mt-6 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-[#ff7a45]"
+                      className="mt-6 bg-black text-white px-6 py-3 rounded-lg "
                       onClick={(e) => setContextMenuPosition(false) }
                       style={{
                         position: 'absolute',

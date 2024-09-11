@@ -536,7 +536,7 @@ const [menuOpen, setMenuOpen] = useState(false);
                           moveRangeOnFirstSelection={false} // No mueve el rango en la primera selección
                           showSelectionPreview={false} // Muestra la selección previa
                           startDatePlaceholder="Early"
-                          showDateDisplay={true}
+                          showDateDisplay={false}
                           ranges={state}
                           direction="horizontal"
                           locale={esLocale}
@@ -544,7 +544,7 @@ const [menuOpen, setMenuOpen] = useState(false);
                      
                     </div>
                     <button
-                      className="mt-6 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-[#ff7a45]"
+                      className="mt-6 bg-black text-white px-6 py-3 rounded-lg "
                       onClick={(e) => setContextMenuPosition(false) }
                       style={{
                         position: 'absolute',
