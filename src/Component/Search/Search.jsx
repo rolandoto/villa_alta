@@ -16,17 +16,15 @@ const Search =({contextShowMenuPeople,
       
                   <StyledContextTyeHotel className="fade-in" valid={true}  top={top} left={100} >
                   <StyledMenuItem>
-                    <StyleTitleHotel>Adultos</StyleTitleHotel>
+                    <StyleTitleHotel className="text-black">Adultos</StyleTitleHotel>
                     <StyleGroup>
                     <StyledMenuItemNumber>
                       <StyleSpan onClick={handDecreaseAdults} > <CiCircleMinus color="black"  fontSize={50} /> </StyleSpan>
-                        <StyleNumberPeople maxlength="30" disabled={true} value={adults} minLength={2} min="0" placeholder="0" />
+                        <StyleNumberPeople className="text-black" maxlength="30" disabled={true} value={adults} minLength={2} min="0" placeholder="0" />
                         <StyleSpan onClick={handChangeAdults}  > <CiCirclePlus color="black" fontSize={50} /> </StyleSpan>
                         </StyledMenuItemNumber>
                     </StyleGroup>
                   </StyledMenuItem>
-
-                  
                   <StyledMenuItemButton>
                       <button
                           onClick={() => setContextShowMenuPeople(false)}

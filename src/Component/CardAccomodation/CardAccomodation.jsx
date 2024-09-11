@@ -1,5 +1,5 @@
-import React, { Fragment, useState }  from "react";
-import { ImginProduct, MainAccomodationRoom, MainProduct } from "../../Ui/Style/GeneralStyle";
+import React, { Fragment, useEffect, useState }  from "react";
+import { ButtonSearch, ImgAccomodation, ImginProduct, MainAccomodationRoom, MainAccomodationSection, MainProduct } from "../../Ui/Style/GeneralStyle";
 import ButtonAccomodation from "../ButtonAccomodation/ButtonAccomodation";
 import DescripctionAccomodation from "../DescripctionAccomodation/DescripctionAccomodation";
 import TitleDinner from "../TitleDinner/TitleDinner";
@@ -8,8 +8,9 @@ import { useSelector } from "react-redux";
 import {toast} from "sonner"
 import { IconFaUser } from "../Icons/Icons";
 import { IconShower, IconTowels, IconsPiBedThin, IconsSnow, IconsTv, IconsWifi } from "../Icons/Icons"
-
 import { FiChevronLeft,FiChevronRight  } from "react-icons/fi";
+import { GiComputerFan } from "react-icons/gi";
+import { FiArrowRight } from "react-icons/fi";
 
 
 const CardAccomodation =({  roomTypeName,
@@ -89,19 +90,33 @@ const CardAccomodation =({  roomTypeName,
         );
       };
 
-    
+
+  const [animationClass, setAnimationClass] = useState('');
+
+  useEffect(() => {
+    // Cada vez que el src cambie, activamos la animación
+    setAnimationClass('animation');
+    // Limpiamos la animación después de que termine
+    const timer = setTimeout(() => {
+      setAnimationClass('');
+    }, 300); // Duración de la animación en milisegundos (0.3s)
+
+    // Cleanup en el desmontaje o cuando cambie src
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
+
 
     return (   
-
-      <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
-      <div className="bg-white shadow-lg accomodation overflow-hidden">
+    <MainAccomodationSection>
+    <div className="max-w-5xl  mx-auto p-4 sm:p-6 lg:p-8">
+      <div className="bg-white border shadow-lg accomodation overflow-hidden">
         {/* Upper section with image and details */}
         <div className="flex flex-col md:flex-row items-start md:items-center">
           <div className="w-full md:w-1/2 p-4">
             <img
               src={roomTypePhotos[currentIndex].image}
               alt="room"
-              className="w-full h-auto transition duration-20  accomodation"
+              className={`w-full h-auto ${animationClass}  accomodation `}
             />
              <div className="relative w-full   p-4">
               <button
@@ -122,7 +137,6 @@ const CardAccomodation =({  roomTypeName,
                 <FiChevronRight fontSize={25} color="black"/>
               </button>
 
-              {/* Puntos de paginación */}
               <div className="flex justify-center mt-0">
                 {roomTypePhotos.map((_, index) => (
                   <div
@@ -197,11 +211,11 @@ const CardAccomodation =({  roomTypeName,
                   const Aire = Service === "Aire Condicionado" && <IconsSnow />;
                   const tv = Service === "Televisión por cable" && <IconsTv />;
                   const bathRoom = Service === "baño privado" && <IconShower />;
-    
+                  const fan =  Service =="Ventiladores de Techo" && <GiComputerFan fontSize={35} />
                   return (
                     <div key={index} className="flex items-center space-x-3">
                       <span className={`flex items-center ${Service}`}>
-                        {bathRoom || tv || Aire || wifi} {Service}
+                        {bathRoom || tv || Aire || wifi || fan} {Service}
                       </span>
                     </div>
                   );
@@ -213,12 +227,14 @@ const CardAccomodation =({  roomTypeName,
         </div>
         {/* Footer with button */}
         <div className="p-4 flex justify-between">
-          <button className="bg-black text-white py-2 px-4 rounded text-sm sm:text-base" onClick={handleAddToCart} >
-            Reservar Habitacion
-          </button>
+            <ButtonSearch onClick={handleAddToCart} className="  justify-center  items-center    flex  cursor-pointer z-40   w-[250px] bg-black text-white py-4    rounded-full hover:bg-[ff7a45px] transition duration-200">
+                Reservar Habitacion <FiArrowRight fontSize={25}/>
+            </ButtonSearch>
+       
         </div>
       </div>
     </div>
+    </MainAccomodationSection>
   )
 }
 

@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body{
-  background-color: #bebba9 !important; 
+  background-color: #679B9B !important; 
 }
 
 .App {
@@ -85,9 +84,48 @@ body{
   justify-content: center;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .accomodation{
   border-radius:35px;
 }
 
+.animation{
+  animation: fadeIn 0.8s ease forwards;
+}
 
- 
+
+.spinner {
+width: 36px;
+height: 36px;
+
+border:5px solid #fffc;
+border-top-color:#09f;
+border-radius: 100%;
+animation: spin 1s infinite;
+} 
+
+@keyframes spin {
+  to {
+    transform:  rotate(360deg);
+  }
+}
+
+
+/*
+‹div
+class="spinner"
+role="status"
+aria-live="polite"
+aria-label="Cargando"
+‹/div>
+*/

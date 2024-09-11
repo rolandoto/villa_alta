@@ -12,7 +12,7 @@ const LoadingSkeleton =(props) =>{
         <circle cx="25" cy="250" r="25" />
         <circle cx="25" cy="330" r="25" />
   
-        <rect x="60" y="30" rx="5" ry="5" width="220" height="15" />
+        <rect x="60" y="30" rx="8" ry="5" width="220" height="15" />
         <rect x="60" y="50" rx="5" ry="5" width="70" height="15" />
         <rect x="140" y="50" rx="5" ry="5" width="90" height="15" />
         <rect x="240" y="50" rx="5" ry="5" width="70" height="15" />

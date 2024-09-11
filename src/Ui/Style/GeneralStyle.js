@@ -31,11 +31,10 @@ export const fadeIn = keyframes`
   }
 `;
 
-
 export const StyledContextTyeHotel = styled.div`
 top:${(props) => `${props.top}px`};
 position: absolute;
-left:  400px;
+left:  450px;
 width: 300px;
 height: 120px;
 right: 0px;
@@ -118,9 +117,9 @@ export const StyleGroup= styled.div`
 `
 
 export const MainProduct = styled.div`
-display: flex;
-    background: white;
-    max-width: 1000px;
+
+background: white;
+max-width: 1000px;
 width: 100%;
 box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) ;
 justify-content: space-between;
@@ -133,6 +132,21 @@ border-radius:45px;
 @media(min-width: 1024) {
   dispaly: block;
 }
+`
+
+export const MainAccomodationSection = styled.div`
+
+
+ animation: ${fadeIn} 0.8s ease forwards; // Apply the fadeIn animation
+  &.fade-in {
+    animation: ${fadeIn} 0.3s ease forwards; // Apply the fadeIn animation
+  }
+
+`
+
+
+export const ImgAccomodation = styled.img`
+${fadeInImg({time:"2s"})}
 `
 
 export const ImginProduct = styled.img`
@@ -239,7 +253,7 @@ export const BorderInput = styled.div`
 `;
 
 export const BorderInputInitial = styled(BorderInput)`
-  padding: 13px;
+  padding: 15px;
   background: white;
   box-shadow: 17px 20px 40px rgba(0, 0, 0, 0.21);
   border-radius: 39px;
@@ -276,10 +290,11 @@ padding: 13px;
 `
 export const ButtonSearch = styled.button`
 border-radius: 25px;
-width:100px;
+
+
+
 margin:auto;
 @media(max-width: 1500px) {
-  
 }
 `
 

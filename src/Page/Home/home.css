@@ -108,7 +108,7 @@
 
 
   .calender-search-home{
-    border-radius: 1.25rem;
+    border-radius: 2.25rem;
     box-shadow: 17px 20px 40px #00000036 !important;
     font-size: 16px !important;
     left: 0;
@@ -121,8 +121,12 @@
     user-select: none;
     width: 778px;
     z-index: 1000;
-
+    transition:  0.3s;
+    animation: fadeIn 0.3s ease forwards;
   }
+
+
+  
 
   /* Para pantallas medianas (tablets) */
 @media (max-width: 1020px) {
@@ -151,7 +155,7 @@
   
   .rdrStartEdge{
     background-color: black;
-   
+
   }
 
   .rdrEndEdge{
