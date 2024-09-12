@@ -74,9 +74,9 @@ const Header =() =>{
            </nav>
    {menuOpen && (
       <div className="md:hidden bg-[#4141416c] text-white py-2">
-      <a href="#" className="block px-4 py-2 ">
+      <Link to="/Rooms" className="block px-4 py-2 ">
       HABITACIONES
-      </a>
+      </Link>
      
       <a href="#" className="block px-4 py-2 ">
       COMODIDADES

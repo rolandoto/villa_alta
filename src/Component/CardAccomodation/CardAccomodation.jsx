@@ -178,9 +178,7 @@ const CardAccomodation =({  roomTypeName,
             </div>
           </div>
         </div>
-    
-        {/* Tabs content */}
-        <div className="">
+        <div className="lg:p-0 p-4">
           <div className="border-b flex flex-wrap justify-between max-w-[95%] mx-auto">
             {['Descripción', 'Comodidades'].map((tab) => (
               <button
@@ -200,7 +198,7 @@ const CardAccomodation =({  roomTypeName,
             )}
             {activeTab === 'Descripción' && (
               <>
-                <span className="text-center font-bold block mb-4">{roomTypeName}</span>
+                <span className="text-center  font-bold block mb-4">{roomTypeName}</span>
                 <p className="mt-5 text-justify " dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
               </>
             )}
