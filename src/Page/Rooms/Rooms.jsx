@@ -94,7 +94,7 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
           </div>
         
          
-        <p className="text-[18px]  text-justify font-serif  line-clamp-3 text-white leading-snug"    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
+        <p className="text-[18px]  text-justify font-serif  line-clamp-3 text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
         </p>
       
       </div>
