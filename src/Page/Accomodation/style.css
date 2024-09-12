@@ -13,9 +13,8 @@
   }
 
   .Button-Search{
-    border-radius: 5px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 35px;
     justify-content: center;
   }
   

@@ -17,8 +17,8 @@ const Events =()  =>{
 
     return (
         <>
-         <div     className="   mx-auto max-w-7xl p-6" >
-                <h1 className="text-[30px] text-center text-orange-500  font-lora  mb-6">Próximos eventos en Medellín</h1>
+         <div     className="   mx-auto max-w-5xl p-6" >
+                <h1 className="text-[30px] text-center text-white font-lora  mb-6">Próximos eventos en Medellín</h1>
                 <div className="grid sm:grid-cols-1  gap-5   md:grid-cols-2 ">  
                       {getevents.map((item,e ) => (
                          <CardEvents key={e} {...item} />

@@ -57,19 +57,19 @@ const Cart = () => {
 
       
     return (
-        <div className="fixed z-50 cart-shadow bg-black  bottom-0 left-0 right-0 flex flex-col md:flex-row items-center justify-between  p-4  rounded-t-lg">
+        <div className="fixed z-50 cart-shadow bg-white   bottom-0 left-0 right-0 flex flex-col md:flex-row items-center justify-between  p-4  rounded-t-lg">
             <div className="flex items-center">
             <div className="ml-4">
-                <h3 className="text-2xl font-lora text-white">Habitaciones: {totalCount} </h3> {/* Update this line with the number of rooms */}
+                <h3 className="text-2xl font-lora text-black">Habitaciones: {totalCount} </h3> {/* Update this line with the number of rooms */}
             </div>
             </div>
             <div >
             <div className="flex items-center">
-                <h2 className="text-2xl font-lora  text-white">Total:</h2>
-                <h3 className="text-2xl font-lora   text-white">${subtotal.toLocaleString('es-CO')} cop</h3> {/* Update this line with the number of rooms */}
+                <h2 className="text-2xl font-lora  text-black">Total:</h2>
+                <h3 className="text-2xl font-lora   text-black">${subtotal.toLocaleString('es-CO')} cop</h3> {/* Update this line with the number of rooms */}
             </div>
             </div>
-            <button onClick={PostHotelByIdHotel} className=" Button-Search w-full rounded md:w-auto ml-0 md:ml-4 px-6 py-2 font-lora bg-orange-500 text-white">
+            <button onClick={PostHotelByIdHotel} className=" Button-Search  w-full md:w-auto ml-0 md:ml-4 px-6 py-2 font-lora bg-black text-white">
             Confirmar la reserva
             </button>
       </div>

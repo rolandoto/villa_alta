@@ -242,26 +242,26 @@ const subtotal = getCartSubtotal()
     
 
     const [scrolled, setScrolled] = useState(false);
-    const [scrolledbook, setScrolledBook] = useState(false);
+      const [scrolledbook, setScrolledBook] = useState(false);
+      
+      useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY > 100) {
+            setScrolled(true);
+          } if(window.scrollY > 200){
+            setScrolledBook(true)
+          } else {
+            setScrolled(false);
+            setScrolledBook(false)
+          }
+        };
     
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 100) {
-          setScrolled(true);
-        } if(window.scrollY > 200){
-          setScrolledBook(true)
-        } else {
-          setScrolled(false);
-          setScrolledBook(false)
-        }
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
+        window.addEventListener("scroll", handleScroll);
+    
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
+      }, []);
 
     const [visible, setVisible] = useState(false);
     
@@ -416,9 +416,9 @@ const [menuOpen, setMenuOpen] = useState(false);
                 <a href="#" className="text-[15px]hover:underline">
                 COMODIDADES
                 </a>
-                <a href="#" className="text-[15px] hover:underline">
-                  EVENTOS
-                </a>
+                <Link to="/Events" className="text-[15px] hover:underline">
+                  PRÓXIMOS EVENTOS
+                </Link>
               
               </div>
               <button className="bg-black text-white rounded-full px-3 sm:px-4 py-2 text-xs sm:text-base">
@@ -429,20 +429,19 @@ const [menuOpen, setMenuOpen] = useState(false);
               </button>
             </nav>
             {menuOpen && (
-              <div className="md:hidden bg-[#8f592c] text-white py-2">
-                <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-                  Habitaciones
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-                  AMENITIES
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-                  KIIN
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-                  BLOG
-                </a>
-              </div>
+               <div className="md:hidden bg-[#4141416c] text-white py-2">
+               <a href="#" className="block px-4 py-2 ">
+               HABITACIONES
+               </a>
+              
+               <a href="#" className="block px-4 py-2 ">
+               COMODIDADES
+               </a>
+               <Link to="/Events" className="block px-4 py-2  text-[15px] hover:underline">
+                     PRÓXIMOS EVENTOS
+                   </Link>
+                     
+             </div>
             )}
           </header>
 
