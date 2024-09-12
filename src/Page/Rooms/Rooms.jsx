@@ -53,52 +53,67 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
     return (
      
       
-      <div className="lg:p-2 p-2  relative  w-full m-auto max-w-[450px] aspect-square mb-8 lg:mb-0">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-serif">
-              <span className="text-white">{roomTypeName}</span>
-            </h2>
-          </div>
-
-          <div className=" shadow-xl w-full h-full rounded-3xl ">
-            <img
-              src={roomTypePhotos[currentIndex]}
-              alt="Luxury bedroom"
-              className={` w-full ${animationClass} rounded-3xl  shadow-full h-full object-cover  `}
-            />
-          </div>
-
-          <div className="flex justify-center mt-8">
-                {roomTypePhotos.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-2 w-2 mx-1 rounded-full ${
-                      index === currentIndex ? "bg-black" : "bg-white"
-                    }`}
-                  />
-                ))}
-              </div>
-          <div className="flex justify-between" >
-                <div className="  ">
-                    <button className="rounded-full "
-                    onClick={handlePrev}>
-                      <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-12 h-16 sm:w-28 sm:h-24" />
-                    </button>
-                </div>     
-
-                <div className=" flex ">
-                <button className="rounded-full "
-                        onClick={handleNext}>
-                      <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
-                    </button>
-                </div>
-          </div>
-        
-         
-        <p className="text-[18px]  line-clamp-4 text-justify font-serif   text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
-        </p>
-      
+      <div className="relative w-full max-w-[450px] mx-auto aspect-square p-4 lg:p-8 mb-8">
+      {/* Título de la habitación */}
+      <div className="text-center mb-6">
+        <h2 className="text-3xl font-serif text-white">
+          {roomTypeName}
+        </h2>
       </div>
+    
+      {/* Imagen con sombra y borde redondeado */}
+      <div className="relative w-full h-full rounded-3xl shadow-xl overflow-hidden">
+        <img
+          src={roomTypePhotos[currentIndex]}
+          alt="Luxury bedroom"
+          className={`w-full h-full object-cover transition-transform duration-500 ${animationClass}`}
+        />
+      </div>
+    
+      {/* Indicadores de imagen (paginación) */}
+      <div className="flex justify-center mt-6 space-x-2">
+        {roomTypePhotos.map((_, index) => (
+          <div
+            key={index}
+            className={`h-3 w-3 rounded-full transition-colors duration-300 ${
+              index === currentIndex ? 'bg-black' : 'bg-white'
+            }`}
+          />
+        ))}
+      </div>
+    
+      {/* Botones de navegación */}
+      <div className="flex justify-between items-center mt-6">
+        <button
+          className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
+          onClick={handlePrev}
+        >
+          <img
+            src="https://kiinliving.com/arrow_carousel.svg"
+            alt="Previous"
+            className="w-8 h-8 rotate-180"
+          />
+        </button>
+    
+        <button
+          className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
+          onClick={handleNext}
+        >
+          <img
+            src="https://kiinliving.com/arrow_carousel.svg"
+            alt="Next"
+            className="w-8 h-8"
+          />
+        </button>
+      </div>
+    
+      {/* Descripción de la habitación */}
+      <p
+        className="text-lg font-serif text-justify text-white mt-6 leading-relaxed line-clamp-4"
+        dangerouslySetInnerHTML={{ __html: roomTypeDescription }}
+      ></p>
+    </div>
+    
     
     );
   };
