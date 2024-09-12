@@ -1,65 +1,121 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import Header from "../../Component/Header/Header";
+import { useSelector } from "react-redux";
+import LoadingSkeleton from "../../Component/LoadingSkeleton/LoadingSkeleton";
+import EmpyCart from "../../Component/EmpyCart/EmpyCart";
+import UseHotelActions from "../../Actions/useHotelsActions";
+import { Environment } from "../../Config/Config";
+import BookNowButton from "../../Component/BookNowButton/BookNowButton";
 
 
+const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTypeDescription , index}) => {
 
-const ApartmentCard = ({ image, title, subtitle, description, index }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [animationClass, setAnimationClass] = useState('');
+
+
+  
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === roomTypePhotos.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? roomTypePhotos.length - 1 : prevIndex - 1
+    );
+  };
+
+
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+
+  useEffect(() => {
+    // Cada vez que el src cambie, activamos la animación
+    setAnimationClass('animation');
+    // Limpiamos la animación después de que termine
+    const timer = setTimeout(() => {
+      setAnimationClass('');
+    }, 300); // Duración de la animación en milisegundos (0.3s)
+
+    // Cleanup en el desmontaje o cuando cambie src
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
+
+
     return (
-      <div className="relative flex flex-col items-center text-center p-4">
-        <img src={image} alt={title} className="rounded-lg mb-8 shadow-lg" />
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <h4 className="text-sm font-light mb-2">{subtitle}</h4>
-        <p className="text-gray-700">{description}</p>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-gray-500 text-sm">
-          {index.toString().padStart(2, '0')}
-        </div>
+     
+      <div className="lg:p-2 p-2  relative  w-full m-auto max-w-[450px] aspect-square mb-8 lg:mb-0">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-serif">
+              <span className="text-white">{roomTypeName}</span>
+            </h2>
+          </div>
+
+          <div className="relative shadow-xl w-full h-full rounded-3xl overflow-hidden">
+            <img
+              src={roomTypePhotos[currentIndex]}
+              alt="Luxury bedroom"
+              className={` w-full ${animationClass}  shadow-full h-full object-cover  `}
+            />
+          </div>
+          <div className="absolute   bottom-16 left-0 flex ">
+              <button className="rounded-full p-2"
+              onClick={handlePrev}>
+                <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-12 h-16 sm:w-28 sm:h-24" />
+              </button>
+          </div>     
+
+          <div className="absolute bottom-16 right-0 flex ">
+          <button className="rounded-full p-2"
+                  onClick={handleNext}>
+                <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
+              </button>
+          </div>
+          <div className="flex justify-center mt-8">
+        
+                {roomTypePhotos.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-2 w-2 mx-1 rounded-full ${
+                      index === currentIndex ? "bg-black" : "bg-white"
+                    }`}
+                  />
+                ))}
+              </div>
+        <p className="text-[18px] font-serif mt-8 line-clamp-3 text-white leading-snug"    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
+        </p>
+      
       </div>
+    
     );
   };
   
-
-  const CurvedLine = () => (
-    <svg className="absolute -top-8 left-1/2 transform -translate-x-1/2" width="100" height="100">
-      <path d="M10,90 C40,10 60,10 90,90" stroke="gray" strokeWidth="2" fill="none" />
-    </svg>
-  );
-
 const Rooms =() =>{
 
-    const apartments = [
-        {
-          image: 'https://cms.kiinliving.com/uploads/attachments/clthsing301ug6hqsg7uqgxiw-apto-sl.webp',
-          title: 'STUDIO',
-          subtitle: 'LOFT',
-          description: 'The Studio Loft is a cozy and modern space, designed to provide comfort and functionality in one place.',
-        },
-        {
-          image: 'https://cms.kiinliving.com/uploads/attachments/clthsing301ug6hqsg7uqgxiw-apto-sl.webp',
-          title: 'APT. 1-1',
-          subtitle: '',
-          description: 'Modern one-bedroom, one-bathroom suite, ideal for those seeking privacy and comfort.',
-        },
-        {
-          image: 'https://cms.kiinliving.com/uploads/attachments/clthsing301ug6hqsg7uqgxiw-apto-sl.webp',
-          title: 'APT. 2-2',
-          subtitle: '',
-          description: 'This Suite offers two bedrooms and two bathrooms, perfect for sharing with friends and family.',
-        },
-        {
-          image: 'https://cms.kiinliving.com/uploads/attachments/clthsing301ug6hqsg7uqgxiw-apto-sl.webp',
-          title: 'APT. 2-2',
-          subtitle: 'DELUXE',
-          description: 'The Suite 2-2 Deluxe offers two bedrooms and two bathrooms, with a 24m² balcony for outdoor relaxation.',
-        },
-      ];
-    const [scrolled, setScrolled] = useState(false);
+  const {ErrorRoomTypes,RoomsType,LoadingRoomTypes}= useSelector((state) => state.Hotel)
+  const {getRoomsTypes} =  UseHotelActions()
 
+  const fetchDate =async() =>{
+    await getRoomsTypes({token:Environment.Token,propertyID:Environment.propertyID})
+  }
+
+
+  const [scrolledbook, setScrolledBook] = useState(false);
+      
     useEffect(() => {
       const handleScroll = () => {
-        if (window.scrollY > 800) {
-          setScrolled(true);
+       if(window.scrollY > 200){
+          setScrolledBook(true)
         } else {
-          setScrolled(false);
+          setScrolledBook(false)
         }
       };
   
@@ -69,72 +125,43 @@ const Rooms =() =>{
         window.removeEventListener("scroll", handleScroll);
       };
     }, []);
-    const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() =>{
+      fetchDate()
+  },[])
+
+    const FillContent =()=>{
+      if(LoadingRoomTypes){
+        return  <div  className=" lg:flex    mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
+                <LoadingSkeleton />
+                </div> 
+      }
+      if(ErrorRoomTypes){
+       return  (
+                <div  className=" lg:flex    mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
+                  <EmpyCart title={"Error al cargar las habitaciones"} />
+                </div> 
+       ) 
+      }
+     return <>  {RoomsType.map((apartment, index) => (
+                  <ApartmentCard
+                        {...apartment}
+                        key={index}
+                        index={index + 1}/>
+                  ))}
+            </>
+    }
 
     return  <>
-    <div className="bg-[#bebba9]" >
-
-   
-      <header
-        className={`fixed z-50 top-0 left-0 right-0 transition-colors duration-300 ${
-          scrolled ? "bg-[#8f592c] text-white" : "bg-transparent text-white"
-        }`}
-      >
-        <nav className="border-b p-2 border-white flex justify-between items-center space-x-6 max-w-[97%] mx-auto">
-          <div className="text-2xl sm:text-3xl font-lora"><Link to="/"  > Hotel Gallery</Link> </div>
-          <div className="hidden md:flex space-x-6">
-            <a href="#" className="text-[15px] hover:underline">
-            HABITACIONES
-            </a>
-            <a href="#" className="text-[15px]hover:underline">
-            COMODIDADES
-            </a>
-            <a href="#" className="text-[15px] hover:underline">
-              EVENTOS
-            </a>
-          
-          </div>
-          <button className="bg-black text-white rounded-full px-3 sm:px-4 py-2 text-xs sm:text-base">
-            COMO LLEGAR
-          </button>
-          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-            <span>Menu</span>
-          </button>
-        </nav>
-        {menuOpen && (
-          <div className="md:hidden bg-[#8f592c] text-white py-2">
-            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-              Habitaciones
-            </a>
-            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-              AMENITIES
-            </a>
-            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-              KIIN
-            </a>
-            <a href="#" className="block px-4 py-2 hover:bg-[#a36a33]">
-              BLOG
-            </a>
-          </div>
-        )}
-      </header>
-    
-      <section className=" py-12">
-        <h2 className="text-4xl font-semibold text-center mb-8">Apartments</h2>
-        <div className="flex justify-center gap-8">
-            {apartments.map((apartment, index) => (
-            <ApartmentCard
-                key={index}
-                image={apartment.image}
-                title={apartment.title}
-                subtitle={apartment.subtitle}
-                description={apartment.description}
-                index={index + 1}
-            />
-            ))}
-        </div>
-        </section>
-        </div>
+      <div >
+      <BookNowButton/> 
+        <Header />
+          <section className="py-12 mt-8">
+            <div className="lg:flex block  gap-8">
+                {FillContent()}
+            </div>
+          </section>
+      </div>
             </>
 }
 

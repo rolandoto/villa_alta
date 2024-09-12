@@ -180,8 +180,8 @@ const CardAccomodation =({  roomTypeName,
         </div>
     
         {/* Tabs content */}
-        <div className="p-4">
-          <div className="border-b flex flex-wrap justify-between max-w-[91%] mx-auto">
+        <div className="">
+          <div className="border-b flex flex-wrap justify-between max-w-[95%] mx-auto">
             {['Descripción', 'Comodidades'].map((tab) => (
               <button
                 key={tab}
@@ -194,14 +194,14 @@ const CardAccomodation =({  roomTypeName,
           </div>
           
           {/* Conditional rendering of content based on active tab */}
-          <div className="mt-4 max-w-[90%] mx-auto">
+          <div className="mt-4 max-w-[95%] mx-auto">
             {activeTab === 'Alojamiento' && (
               <span className="text-center font-bold block">{roomTypeName}</span>
             )}
             {activeTab === 'Descripción' && (
               <>
                 <span className="text-center font-bold block mb-4">{roomTypeName}</span>
-                <p className="mt-5" dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
+                <p className="mt-5 text-justify " dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
               </>
             )}
             {activeTab === 'Comodidades' && (

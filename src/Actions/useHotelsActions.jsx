@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../Hooks/Redux"
-import { loading,setHotel,setError,setListHotel,setlistoHotelError,loadingHotel } from "../reducers/ApiHotelByIdReduccers"
+import { loading,setHotel,setError,setListHotel,setlistoHotelError,loadingHotel, loadingRoomsTypes, setRoomsTypes, setErrorRoomsTypes } from "../reducers/ApiHotelByIdReduccers"
 import HttpClient from "../HttpClient"
 
 const UseHotelActions =() =>{
@@ -37,9 +37,27 @@ const UseHotelActions =() =>{
     }
 
     
+
+    const getRoomsTypes = async({token,propertyID}) =>{
+        dispatch(loadingRoomsTypes())
+        try {
+            const response  = await   HttpClient.getRoomTypes({token,propertyID})
+            if(response){
+                dispatch(setRoomsTypes(response)) 
+            }else{
+                dispatch(setErrorRoomsTypes("no found")) 
+            }
+        } catch (error) {
+            dispatch(setErrorRoomsTypes("no found")) 
+         
+        }
+    }
+
+    
     return {
         getHotel,
-        getListHotel
+        getListHotel,
+        getRoomsTypes
     }
 
 }

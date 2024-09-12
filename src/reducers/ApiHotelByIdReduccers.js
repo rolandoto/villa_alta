@@ -7,7 +7,12 @@ export const initialState ={
     
     hotelList:[],
     loadingHotel:false,
-    errorHotel:null
+    errorHotel:null,
+
+    RoomsType:[],
+    LoadingRoomTypes:false,
+    ErrorRoomTypes:false
+
 }
 
 export const ApiHotelByIdReduccers = createSlice({
@@ -40,9 +45,32 @@ export const ApiHotelByIdReduccers = createSlice({
             state.loadingHotel = false
             state.errorHotel = true
         },
+
+        //RoomsTypes
+        loadingRoomsTypes:(state) =>{
+            state.LoadingRoomTypes=true
+            state.ErrorRoomTypes= null
+        },
+        setRoomsTypes:(state,action) =>{
+            state.RoomsType = action.payload
+            state.LoadingRoomTypes= false
+        },
+        setErrorRoomsTypes:(state,action) =>{
+            state.LoadingRoomTypes = false
+            state.ErrorRoomTypes = true
+        },
+
     }
 })
 
-export const {loading,setHotel,setError,loadingHotel,setListHotel,setlistoHotelError} = ApiHotelByIdReduccers.actions
+export const {  loading,
+                setHotel,
+                setError,
+                loadingHotel,
+                setListHotel,
+                setlistoHotelError,
+                loadingRoomsTypes,
+                setRoomsTypes,
+                setErrorRoomsTypes} = ApiHotelByIdReduccers.actions
 
 export default  ApiHotelByIdReduccers.reducer

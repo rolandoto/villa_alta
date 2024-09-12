@@ -262,6 +262,27 @@ const PostHotelByIdHotel = async ({id,desde,hasta,counPeople}) => {
       }
   };
 
+
+  const getRoomTypes = async ({propertyID,token}) => {
+    try {
+        const resp = await fetch(`${config.serverRoute}/api/hotels/cloubeds/getRoomTypes`, {
+          method: "POST",
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify({propertyID,token})
+        });
+        if (!resp.ok) {
+          throw new Error('Response is not ok');
+        }
+        const data = await resp.json();
+      
+        return data.data;
+      } catch (error) {
+        throw error; // Puedes lanzar el error nuevamente o manejarlo de otra manera según tus necesidades
+      }
+  };
+
   export default {
     PostHotelByIdHotel,
     PostCreateReservation,
@@ -273,7 +294,8 @@ const PostHotelByIdHotel = async ({id,desde,hasta,counPeople}) => {
     PostRoomPromotions,
     GetRoomsPromtions,
     getAvailableRoomTypes,
-    PostpostReservation
+    PostpostReservation,
+    getRoomTypes
   }
 
 
