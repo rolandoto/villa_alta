@@ -91,12 +91,14 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
                       <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
                     </button>
                 </div>
+
+
           </div>
-        
-         
-        <p className="text-[18px]  text-justify font-serif  line-clamp-3 text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
+        <p className="text-[18px]  text-justify font-serif   text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
         </p>
       
+         
+        
       </div>
     
     );
