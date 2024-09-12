@@ -52,6 +52,7 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
 
     return (
      
+      
       <div className="lg:p-2 p-2  relative  w-full m-auto max-w-[450px] aspect-square mb-8 lg:mb-0">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-serif">
@@ -59,7 +60,7 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
             </h2>
           </div>
 
-          <div className="relative shadow-xl w-full h-full rounded-3xl ">
+          <div className=" shadow-xl w-full h-full rounded-3xl ">
             <img
               src={roomTypePhotos[currentIndex]}
               alt="Luxury bedroom"
@@ -94,7 +95,7 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
           </div>
         
          
-        <p className="text-[18px]  text-justify font-serif   text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
+        <p className="text-[18px]  line-clamp-4 text-justify font-serif   text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
         </p>
       
       </div>
