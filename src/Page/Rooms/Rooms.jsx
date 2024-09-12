@@ -59,11 +59,11 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
             </h2>
           </div>
 
-          <div className="relative shadow-xl w-full h-full rounded-3xl overflow-hidden">
+          <div className="relative shadow-xl w-full h-full rounded-3xl ">
             <img
               src={roomTypePhotos[currentIndex]}
               alt="Luxury bedroom"
-              className={` w-full ${animationClass}  shadow-full h-full object-cover  `}
+              className={` w-full ${animationClass} rounded-3xl  shadow-full h-full object-cover  `}
             />
           </div>
 
@@ -91,14 +91,12 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
                       <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
                     </button>
                 </div>
-
-
           </div>
+        
+         
         <p className="text-[18px]  text-justify font-serif   text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
         </p>
       
-         
-        
       </div>
     
     );
