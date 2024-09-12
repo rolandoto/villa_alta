@@ -66,21 +66,8 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
               className={` w-full ${animationClass}  shadow-full h-full object-cover  `}
             />
           </div>
-          <div className="absolute   bottom-16 left-0 flex ">
-              <button className="rounded-full p-2"
-              onClick={handlePrev}>
-                <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-12 h-16 sm:w-28 sm:h-24" />
-              </button>
-          </div>     
 
-          <div className="absolute bottom-16 right-0 flex ">
-          <button className="rounded-full p-2"
-                  onClick={handleNext}>
-                <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
-              </button>
-          </div>
           <div className="flex justify-center mt-8">
-        
                 {roomTypePhotos.map((_, index) => (
                   <div
                     key={index}
@@ -90,7 +77,24 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
                   />
                 ))}
               </div>
-        <p className="text-[18px] font-serif mt-8 line-clamp-3 text-white leading-snug"    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
+          <div className="flex justify-between" >
+                <div className="  ">
+                    <button className="rounded-full "
+                    onClick={handlePrev}>
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-12 h-16 sm:w-28 sm:h-24" />
+                    </button>
+                </div>     
+
+                <div className=" flex ">
+                <button className="rounded-full "
+                        onClick={handleNext}>
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
+                    </button>
+                </div>
+          </div>
+        
+         
+        <p className="text-[18px]  text-justify font-serif  line-clamp-3 text-white leading-snug"    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
         </p>
       
       </div>
