@@ -64,8 +64,36 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
          
 
           <div className="">
-              <img src={roomTypePhotos[currentIndex]} alt="Profile" className="" />
+              <img src={roomTypePhotos[currentIndex]} alt="Profile" 
+                className={` w-full ${animationClass} rounded-3xl  shadow-full  w-full h-[400px] object-cover}`}/>
           </div>
+          
+            <div className="flex justify-center mt-8">
+                {roomTypePhotos.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-2 w-2 mx-1 rounded-full ${index === currentIndex ? "bg-black" : "bg-white"}`}
+                  />
+                ))}
+            </div>
+
+      <div className="flex justify-between" >
+                <div className="  ">
+                    <button className="rounded-full "
+                    onClick={handlePrev}>
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-12 h-16 sm:w-28 sm:h-24" />
+                    </button>
+                </div>     
+
+                <div className=" flex ">
+                <button className="rounded-full "
+                        onClick={handleNext}>
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
+                    </button>
+                </div>
+          </div>
+        
+
         <div className="flex justify-between items-center px-4 py-2">
           <div className="flex space-x-4">
            
