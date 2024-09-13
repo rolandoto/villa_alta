@@ -51,36 +51,35 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
 
 
     return (
-     
-      
-      <div className="lg:p-2 p-2  relative  w-full m-auto max-w-[450px] aspect-square mb-8 lg:mb-0">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-serif">
-              <span className="text-white">{roomTypeName}</span>
-            </h2>
-          </div>
-
-          <div className=" shadow-xl w-full rounded-3xl ">
-            <img
-              src={roomTypePhotos[currentIndex]}
-              alt="Luxury bedroom"
-              className={` w-full rounded-3xl  shadow-full h-[450px] object-cover  `}
-            />
-          </div>
-          <div className="flex justify-center mt-8">
-                {roomTypePhotos.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-2 w-2 mx-1 rounded-full ${
-                      index === currentIndex ? "bg-black" : "bg-white"
-                    }`}
-                  />
-                ))}
+    
+      <div className="lg:p-4 m-auto p-4" >
+      <div className="max-w-md mx-auto   overflow-hidden">
+          <div>
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-serif">
+                  <span className="text-white">{roomTypeName}</span>
+                </h2>
               </div>
+          </div>
          
+
+          <div className="">
+              <img src={roomTypePhotos[currentIndex]} alt="Profile" className="" />
+          </div>
+        <div className="flex justify-between items-center px-4 py-2">
+          <div className="flex space-x-4">
+           
+          </div>
+        </div>
+       
+        
+        <div className="px-4 py-2">
         <p className="text-[18px]  line-clamp-4 text-justify font-serif   text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
         </p>
-      
+  
+       
+        </div>
+      </div>
       </div>
     
     );
