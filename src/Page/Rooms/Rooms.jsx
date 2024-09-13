@@ -81,14 +81,14 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
                 <div className="  ">
                     <button className="rounded-full "
                     onClick={handlePrev}>
-                      <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-12 h-16 sm:w-28 sm:h-24" />
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-28 h-24" />
                     </button>
                 </div>     
 
                 <div className=" flex ">
                 <button className="rounded-full "
                         onClick={handleNext}>
-                      <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className="w-12 h-16 sm:w-28 sm:h-24" />
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className=" w-28 h-24" />
                     </button>
                 </div>
           </div>
