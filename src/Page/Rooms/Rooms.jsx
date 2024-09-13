@@ -60,14 +60,13 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
             </h2>
           </div>
 
-          <div className="   rounded-3xl ">
-          <img
+          <div className=" shadow-xl w-full rounded-3xl ">
+            <img
               src={roomTypePhotos[currentIndex]}
-              alt="room"
-              className={`w-full h-auto ${animationClass}  accomodation `}
+              alt="Luxury bedroom"
+              className={` w-full rounded-3xl  shadow-full h-[450px] object-cover  `}
             />
           </div>
-
           <div className="flex justify-center mt-8">
                 {roomTypePhotos.map((_, index) => (
                   <div

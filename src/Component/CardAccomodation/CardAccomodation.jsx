@@ -178,6 +178,8 @@ const CardAccomodation =({  roomTypeName,
             </div>
           </div>
         </div>
+    
+        {/* Tabs content */}
         <div className="lg:p-0 p-4">
           <div className="border-b flex flex-wrap justify-between max-w-[95%] mx-auto">
             {['Descripción', 'Comodidades'].map((tab) => (
