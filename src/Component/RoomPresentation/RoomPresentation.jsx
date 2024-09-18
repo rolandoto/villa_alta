@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { FiArrowRight } from "react-icons/fi";
 const RoomPresentaion =() =>{
     const navigate = useNavigate();
 
@@ -18,7 +18,9 @@ const RoomPresentaion =() =>{
                     <p className="text-gray-700 text-justify mb-4">
                     Gallery Hotel está ubicado en el corazón del centro de Medellín, a solo unos pasos de las principales atracciones turísticas, restaurantes y bares. La ubicación perfecta para explorar la ciudad y descubrir todo lo que tiene para ofrecer.
                     </p>
-                    <button onClick={HandNext}  className="text-white bg-black  mt-4  w-[200px] p-3 rounded "><span className=" text-[20px]" >Reservar</span></button>
+                    <button onClick={HandNext}  className="text-white rounded-full items-center  justify-center flex   bg-black  mt-4  w-[200px] p-3  ">
+                       
+                        Reservar   <FiArrowRight fontSize={23}/> </button>
                 </div>
                 <div className="md:w-1/2 p-4">
                 <img 

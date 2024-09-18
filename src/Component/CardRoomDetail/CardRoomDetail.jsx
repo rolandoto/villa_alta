@@ -1,7 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FiArrowRight } from "react-icons/fi";
 
 const CardRoomDetail =({features,image,title,price}) =>{
+
+
+  
 
     const navigate = useNavigate();
 
@@ -29,7 +33,9 @@ const CardRoomDetail =({features,image,title,price}) =>{
                     <div >
                         <strong className=" text-[20px] text-white " >Desde ${parseInt(price).toLocaleString('es-CO')} cop</strong>
                     </div>
-                    <button onClick={handSubmitNextReservation} className="text-white bg-black mt-4  w-[290px] md:w-[150px]  p-3 rounded hover:bg-black"><span className=" text-[20px]" >Reservar</span></button>                  
+                    <button onClick={handSubmitNextReservation} className="text-white bg-black mt-4 flex items-center justify-center  w-[290px] md:w-[150px]  p-3 rounded-full hover:bg-black">
+                        
+                        Reservar   <FiArrowRight fontSize={23}/> </button>                  
                 </div>   
         </div>
     )

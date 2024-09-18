@@ -268,7 +268,7 @@ const subtotal = getCartSubtotal()
     useEffect(() => {
       const timer = setTimeout(() => {
         setVisible(true);
-      }, 3000); // 10000 ms = 10 segundos
+      }, 4000); // 10000 ms = 10 segundos
   
       return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
     }, []);
