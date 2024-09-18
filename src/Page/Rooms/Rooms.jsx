@@ -23,11 +23,13 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
     );
   };
 
+  /*
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? roomTypePhotos.length - 1 : prevIndex - 1
     );
   };
+  */
 
 
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -35,6 +37,16 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
   };
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeout(() => {
+        handleNext()
+      }, 1000);
+    }, 3000); 
+    return () => clearInterval(interval);
+  }, []); 
 
 
   useEffect(() => {
@@ -49,7 +61,25 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
+/**
+ * 
+ *   <div className="flex justify-between" >
+                <div className="  ">
+                    <button className="rounded-full "
+                    onClick={handlePrev}>
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-28 h-24" />
+                    </button>
+                </div>     
 
+                <div className=" flex ">
+                <button className="rounded-full "
+                        onClick={handleNext}>
+                      <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className=" w-28 h-24" />
+                    </button>
+                </div>
+          </div>
+ * 
+ */
     return (
     
       <div className="lg:p-4 m-auto p-4" >
@@ -77,21 +107,7 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
                 ))}
             </div>
 
-      <div className="flex justify-between" >
-                <div className="  ">
-                    <button className="rounded-full "
-                    onClick={handlePrev}>
-                      <img src="https://kiinliving.com/arrow_carousel.svg" width={40} height={40} alt="Arrow" className="rotate-180  w-28 h-24" />
-                    </button>
-                </div>     
-
-                <div className=" flex ">
-                <button className="rounded-full "
-                        onClick={handleNext}>
-                      <img src="https://kiinliving.com/arrow_carousel.svg" width={20} height={20} alt="Arrow" className=" w-28 h-24" />
-                    </button>
-                </div>
-          </div>
+    
         
 
         <div className="flex justify-between items-center px-4 py-2">

@@ -268,7 +268,7 @@ const subtotal = getCartSubtotal()
     useEffect(() => {
       const timer = setTimeout(() => {
         setVisible(true);
-      }, 2000); // 10000 ms = 10 segundos
+      }, 3000); // 10000 ms = 10 segundos
   
       return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
     }, []);
@@ -594,7 +594,7 @@ const faqs = [
           </div>
 
           <div className="max-w-7xl mx-auto py-8">
-              <h2 className="text-[30px] text-center text-orange-500  font-lora  mb-6">Lo que opinan nuestros clientes</h2>
+              <h2 className="text-[30px] text-center text-white  font-lora  mb-6">Lo que opinan nuestros clientes</h2>
               <div className="block md:flex" >
                     <div className="flex items-center justify-center ">
                       <div className="max-w-sm p-6">
@@ -605,29 +605,29 @@ const faqs = [
                             alt="Hotel"
                           />
                           <div className="ml-4">
-                            <h2 className="text-lg font-semibold">Gallery Hotel Medellín</h2>
+                            <h2 className="text-lg  text-white font-semibold">Gallery Hotel Medellín</h2>
                             <div className="flex items-center">
-                              <span className="text-orange-500 text-lg font-bold">4.0</span>
+                              <span className="text-black text-lg font-bold">4.0</span>
                               <div className="flex ml-1">
-                                <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
                                 </svg>
-                                <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
                                 </svg>
-                                <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
                                 </svg>
-                                <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
                                 </svg>
-                                <svg className="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 20 20">
                                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
                                 </svg>
                               </div>
                             </div>
-                            <p className="text-sm text-gray-600">Basado en 600 reseñas.</p>
-                            <p className="text-sm text-gray-500 mt-2">powered by <span className="text-gray-700 font-semibold">Google</span></p>
+                            <p className="text-sm text-black">Basado en 600 reseñas.</p>
+                            <p className="text-sm text-black mt-2">powered by <span className="text-black font-semibold">Google</span></p>
                           </div>
                         </div>
                         <a target="_blank" href="https://www.google.com/search?hl=en-CO&gl=co&q=Gallery+Hotel+Medell%C3%ADn,+Cl.+47+%2341-55,+La+Candelaria,+Medell%C3%ADn,+La+Candelaria,+Medell%C3%ADn,+Antioquia&ludocid=13557792269951917256&lsig=AB86z5Xi3QsXtAp5vxVbKW_n47sq#lrd=0x8e4428575a0dc0d1:0xbc26f43cbd055cc8,3" className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg flex items-center justify-center">
@@ -648,8 +648,7 @@ const faqs = [
                           </div>
                           <div className="flex items-center mb-2">
                             {[...Array(5)].map((star, index) => (
-                              
-                              <svg className={`w-5 h-5  ${index < review.rating ?" text-orange-500" :"text-gray-300"} `} fill="currentColor" viewBox="0 0 20 20">
+                              <svg className={`w-5 h-5  ${index < review.rating ?" text-black" :"text-gray-300"} `} fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
                             </svg>
                             
