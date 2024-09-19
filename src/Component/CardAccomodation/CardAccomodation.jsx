@@ -11,6 +11,7 @@ import { IconShower, IconTowels, IconsPiBedThin, IconsSnow, IconsTv, IconsWifi }
 import { FiChevronLeft,FiChevronRight  } from "react-icons/fi";
 import { GiComputerFan } from "react-icons/gi";
 import { FiArrowRight } from "react-icons/fi";
+import { PiBathtubLight } from "react-icons/pi";
 
 
 const CardAccomodation =({  roomTypeName,
@@ -36,7 +37,7 @@ const CardAccomodation =({  roomTypeName,
          
     const {AddCart } =useCartActions()
 
-    const [activeTab, setActiveTab] = useState('Comodidades');
+    const [activeTab, setActiveTab] = useState('Detalle');
 
     const handleAddToCart = () => {
         const existingRoom = cart.find(item => item.roomTypeID === roomTypeID);
@@ -74,6 +75,24 @@ const CardAccomodation =({  roomTypeName,
                     </MainProduct> 
             </MainAccomodationRoom>
  * 
+
+             <button
+                onClick={handlePrev}
+                className="absolute -top-36 md:-top-44 lg:-top-44 left-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
+                              transition duration-200 hover:scale-110 hover:bg-white
+                              hover:text-sm hover:duration-200"
+              >
+                <FiChevronLeft fontSize={25} color="black" />
+              </button>
+              <button
+                    onClick={handleNext}
+                    className="absolute -top-36 md:-top-44 lg:-top-44 right-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
+                              transition duration-200 hover:scale-110 hover:bg-white
+                              hover:text-sm hover:duration-200"
+                  >
+                    
+                <FiChevronRight fontSize={25} color="black"/>
+              </button>
  */
         
       const [currentIndex, setCurrentIndex] = useState(0);
@@ -90,6 +109,16 @@ const CardAccomodation =({  roomTypeName,
         );
       };
 
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setTimeout(() => {
+            handleNext()
+          }, 1000);
+        }, 3000); 
+        return () => clearInterval(interval);
+      }, []); 
+    
 
   const [animationClass, setAnimationClass] = useState('');
 
@@ -119,23 +148,7 @@ const CardAccomodation =({  roomTypeName,
               className={`w-full h-auto ${animationClass}  accomodation `}
             />
              <div className="relative w-full   p-4">
-              <button
-                onClick={handlePrev}
-                className="absolute -top-36 md:-top-44 lg:-top-44 left-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
-                              transition duration-200 hover:scale-110 hover:bg-white
-                              hover:text-sm hover:duration-200"
-              >
-                <FiChevronLeft fontSize={25} color="black" />
-              </button>
-              <button
-                    onClick={handleNext}
-                    className="absolute -top-36 md:-top-44 lg:-top-44 right-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
-                              transition duration-200 hover:scale-110 hover:bg-white
-                              hover:text-sm hover:duration-200"
-                  >
-                    
-                <FiChevronRight fontSize={25} color="black"/>
-              </button>
+             
 
               <div className="flex justify-center mt-0">
                 {roomTypePhotos.map((_, index) => (
@@ -151,7 +164,7 @@ const CardAccomodation =({  roomTypeName,
           </div>
           <div className="w-full md:w-1/2 p-4">
             <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">{roomTypeName}</h2>
-            <div className="flex flex-col sm:flex-row justify-between mt-4">
+            <div className="flex flex-col pr-4 sm:flex-row justify-between mt-4">
               <div className="text-center mb-4 sm:mb-0">
                 <p className="text-gray-600">Máxima ocupación</p>
                 <div className="flex justify-center">
@@ -181,8 +194,8 @@ const CardAccomodation =({  roomTypeName,
     
         {/* Tabs content */}
         <div className="lg:p-0 p-4">
-          <div className="border-b flex flex-wrap justify-between max-w-[95%] mx-auto">
-            {['Descripción', 'Comodidades'].map((tab) => (
+          <div className="border-b flex flex-wrap justify-center max-w-[95%] mx-auto">
+            {['Detalle'].map((tab) => (
               <button
                 key={tab}
                 className={`text-gray-600 pb-2 mb-2 text-sm sm:text-base ${activeTab === tab ? 'border-b-2 border-black' : ''}`}
@@ -194,38 +207,33 @@ const CardAccomodation =({  roomTypeName,
           </div>
           
           {/* Conditional rendering of content based on active tab */}
-          <div className="mt-4 max-w-[95%] mx-auto">
-            {activeTab === 'Alojamiento' && (
-              <span className="text-center font-bold block">{roomTypeName}</span>
-            )}
-            {activeTab === 'Descripción' && (
-              <>
-                <span className="text-center  font-bold block mb-4">{roomTypeName}</span>
-                <p className="mt-5 text-justify " dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
-              </>
-            )}
-            {activeTab === 'Comodidades' && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="mt-4 lg:flex   block justify-between  max-w-[95%] mx-auto">
+            {activeTab === 'Detalle' && (
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                 {roomTypeFeatures.map((Service, index) => {
                   const wifi = Service === "Internet inalámbrico (WiFi)" && <IconsWifi />;
                   const Aire = Service === "Aire Condicionado" && <IconsSnow />;
                   const tv = Service === "Televisión por cable" && <IconsTv />;
                   const bathRoom = Service === "baño privado" && <IconShower />;
                   const fan =  Service =="Ventiladores de Techo" && <GiComputerFan fontSize={35} />
+                  const Jacuzzi = "Jacuzzi privado" && <PiBathtubLight fontSize={35} />
                   return (
                     <div key={index} className="flex items-center space-x-3">
                       <span className={`flex items-center ${Service}`}>
-                        {bathRoom || tv || Aire || wifi || fan} {Service}
+                        {bathRoom || tv || Aire || wifi || fan || Jacuzzi } {Service}
                       </span>
                     </div>
                   );
                 })}
+               
               </div>
             )}
-           
+                <div className="border p-4 rounded-3xl lg:w-[70%] ">
+                    <p className="text-justify " dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
+                </div> 
           </div>
         </div>
-        {/* Footer with button */}
+       
         <div className="p-4 flex justify-between">
             <ButtonSearch onClick={handleAddToCart} className="  justify-center  items-center    flex  cursor-pointer z-40   w-[250px] bg-black text-white py-4    rounded-full hover:bg-[ff7a45px] transition duration-200">
                 Reservar Habitacion <FiArrowRight fontSize={25}/>

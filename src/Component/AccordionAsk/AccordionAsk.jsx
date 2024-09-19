@@ -6,7 +6,7 @@ const AccordionAsk =({faqs}) =>{
 
     return ( <section className=" flex flex-col items-center  max-w-7xl md:flex-row container mx-auto py-12">
                 <div className="md:w-1/2 px-4 ">
-                    <h2 className="text-[30px] text-center  font-lora text-orange-500 mb-6">Preguntas frecuentes</h2>
+                    <h2 className="text-[30px] text-center  font-lora text-white mb-6">Preguntas frecuentes</h2>
                     <div>
                         {faqs.map((faq, index) => (
                         <AccordionItem

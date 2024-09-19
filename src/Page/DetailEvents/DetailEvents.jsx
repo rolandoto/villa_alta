@@ -124,7 +124,7 @@ const DetailEvents =() =>{
    
     }
     return (<>
-            {scrolledbook && <BookNowButton/> } 
+            
             <Header/>
 
           <div className="p-2 lg:px-8">

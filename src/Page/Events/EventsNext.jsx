@@ -56,7 +56,7 @@ const EventsNext =()  =>{
 
 
     return (<>
-            {scrolledbook && <BookNowButton/> } 
+           
             <Header/>
 
         
