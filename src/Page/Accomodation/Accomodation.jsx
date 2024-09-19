@@ -14,10 +14,10 @@ import { Toaster } from "sonner";
 import moment from "moment";
 import LoadingSkeleton from "../../Component/LoadingSkeleton/LoadingSkeleton";
 import UseCalenderSearch from "../../Hooks/UseCalenderSearch";
-
+import { SlCalender } from "react-icons/sl";
 import EmpyCart from "../../Component/EmpyCart/EmpyCart";
 import Cart from "../../Component/Cart/Cart";
-import { IconRiCloseLargeLine } from "../../Component/Icons/Icons";
+import { IconFaUser, IconRiCloseLargeLine } from "../../Component/Icons/Icons";
 import UseCart from "../../Hooks/UseCart";
 import LoadingOverlay from "../../Component/LoadingCreateReserva/LoadingOverlay";
 import HeaderAccomodation from "../../Component/HeaderAccomodation/HeaderAccomodation";
@@ -27,6 +27,9 @@ import WhatsappButton from "../../Component/WhatsappButton/WhatsappButton";
 import { Environment } from "../../Config/Config";
 import { Link } from "react-router-dom";
 import Header from "../../Component/Header/Header";
+import { FaUser } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
+
 
 const Accommodation = () => {
 
@@ -53,7 +56,7 @@ const Accommodation = () => {
     const [promotion,setPromotions] =useState(false)
     const [visible, setVisible] = useState(false);
       
-    
+
     const handSubmitCupon =() =>{
       setPromotions(true)
       setVisible(false)
@@ -68,6 +71,34 @@ const Accommodation = () => {
     const formattedEndDate = endDate ? moment(endDate).format('YYYY-MM-DD') : '';
     const formattedStartDateToString = moment(state[0]?.startDate).format('DD MMM YYYY').toLowerCase();
     const formattedEndDateToString = moment(state[0]?.endDate).format('DD MMM YYYY').toLowerCase();
+
+
+    const formattedEnd = moment(state[0]?.endDate).format('DD MMM').toLowerCase();
+    const formattedStart = moment(state[0]?.startDate).format('DD MMM').toLowerCase();
+
+
+    const [scrolledbook, setScrolledBook] = useState(false);
+    
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 100) {
+        
+        } if(window.scrollY > 200){
+          setScrolledBook(true)
+        } else {
+        
+          setScrolledBook(false)
+        }
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+  
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+
+
 
     const PostHotelByIdHotel = useCallback(async () => {
         setContextMenuPosition(false);
@@ -363,10 +394,30 @@ const Accommodation = () => {
                       handChangeChildrem={handChangeChildrem}
                       handDecreaseChildren={handDecreaseChildren}
                       setContextShowMenuPeople={setContextShowMenuPeople}  />}
-                </div>              
-               
+                </div>  
+
+
+              {scrolledbook && (
+                <div className="w-full  animation z-40 lg:hidden bg-white fixed top-[50px] p-4  shadow-md ">
+                  <div className="flex items-center justify-between text-gray-700 ">
+                    <div className="flex items-center" onClick={HandClickMenu}>
+                      <SlCalender fontSize={20}  className="mr-2" />
+                      <span className="font-bold" >{formattedStart === 'fecha inválida' ? '-- / -- / --' : formattedStart}→ {formattedEnd === 'fecha inválida' ? '-- / -- / --' : formattedEnd}</span>
+                    </div>
+                    <div className="flex items-center " onClick={HandClickMenuPeople}>
+                      <FaUser fontSize={15}  color="black"/>
+                      <span className="" >4 huésped</span>
+                    </div>
+                    <div className="flex items-center bg-black  justify-center   lg:text-[15px]  text-[12px]  cursor-pointer z-40 lg:w-[250px] 
+                      w-[80px] text-white lg:py-4 py-2    rounded-full hover:bg-[ff7a45px] transition duration-200 " onClick={PostHotelByIdHotel}>
+                      <span className="" >Reservar</span>
+                      <FiArrowRight fontSize={15}/>
+                    </div>
+                  </div>
+                </div>
+                 )}
                 <div >
-              
+                
                 <div className="p-2">
                     {FillContentPromotions()}
                   </div>

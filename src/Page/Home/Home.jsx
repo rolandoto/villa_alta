@@ -274,7 +274,7 @@ const subtotal = getCartSubtotal()
     }, []);
 
 
-    console.log({scrolledbook})
+   
 /**
  * 
  * <div className="relative w-full h-screen  flex items-center justify-center">
@@ -579,12 +579,7 @@ const faqs = [
               </div>} 
 
         </div>
-            <div className="absolute bottom-4 left-4 flex space-x-4">
-              <button className="rounded-full p-2">
-                <img src="https://kiinliving.com/arrow.svg" width={40} height={40} alt="Arrow" className="w-14 h-28 sm:w-28 sm:h-28" />
-              </button>
-             
-            </div>
+           
           </div>
           <TitleWelcome />
           <Features features={features} />

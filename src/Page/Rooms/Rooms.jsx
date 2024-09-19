@@ -83,21 +83,18 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
     return (
     
       <div className="lg:p-4 m-auto p-4" >
-      <div className="max-w-md mx-auto   overflow-hidden">
-          <div>
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-serif">
-                  <span className="text-white">{roomTypeName}</span>
-                </h2>
-              </div>
-          </div>
-         
-
-          <div className="">
-              <img src={roomTypePhotos[currentIndex]} alt="Profile" 
-                className={` w-full ${animationClass} rounded-3xl  shadow-full  w-full h-[400px] object-cover}`}/>
-          </div>
-          
+        <div className="max-w-md mx-auto   overflow-hidden">
+            <div>
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-serif">
+                    <span className="text-white">{roomTypeName}</span>
+                  </h2>
+                </div>
+            </div>
+            <div className="">
+                <img src={roomTypePhotos[currentIndex]} alt="Profile" 
+                  className={` w-full ${animationClass} rounded-3xl  shadow-full  w-full h-[340px] object-cover}`}/>
+            </div>
             <div className="flex justify-center mt-8">
                 {roomTypePhotos.map((_, index) => (
                   <div
@@ -106,26 +103,17 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
                   />
                 ))}
             </div>
-
-    
-        
-
-        <div className="flex justify-between items-center px-4 py-2">
-          <div className="flex space-x-4">
-           
+            <div className="flex justify-between items-center px-4 py-2">
+              <div className="flex space-x-4">
+              </div>
+            </div>
+            <div className="px-4 py-2">
+                <p className="text-[18px]  line-clamp-4 text-justify font-serif   text-white "    
+                    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
+                </p>
+            </div>
           </div>
         </div>
-       
-        
-        <div className="px-4 py-2">
-        <p className="text-[18px]  line-clamp-4 text-justify font-serif   text-white "    dangerouslySetInnerHTML={{ __html: roomTypeDescription }}>
-        </p>
-  
-       
-        </div>
-      </div>
-      </div>
-    
     );
   };
   
@@ -192,6 +180,7 @@ const Rooms =() =>{
                 {FillContent()}
             </div>
           </section>
+          
       </div>
             </>
 }

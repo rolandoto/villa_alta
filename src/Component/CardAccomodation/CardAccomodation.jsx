@@ -228,7 +228,7 @@ const CardAccomodation =({  roomTypeName,
                
               </div>
             )}
-                <div className="border p-4 rounded-3xl lg:w-[70%] ">
+                <div className=" rounded-3xl lg:w-[70%] ">
                     <p className="text-justify " dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
                 </div> 
           </div>

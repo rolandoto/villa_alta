@@ -3,6 +3,7 @@ import ContentLoader from "react-content-loader";
 const LoadingSkeleton =(props) =>{
 
     return (  <ContentLoader
+    className="lg:w-[1000] w-[300px] lg:h-[700px]  h-[300px]"
         height={1000}
         width={700}
         {...props}

@@ -44,6 +44,7 @@ export const CartReduccers = createSlice({
                 if (existingRoom.quantity > 1) {
                     // si la cantidad es mayor que 1, reduce la cantidad en 1
                     existingRoom.quantity -= 1;
+                    existingRoom.persontotal -= existingRoom.person;
                     existingRoom.Price -= existingRoom.Price / (existingRoom.quantity + 1); // actualiza el precio
                 } else {
                     // si la cantidad es 1, elimina el artículo del carrito

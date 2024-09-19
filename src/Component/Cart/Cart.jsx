@@ -3,12 +3,15 @@ import RoomItem from "../RoomItem/RoomItem";
 import { IconRiCloseLargeLine } from "../Icons/Icons";
 import UseCart from "../../Hooks/UseCart";
 import { useNavigate } from "react-router-dom";
+import { ButtonSearch } from "../../Ui/Style/GeneralStyle";
+import { FiArrowRight } from "react-icons/fi";
 
 const Cart = () => {
 
-    const {cart,getCartSubtotal,getCartTotalCount} = UseCart()
+    const {cart,getCartSubtotal,getCartTotalCount,getCartTotalCountPerson} = UseCart()
     const subtotal = getCartSubtotal()
     const totalCount = getCartTotalCount()
+    const quantityPerson = getCartTotalCountPerson()
     const navigate = useNavigate();
 
 
@@ -55,24 +58,25 @@ const Cart = () => {
      * 
      */
 
+     
       
     return (
-        <div className="fixed z-50 cart-shadow bg-white   bottom-0 left-0 right-0 flex flex-col md:flex-row items-center justify-between  p-4  rounded-t-lg">
-            <div className="flex items-center">
-            <div className="ml-4">
-                <h3 className="text-2xl font-lora text-black">Habitaciones: {totalCount} </h3> {/* Update this line with the number of rooms */}
-            </div>
-            </div>
-            <div >
-            <div className="flex items-center">
-                <h2 className="text-2xl font-lora  text-black">Total:</h2>
-                <h3 className="text-2xl font-lora   text-black">${subtotal.toLocaleString('es-CO')} cop</h3> {/* Update this line with the number of rooms */}
-            </div>
-            </div>
-            <button onClick={PostHotelByIdHotel} className=" Button-Search  w-full md:w-auto ml-0 md:ml-4 px-6 py-2 font-lora bg-black text-white">
-            Confirmar la reserva
-            </button>
+        <div className="w-full p-4 z-50  fixed bottom-0 bg-white border-t border-gray-300 shadow-lg flex items-center justify-between">
+        {/* Sección de precio y detalles */}
+        <div className="flex flex-col">
+          <span className="text-lg font-bold text-black">${subtotal.toLocaleString('es-CO')} cop</span>
+          <span className="text-sm text-black">{totalCount} Habitacion {quantityPerson} huéspedes</span>
+        </div>
+        
+        <div className=" flex justify-between">
+            <ButtonSearch onClick={PostHotelByIdHotel} className="  justify-center  items-center lg:text-[15px]  text-[12px]  flex  cursor-pointer z-40 lg:w-[250px]   w-[150px] bg-black text-white lg:py-4 py-2    rounded-full hover:bg-[ff7a45px] transition duration-200">
+                Confirmar Reserva <FiArrowRight fontSize={25}/>
+            </ButtonSearch>
+        </div>
+       
       </div>
+
+       
       
     );
   };

@@ -33,10 +33,20 @@ const UseCart =() =>{
         return totalCuantity
     }
 
+    const getCartTotalCountPerson = () => {
+      let personQuantity = 0    
+      Object.values(cart)
+        .forEach(({ persontotal}) => {
+          personQuantity += persontotal
+        })
+      return personQuantity
+  }
+
     return {
         getCartSubtotal,
         getCartTotalCount,
-        cart
+        cart,
+        getCartTotalCountPerson
        
     }
 
