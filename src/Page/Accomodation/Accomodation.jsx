@@ -208,7 +208,11 @@ const Accommodation = () => {
           </div>
       )}</>
     }
-
+    const [dates, setDates] = useState('');
+    const [rooms, setRooms] = useState(1);
+    const [guests, setGuests] = useState(1);
+    const [promoCode, setPromoCode] = useState('');
+  
     
     const FillContent =()=>{
       if(!formattedStartDate && !formattedEndDate){
@@ -254,6 +258,14 @@ const Accommodation = () => {
                             checkbxo={checkbox} 
                             handClickCart={handClickCart} /> } 
           
+          <div
+            className="relative  bg-cover bg-center h-96"
+            style={{
+              backgroundAttachment:"fixed",
+              backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
+            }}
+          >
+  
           <div className="p-2 lg:px-8" >
             <CalenderSearch  HandClickMenuPeople={HandClickMenuPeople} 
                             formattedStartDateToString={formattedStartDateToString}
@@ -264,7 +276,6 @@ const Accommodation = () => {
                             totalCountAdults={totalCountAdults}
                             />
           </div>
-            
           <div className=" lg:flex hidden p-2 lg:px-8" >
               <MainProduct className="m-auto flex ">
                 <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#3f6969] rounded-[40px]  p-4  items-center space-x-1">
@@ -278,6 +289,8 @@ const Accommodation = () => {
                 </div>
               </MainProduct>
             </div>
+
+          </div>     
 
             <div className="lg:hidden flex  p-2 lg:px-8" >
               <MainProduct className="m-auto ">

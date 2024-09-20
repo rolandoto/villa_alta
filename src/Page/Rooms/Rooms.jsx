@@ -15,7 +15,7 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
 
   const [animationClass, setAnimationClass] = useState('');
 
-
+  
   
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
@@ -125,6 +125,10 @@ const Rooms =() =>{
   const fetchDate =async() =>{
     await getRoomsTypes({token:Environment.Token,propertyID:Environment.propertyID})
   }
+
+
+
+  console.log(RoomsType)
 
 
   const [scrolledbook, setScrolledBook] = useState(false);

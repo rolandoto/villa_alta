@@ -239,7 +239,7 @@ const CardAccomodation =({  roomTypeName,
        
         <div className="p-4 flex justify-between">
             <ButtonSearch onClick={handleAddToCart} className="  justify-center  items-center    flex  cursor-pointer z-40   w-[250px] bg-black text-white py-4    rounded-full hover:bg-[ff7a45px] transition duration-200">
-                Reservar Habitacion <FiArrowRight fontSize={25}/>
+                Selecionar <FiArrowRight fontSize={25}/>
             </ButtonSearch>
        
         </div>
