@@ -32,14 +32,17 @@ const UseCart =() =>{
     
         return totalCuantity
     }
-
     const getCartTotalCountPerson = () => {
-      let personQuantity = 0    
-      Object.values(cart)
-        .forEach(({ persontotal}) => {
-          personQuantity += persontotal
-        })
-      return personQuantity
+      let personQuantity = 0;
+      
+      Object.values(cart).forEach(({ personsList }) => {
+        console.log(personsList)
+          personsList.forEach((person) => {
+              personQuantity += person; // Sumar la cantidad de personas representada por cada elemento en `personsList`
+          });
+      });
+      
+      return personQuantity;
   }
 
     return {

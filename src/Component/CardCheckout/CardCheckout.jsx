@@ -3,15 +3,26 @@ import moment from "moment";
 import useCartActions from "../../Actions/useCartActions";
 import { IconRiDeleteBinLine } from "../Icons/Icons";
 
-const CardCheckout =({room_image,roomTypeName,Price,nights,person,startDate,endDate,roomTypeID,quantity,persontotal}) =>{
+const CardCheckout =({room_image,roomTypeName,Price,nights,person,startDate,endDate,roomTypeID,quantity,persontotal,personsList}) =>{
 
     const {RemoveCart} = useCartActions()
-    
+
+    const getCartTotalCountPerson = () => {
+        let personQuantity = 0;
+        
+        personsList.forEach((person) => {
+            personQuantity += person; // Sumar la cantidad de personas representada por cada elemento en `personsList`
+        });
+        return personQuantity;
+    }
+
+    const totalCount = getCartTotalCountPerson()
+
     const dateStart=  moment(startDate).format('YYYY-MM-DD');
     const dateEnd=  moment(endDate).format('YYYY-MM-DD');
 
     const handletoRemoveCart =() =>{
-        RemoveCart({roomTypeID})
+        RemoveCart({roomTypeID,person})
     }
 
     return ( <div className="border-b border-y-black" >
@@ -21,7 +32,7 @@ const CardCheckout =({room_image,roomTypeName,Price,nights,person,startDate,endD
                             <p className="font-normal text-[13px]" >Entrada: <span className="font-normal text-[13px]">{dateStart} 3:00 pm</span></p>
                             <p className="font-normal text-[13px]" >Salida: <span className="font-normal text-[13px]">{dateEnd} 1:00 pm</span></p>
                             <p className="font-normal text-[13px]" >Regimen/plan: <span className="font-normal text-[13px]">Alojamiento y desayuno</span></p>
-                            <p className="font-normal text-[13px]">Ocupación: <span className="font-normal text-[13px]">{persontotal} adultos</span></p>
+                            <p className="font-normal text-[13px]">Ocupación: <span className="font-normal text-[13px]">{totalCount} adultos</span></p>
                             <p className="font-normal text-[13px]">Noches: <span className="font-normal text-[13px]">{nights} </span></p>
                     </div>
                     <div className=" text-right">

@@ -12,6 +12,9 @@ const Cart = () => {
     const subtotal = getCartSubtotal()
     const totalCount = getCartTotalCount()
     const quantityPerson = getCartTotalCountPerson()
+
+
+
     const navigate = useNavigate();
 
 

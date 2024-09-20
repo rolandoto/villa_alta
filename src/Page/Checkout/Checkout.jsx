@@ -38,6 +38,8 @@ const Checkout  =() =>{
     const cardNumberString = cardNumberArray.join("");
     const now = moment().format('YYYY-MM-DD HH:mm:ss');
 
+    console.log(cart)
+
     const validate = useValidation();
 
     const Rooms = cart.map(item => ({

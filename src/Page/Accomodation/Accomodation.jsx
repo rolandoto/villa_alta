@@ -149,7 +149,7 @@ const Accommodation = () => {
           await GetRoomsPromotions({id:4})
     }
 
-    
+
     useEffect(() =>{
       FetchDate ()
     },[])
@@ -161,7 +161,7 @@ const Accommodation = () => {
   
       return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
     }, []);
-  
+    
 
     const isTodaySelected = () => {
       const todayIndex = moment().format('d'); // Obtiene el nombre completo del día actual

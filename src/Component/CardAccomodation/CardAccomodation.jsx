@@ -39,6 +39,8 @@ const CardAccomodation =({  roomTypeName,
 
     const [activeTab, setActiveTab] = useState('Detalle');
 
+    console.log(cart)
+
     const handleAddToCart = () => {
         const existingRoom = cart.find(item => item.roomTypeID === roomTypeID);
         if (existingRoom) {
@@ -228,6 +230,7 @@ const CardAccomodation =({  roomTypeName,
                
               </div>
             )}
+              
                 <div className=" rounded-3xl lg:w-[70%] ">
                     <p className="text-justify " dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
                 </div> 
