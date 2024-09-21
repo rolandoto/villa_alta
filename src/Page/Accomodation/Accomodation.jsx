@@ -229,7 +229,7 @@ const Accommodation = () => {
                 }
         return <> 
         
-        <div className="p-4   m-auto max-w-5xl flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="p-4  rounded-[40px]   bg-[#3f6969]  m-auto max-w-5xl flex flex-col md:flex-row justify-between items-start md:items-center">
                       <div className="mb-4 md:mb-0">
                         <h1 className="text-3xl text-white font-bold">Medellín, Colombia</h1>
                         <p className="text-white">Mostrando {hotel?.data?.length} Tipo de habitaciones</p>
@@ -249,7 +249,14 @@ const Accommodation = () => {
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1;
 
 
-    return (<div >
+    return (<div  className="" >
+      <div
+            className="relative  bg-cover bg-center h-full"
+            style={{
+              backgroundAttachment:"fixed",
+              backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
+            }}
+          >
             <Header/>
             <Toaster position="bottom-right"  richColors   />
             {loadingCart && <LoadingOverlay title={"Cargando..."} />}
@@ -258,13 +265,7 @@ const Accommodation = () => {
                             checkbxo={checkbox} 
                             handClickCart={handClickCart} /> } 
           
-          <div
-            className="relative  bg-cover bg-center h-[1000%]"
-            style={{
-              backgroundAttachment:"fixed",
-              backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
-            }}
-          >
+          
   
           <div className="p-2 lg:px-8" >
             <CalenderSearch  HandClickMenuPeople={HandClickMenuPeople} 
@@ -290,7 +291,7 @@ const Accommodation = () => {
               </MainProduct>
             </div>
 
-          </div>     
+        
 
             <div className="lg:hidden flex  p-2 lg:px-8" >
               <MainProduct className="m-auto ">
@@ -520,7 +521,7 @@ const Accommodation = () => {
                         </section>
                       </MainProduct>
                       </div>
-
+                      </div>    
             </div>
     );
 }

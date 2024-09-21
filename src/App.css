@@ -5,6 +5,21 @@
 body{
   background-color: #679B9B !important; 
 }
+.container {
+  height: 100vh;
+  overflow: scroll; /* Permite el scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.content {
+  height: 200vh; /* Más alto que el viewport para probar el scroll */
+  background: linear-gradient(#e66465, #9198e5);
+}
 
 .App {
   text-align: center;
