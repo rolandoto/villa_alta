@@ -259,7 +259,7 @@ const Accommodation = () => {
                             handClickCart={handClickCart} /> } 
           
           <div
-            className="relative  bg-cover bg-center h-96"
+            className="relative  bg-cover bg-center h-[1000%]"
             style={{
               backgroundAttachment:"fixed",
               backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
