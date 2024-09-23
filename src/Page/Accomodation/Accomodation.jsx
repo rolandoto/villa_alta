@@ -253,6 +253,8 @@ const Accommodation = () => {
       <div
             className="relative  bg-cover bg-center h-full"
             style={{
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               backgroundAttachment:"fixed",
               backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
             }}

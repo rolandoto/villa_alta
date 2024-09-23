@@ -447,8 +447,6 @@ const faqs = [
               autoPlay
             />
         <Header />
-
-         
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
               <h1 className="font-davinci text-4xl sm:text-6xl md:text-7xl mb-2 sm:mb-4"></h1>
                   <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Hotel Gallery</h2>
