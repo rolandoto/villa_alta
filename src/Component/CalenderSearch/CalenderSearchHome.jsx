@@ -12,7 +12,7 @@ const CalenderSearchHome =({HandClickMenuPeople,
 
     return (
      
-            <MainProduct  className=" lg:flex block ">
+            <MainProduct  className=" lg:flex hidden ">
                             <BorderInputInitial className="flex text-start flex-col hover-punter "  onClick={HandClickMenu}>
                             <span className="  font-bold   " >Llegada :</span>
                             <span className="  " >  {formattedStartDateToString === 'fecha inválida' ? '-- / -- / --' : formattedStartDateToString}</span>

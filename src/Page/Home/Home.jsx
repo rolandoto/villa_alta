@@ -435,7 +435,7 @@ const faqs = [
 
     return (
       <>
-      {scrolledbook && <BookNowButton /> } 
+      <BookNowButton />
          <div className="relative w-full h-[1000px]">
             <video
               ref={videoRef}

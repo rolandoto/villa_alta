@@ -137,6 +137,16 @@ const CardAccomodation =({  roomTypeName,
   }, [currentIndex]);
 
 
+  const [showMore, setShowMore] = useState(false);
+
+  // Límite de caracteres a mostrar antes de "Ver más"
+  const characterLimit = 0;
+
+  // Función para alternar la visibilidad de todo el contenido
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
+
     return (   
     <MainAccomodationSection>
     <div className="max-w-5xl  mx-auto p-4 sm:p-6 lg:p-8">
@@ -230,13 +240,32 @@ const CardAccomodation =({  roomTypeName,
                
               </div>
             )}
-              
-                <div className=" rounded-3xl lg:w-[70%] ">
-                    <p className="text-justify " dangerouslySetInnerHTML={{__html: roomTypeDescription}}></p>
-                </div> 
+
+
+          <div className="lg:block hidden rounded-3xl lg:w-[70%]">
+              <p className="text-justify" dangerouslySetInnerHTML={{ __html: roomTypeDescription }}></p>
+            </div>
+
+            {/* Bloque para dispositivos grandes, con opción de "Ver más" */}
+            <div className="lg:hidden  rounded-3xl lg:w-[70%]">
+              <p className="text-justify">
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: showMore
+                      ? roomTypeDescription
+                      : `${roomTypeDescription.slice(0, characterLimit)}...`,
+                  }}
+                ></span>
+              </p>
+              <button
+                className=" hover:underline"
+                onClick={toggleShowMore}
+              >
+                {showMore ? "Ver menos" : "Ver más información"}
+              </button>
+            </div>
           </div>
         </div>
-       
         <div className="p-4 flex justify-between">
             <ButtonSearch onClick={handleAddToCart} className="  justify-center  items-center    flex  cursor-pointer z-40   w-[250px] bg-black text-white py-4    rounded-full hover:bg-[ff7a45px] transition duration-200">
                 Selecionar <FiArrowRight fontSize={25}/>
