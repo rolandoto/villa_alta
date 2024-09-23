@@ -152,14 +152,23 @@ const [menuOpen, setMenuOpen] = useState(false);
 
 
     return (<>
+     <div
+            className="relative  bg-cover bg-center h-full"
+            style={{
+              backgroundAttachment:"fixed",
+              backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
+            }}
+          >
     {loadingCart && <LoadingOverlay title={"Cargando..."} />}
     {loading && <LoadingOverlay title={"Creando reserva..."} />}  
     
     <Header/>
-
+    
+         
         <div className="p-2 lg:px-8">
         <SearchGlobal />
         </div>
+     
         <div className=" lg:flex hidden p-2 lg:px-8" >
                 <MainProduct className="m-auto flex ">
                     <div className="flex lg:w-[47%] w-[100%] justify-center bg-white rounded-[40px]  p-4  items-center space-x-1">
@@ -184,13 +193,13 @@ const [menuOpen, setMenuOpen] = useState(false);
                 </MainProduct>
             </div>
 
-        
+            
             <WhatsappButton />
             
             <Toaster position="bottom-right"  richColors   />  
                 {FillContent()}
 
-          
+                </div>
             </>)
 
 }
