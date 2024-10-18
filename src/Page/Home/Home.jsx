@@ -54,7 +54,7 @@ const Home =() =>{
   }
 
   const FindIdHotel=(hotel) =>{
-		return hotel.id_hotel ==4
+		return hotel.id_hotel ==7
 	}
 	
 	const hotel = hotelList.find(FindIdHotel)
@@ -232,17 +232,17 @@ const subtotal = getCartSubtotal()
 */
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1; // Cambia 768 según tu punto de ruptura deseado
 
-    const videoRef = useRef(null);
+   /* const videoRef = useRef(null);
 
     useEffect(() => {
       if (videoRef.current) {
         videoRef.current.play();
       }
     }, []);
-    
+    */
 
     const [scrolled, setScrolled] = useState(false);
-      const [scrolledbook, setScrolledBook] = useState(false);
+    const [scrolledbook, setScrolledBook] = useState(false);
       
       useEffect(() => {
         const handleScroll = () => {
@@ -387,10 +387,16 @@ const subtotal = getCartSubtotal()
  */
 const [menuOpen, setMenuOpen] = useState(false);
 const rooms = [
-  {  title: 'Room Box Ventilador', price:99000 , image:"https://grupo-hoteles.com/storage/app/4/rooms/203289556-10-rooms-slider-1-habitacion_Estandar_Hotel_en_Medellin_Gallery_Hotel-01.webp", 
-      features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV'] },
-  { title: 'Room Box Aire',price:109000, image: "https://grupo-hoteles.com/storage/app/4/rooms/1046121300-11-rooms-slider-1-habitacion_Aire_Hotel_en_Medellin_Gallery_Hotel-01.webp", features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado'] },
-  { title: 'Room Box Jacuzzi',price:169000, image: "https://grupo-hoteles.com/storage/app/4/rooms/1563326590-12-rooms-slider-1-habitacion_Jacuzzi_Hotel_en_Medellin_Gallery_Hotel-02.webp", features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado','Jacuzzi'] },
+  {title: 'Room Estándar superior', price:240000 , image:"https://grupo-hoteles.com/storage/app/7/rooms/702137671-37-rooms-slider-1-estandar_superior_lleras_park_concept_medellin_poblado_medellin_economico_colombia_antioquia.webp", 
+    features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
+  {title: 'Room Estándar',price:218000, image: "https://grupo-hoteles.com/storage/app/7/rooms/1353190353-38-rooms-slider-2-Habitacion-Estandar-Hotel-lleras-park-concept-hotel-poblado-economico-slider-principal-1.webp", 
+    features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
+  {title: 'Room Doble superior twin',price:260000, image: "https://grupo-hoteles.com/storage/app/7/rooms/585930631-39-rooms-slider-2-slider_1_doble_superior_twin_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia_med.webp", 
+    features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
+  {title: 'Room Suite junior',price:312000, image: "https://grupo-hoteles.com/storage/app/7/rooms/286234936-40-rooms-slider-1-rooms-slider-1-superior_junior_jacuzzi_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia..webp", 
+   features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
+  {title: 'Room Familiar',price:720000, image: "https://grupo-hoteles.com/storage/app/7/rooms/625520311-42-rooms-slider-1-one_million_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia_zona_rosa.webp", 
+   features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
 ];
 /**
  * 
@@ -433,11 +439,9 @@ const faqs = [
   },
 ];
 
-    return (
-      <>
-      <BookNowButton />
-         <div className="relative w-full h-[1000px]">
-            <video
+/**
+ * 
+ *   <video
               ref={videoRef}
               src="https://galleryhotel.co/static/media/vuelo.bc10cc2282c8f1da5fcc.mp4"
               className="w-full h-full object-cover"
@@ -446,10 +450,20 @@ const faqs = [
               playsInline
               autoPlay
             />
+ * 
+ */
+
+    return (
+      <>
+      <BookNowButton />
+         <div className="relative w-full h-[1000px]">
+            <img
+              src="https://h-img1.cloudbeds.com/uploads/315191/img_3151~~66be7ab2bae2b.jpg"
+              className="w-full h-full object-bottom" />
         <Header />
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
               <h1 className="font-davinci text-4xl sm:text-6xl md:text-7xl mb-2 sm:mb-4"></h1>
-                  <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Hotel Gallery</h2>
+                  <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Lleras Park</h2>
                   <p className="mt-2 text-base opacity-90 md:text-xl lg:text-3xl font-lora font-normal">
                     Más que un hotel, una experiencia artística
                   </p>
@@ -580,81 +594,13 @@ const faqs = [
            
           </div>
           <TitleWelcome />
-          <Features features={features} />
+     
           <RoomPresentaion />
           <div ref={roomSectionRef} >   
             <RoomDetail ref={roomSectionRef}  rooms={rooms} />
           </div>
 
-          <div className="max-w-7xl mx-auto py-8">
-              <h2 className="text-[30px] text-center text-white  font-lora  mb-6">Lo que opinan nuestros clientes</h2>
-              <div className="block md:flex" >
-                    <div className="flex items-center justify-center ">
-                      <div className="max-w-sm p-6">
-                        <div className="flex items-center">
-                          <img
-                            className="w-12 h-12 rounded-full"
-                            src="https://github.com/rolandoto/image-pms/blob/main/2020-06-27.jpg?raw=true"
-                            alt="Hotel"
-                          />
-                          <div className="ml-4">
-                            <h2 className="text-lg  text-white font-semibold">Gallery Hotel Medellín</h2>
-                            <div className="flex items-center">
-                              <span className="text-black text-lg font-bold">4.0</span>
-                              <div className="flex ml-1">
-                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
-                                </svg>
-                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
-                                </svg>
-                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
-                                </svg>
-                                <svg className="w-5 h-5 text-black " fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
-                                </svg>
-                                <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
-                                </svg>
-                              </div>
-                            </div>
-                            <p className="text-sm text-black">Basado en 600 reseñas.</p>
-                            <p className="text-sm text-black mt-2">powered by <span className="text-black font-semibold">Google</span></p>
-                          </div>
-                        </div>
-                        <a target="_blank" href="https://www.google.com/search?hl=en-CO&gl=co&q=Gallery+Hotel+Medell%C3%ADn,+Cl.+47+%2341-55,+La+Candelaria,+Medell%C3%ADn,+La+Candelaria,+Medell%C3%ADn,+Antioquia&ludocid=13557792269951917256&lsig=AB86z5Xi3QsXtAp5vxVbKW_n47sq#lrd=0x8e4428575a0dc0d1:0xbc26f43cbd055cc8,3" className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg flex items-center justify-center">
-
-                          valóranos en <span className="ml-1 font-semibold"><svg viewBox="0 0 512 512" height="18" width="18"><g fill="none" fill-rule="evenodd"><path d="M482.56 261.36c0-16.73-1.5-32.83-4.29-48.27H256v91.29h127.01c-5.47 29.5-22.1 54.49-47.09 71.23v59.21h76.27c44.63-41.09 70.37-101.59 70.37-173.46z" fill="#4285f4"></path><path d="M256 492c63.72 0 117.14-21.13 156.19-57.18l-76.27-59.21c-21.13 14.16-48.17 22.53-79.92 22.53-61.47 0-113.49-41.51-132.05-97.3H45.1v61.15c38.83 77.13 118.64 130.01 210.9 130.01z" fill="#34a853"></path><path d="M123.95 300.84c-4.72-14.16-7.4-29.29-7.4-44.84s2.68-30.68 7.4-44.84V150.01H45.1C29.12 181.87 20 217.92 20 256c0 38.08 9.12 74.13 25.1 105.99l78.85-61.15z" fill="#fbbc05"></path><path d="M256 113.86c34.65 0 65.76 11.91 90.22 35.29l67.69-67.69C373.03 43.39 319.61 20 256 20c-92.25 0-172.07 52.89-210.9 130.01l78.85 61.15c18.56-55.78 70.59-97.3 132.05-97.3z" fill="#ea4335"></path><path d="M20 20h472v472H20V20z"></path></g></svg></span>
-                        </a>
-                      </div>
-                            </div>
-                    <div className="flex overflow-x-scroll space-x-4">
-                      {reviews.map((review) => (
-                        <div key={review.id} className="min-w-[250px] max-w-[250px] p-4 bg-white shadow rounded-lg">
-                          <div className="flex items-center space-x-2 mb-4">
-                            <img src={review.avatar} alt={review.name} className="w-10 h-10 rounded-full" />
-                            <div>
-                              <h3 className="font-semibold">{review.name}</h3>
-                              <p className="text-sm text-gray-500">{review.date}</p>
-                            </div>
-                          </div>
-                          <div className="flex items-center mb-2">
-                            {[...Array(5)].map((star, index) => (
-                              <svg className={`w-5 h-5  ${index < review.rating ?" text-black" :"text-gray-300"} `} fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.374 4.223a1 1 0 00.95.69h4.455c.969 0 1.371 1.24.588 1.81l-3.6 2.61a1 1 0 00-.364 1.118l1.374 4.223c.3.921-.755 1.688-1.54 1.118l-3.6-2.61a1 1 0 00-1.176 0l-3.6 2.61c-.784.57-1.838-.197-1.54-1.118l1.374-4.223a1 1 0 00-.364-1.118l-3.6-2.61c-.783-.57-.381-1.81.588-1.81h4.455a1 1 0 00.95-.69l1.374-4.223z" />
-                            </svg>
-                            
-                            ))}
-                          </div>
-                          <p className="text-gray-700">{review.text}</p>
-                        </div>
-                      ))}
-                    </div>
-
-
-            </div>
-          </div>
+        
 
           <div ref={roomEventsSectionRef} >
             <Events  />

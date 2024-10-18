@@ -45,7 +45,6 @@ export const ApiHotelByIdReduccers = createSlice({
             state.loadingHotel = false
             state.errorHotel = true
         },
-
         //RoomsTypes
         loadingRoomsTypes:(state) =>{
             state.LoadingRoomTypes=true
@@ -59,7 +58,6 @@ export const ApiHotelByIdReduccers = createSlice({
             state.LoadingRoomTypes = false
             state.ErrorRoomTypes = true
         },
-
     }
 })
 

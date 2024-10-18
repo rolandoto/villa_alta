@@ -154,10 +154,7 @@ const [menuOpen, setMenuOpen] = useState(false);
     return (<>
      <div
             className="relative  bg-cover bg-center h-full"
-            style={{
-              backgroundAttachment:"fixed",
-              backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
-            }}
+          
           >
     {loadingCart && <LoadingOverlay title={"Cargando..."} />}
     {loading && <LoadingOverlay title={"Creando reserva..."} />}  
@@ -176,7 +173,7 @@ const [menuOpen, setMenuOpen] = useState(false);
                     <span className=" text-black">Elegir un espacio
                     </span>
                     </div>
-                    <div className=" flex  border-confirme  bg-[#3f6969] p-4 items-center space-x-1">
+                    <div className=" flex  border-confirme  bg-[#817c70] p-4 items-center space-x-1">
                     <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
                     <span className="text-white">Confirmación</span>
                     </div>
@@ -185,7 +182,7 @@ const [menuOpen, setMenuOpen] = useState(false);
 
                 <div className="lg:hidden flex  p-2 lg:px-8" >
                 <MainProduct className="m-auto ">
-                    <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#3f6969] rounded-[40px]  p-4  items-center space-x-1">
+                    <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
                     <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
                     <span className=" text-white">Confirmación
                     </span>

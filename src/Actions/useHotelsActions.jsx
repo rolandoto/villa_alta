@@ -16,7 +16,7 @@ const UseHotelActions =() =>{
                 dispatch(setError("no found")) 
             }
         } catch (error) {
-
+        
             dispatch(setError("no found")) 
         }
     }
@@ -36,12 +36,10 @@ const UseHotelActions =() =>{
         }
     }
 
-    
-
-    const getRoomsTypes = async({token,propertyID}) =>{
+    const getRoomsTypes =async({propertyID,token}) =>{
         dispatch(loadingRoomsTypes())
         try {
-            const response  = await   HttpClient.getRoomTypes({token,propertyID})
+            const response  = await   HttpClient.getRoomTypes({propertyID,token})
             if(response){
                 dispatch(setRoomsTypes(response)) 
             }else{
@@ -53,7 +51,6 @@ const UseHotelActions =() =>{
         }
     }
 
-    
     return {
         getHotel,
         getListHotel,

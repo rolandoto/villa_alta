@@ -16,7 +16,9 @@ const RoomPresentaion =() =>{
                     Nuestras habitaciones están diseñadas para ofrecer comodidad y estilo, a la vez que te sumergen en la vibrante escena artística de Medellín. Cada habitación está decorada con obras de artistas locales, creando un ambiente único e inspirador.
                     </p>
                     <p className="text-gray-700 text-justify mb-4">
-                    Gallery Hotel está ubicado en el corazón del centro de Medellín, a solo unos pasos de las principales atracciones turísticas, restaurantes y bares. La ubicación perfecta para explorar la ciudad y descubrir todo lo que tiene para ofrecer.
+                   
+                    Nuestras habitaciones están diseñadas para ofrecer comodidad y estilo, a la vez que te sumergen en la vibrante escena artística de Medellín. Cada habitación está decorada con obras de artistas locales, creando un ambiente único e inspirador.
+                    Lleras Park , a solo unos pasos del icónico Llera Park, conocido por su animada vida nocturna, restaurantes y bares de moda. Es la ubicación perfecta para explorar la ciudad y descubrir todo lo que Medellín tiene para ofrecer.
                     </p>
                     <button onClick={HandNext}  className="text-white rounded-full items-center  justify-center flex   bg-black  mt-4  w-[200px] p-3  ">
                        
@@ -24,7 +26,7 @@ const RoomPresentaion =() =>{
                 </div>
                 <div className="md:w-1/2 p-4">
                 <img 
-                    src="https://github.com/rolandoto/image-pms/blob/main/MG_8585-scaled.jpg?raw=true" 
+                    src="https://h-img3.cloudbeds.com/uploads/315191/superior_foto_principal_habit_featured~~66be78e0861d1.jpeg" 
                     alt="Reservation" 
                     width="600" 
                     height="400" 

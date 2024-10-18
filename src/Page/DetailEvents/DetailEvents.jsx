@@ -127,22 +127,7 @@ const DetailEvents =() =>{
             
             <Header/>
 
-          <div className="p-2 lg:px-8">
-        <SearchGlobal />
-        </div>
-          <div className=" lg:flex hidden p-2 lg:px-8" >
-              <MainProduct className="m-auto flex ">
-                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#3f6969] rounded-[40px]  p-4  items-center space-x-1">
-                  <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
-                  <span className=" text-white">Elegir un espacio
-                  </span>
-                </div>
-                <div className=" flex  border-confirme  p-4 items-center space-x-1">
-                  <span className="bg-gray-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
-                  <span className="text-gray-700">Confirmación</span>
-                </div>
-              </MainProduct>
-            </div>
+        
 
             <div className="lg:hidden flex  p-2 lg:px-8" >
               <MainProduct className="m-auto ">

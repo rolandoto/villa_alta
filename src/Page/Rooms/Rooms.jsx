@@ -81,7 +81,6 @@ const ApartmentCard = ({ roomTypePhotos,roomTypeNameShort, roomTypeName, roomTyp
  * 
  */
     return (
-    
       <div className="lg:p-4 m-auto p-4" >
         <div className="max-w-md mx-auto   overflow-hidden">
             <div>
@@ -126,10 +125,7 @@ const Rooms =() =>{
     await getRoomsTypes({token:Environment.Token,propertyID:Environment.propertyID})
   }
 
-
-
   console.log(RoomsType)
-
 
   const [scrolledbook, setScrolledBook] = useState(false);
       
@@ -180,7 +176,7 @@ const Rooms =() =>{
       <BookNowButton/> 
         <Header />
           <section className="py-12 mt-8">
-            <div className="lg:flex block  gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {FillContent()}
             </div>
           </section>

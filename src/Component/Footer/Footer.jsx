@@ -1,22 +1,22 @@
 import React from "react"
 import {  IconFaFacebookF, IconFaInstagram, IconFaMapMarkerAlt, IconFaWhatsapp, IconFaYoutube, IconsMdEmail } from "../Icons/Icons"
-
+import pdf from "../../Image/LLERASPARK.pdf"
 const Footer =() =>{
 
     const handleFacebook = () => {
-        window.open("https://www.facebook.com/galleryhotelmedellin", "_blank");
+        window.open("https://www.facebook.com/llerasparkconcept", "_blank");
     };
 
     const handleInstagram = () => {
-        window.open("https://www.instagram.com/galleryhotelmed/", "_blank");
+        window.open("https://www.instagram.com/llerasparkconcept_/", "_blank");
     };
 
     return (
-            <footer className="bg-black   text-white py-8">
+            <footer className="bg-white   text-black py-8">
                 <div className="mx-auto max-w-7xl p-4  flex flex-col md:flex-row justify-between items-start md:items-center">
                 <div className="flex">
                     <img
-                        src="https://github.com/rolandoto/image-pms/blob/main/Logo-Gallery-Colores.png?raw=true"
+                        src="https://github.com/rolandoto/lleraspark/blob/main/public/lleraspark.png?raw=true"
                         alt="Logo de Gallery Hotel" 
                         width="100" 
                         height="100"
@@ -27,9 +27,9 @@ const Footer =() =>{
                 <div>
                     <div className="">
                         <ul className="space-y-2">
-                            <li className="flex items-center"> <IconFaWhatsapp /> +57 315 223 44 83</li>
-                            <li className="flex items-center mr-6">  <IconsMdEmail />  reservas@galleryhotel.co</li>
-                            <li className="flex items-center"> <IconFaMapMarkerAlt/>  Cl. 47 #41 - 55, Medellín, Colombia</li>
+                            <li className="flex items-center"> <IconFaWhatsapp /> +57 305 289 77 66</li>
+                            <li className="flex items-center mr-6">  <IconsMdEmail />  reservas@lleraspark.com</li>
+                            <li className="flex items-center"> <IconFaMapMarkerAlt/>  Cra. 38 #8 - 83                            </li>
                         </ul>
                     
                     </div>
@@ -38,26 +38,16 @@ const Footer =() =>{
                             <div className="flex justify-center space-x-4 mt-4">
                                 <IconFaInstagram   onclick={handleInstagram} />
                                 <IconFaFacebookF  onclick={handleFacebook} />
-                                <IconFaYoutube />
+                             
                             </div>
                     </div>
                 </div>
                
                 <div className=" ">
-                    <div class="bg-black text-white flex items-center justify-center ">
-                        <div class="w-full max-w-md mt-6">
-                            <h2 class="text-center text-xl font-semibold mb-6">CONTACTO</h2>
-                            <form class="space-y-4">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <input class="col-span-1 bg-white text-black p-3 focus:outline-none focus:ring-2 focus:ring-orange-500" type="text" placeholder="Nombre"/>
-                                    <input class="col-span-1 bg-white text-black p-3  focus:outline-none focus:ring-2 focus:ring-orange-500" type="email" placeholder="Email" />
-                                </div>
-
-                                <div class="grid grid-cols-2 gap-4">
-                                    <input class="col-span-1 bg-white text-black p-3 focus:outline-none focus:ring-2 focus:ring-orange-500" type="text" placeholder="Teléfono"/>
-                                    <button type="submit" class="bg-black text-white border border-white p-3  focus:outline-none focus:ring-2 focus:ring-orange-500 hover:bg-white hover:text-black">Enviar</button>
-                                </div>
-                            </form>
+                    <div class=" flex items-center justify-center ">
+                    <div class="w-full max-w-md mt-6">
+                            <h2 class="text-center text-xl font-semibold mb-6">Navegación</h2>
+                            <a target="_blank" href={pdf} className="text-black"> Términos y Condiciones del sitio web</a>.
                         </div>
                     </div>
                 </div>

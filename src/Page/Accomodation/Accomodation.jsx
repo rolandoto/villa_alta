@@ -229,7 +229,7 @@ const Accommodation = () => {
                 }
         return <> 
         
-        <div className="p-4  rounded-[40px]   bg-[#3f6969]  m-auto max-w-5xl flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="p-4  rounded-[40px]   bg-[#817c70]  m-auto max-w-5xl flex flex-col md:flex-row justify-between items-start md:items-center">
                       <div className="mb-4 md:mb-0">
                         <h1 className="text-3xl text-white font-bold">Medellín, Colombia</h1>
                         <p className="text-white">Mostrando {hotel?.data?.length} Tipo de habitaciones</p>
@@ -247,10 +247,8 @@ const Accommodation = () => {
                                                               key={index} {...List}/>)}</>
     }
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1;
-
-
-    return (<div  className="" >
-      <div
+    /**
+     * <div
             className="relative  bg-cover bg-center h-full"
             style={{
               backgroundSize: "cover",
@@ -259,6 +257,13 @@ const Accommodation = () => {
               backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
             }}
           >
+     * 
+     */
+      return (<div  className="" >
+      <div
+            className="relative  bg-cover bg-center h-full"
+            
+          >
             <Header/>
             <Toaster position="bottom-right"  richColors   />
             {loadingCart && <LoadingOverlay title={"Cargando..."} />}
@@ -266,9 +271,6 @@ const Accommodation = () => {
             {subtotal >0 &&<Cart    
                             checkbxo={checkbox} 
                             handClickCart={handClickCart} /> } 
-          
-          
-  
           <div className="p-2 lg:px-8" >
             <CalenderSearch  HandClickMenuPeople={HandClickMenuPeople} 
                             formattedStartDateToString={formattedStartDateToString}
@@ -281,7 +283,7 @@ const Accommodation = () => {
           </div>
           <div className=" lg:flex hidden p-2 lg:px-8" >
               <MainProduct className="m-auto flex ">
-                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#3f6969] rounded-[40px]  p-4  items-center space-x-1">
+                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
                   </span>
@@ -293,11 +295,10 @@ const Accommodation = () => {
               </MainProduct>
             </div>
 
-        
-
+      
             <div className="lg:hidden flex  p-2 lg:px-8" >
               <MainProduct className="m-auto ">
-                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#3f6969] rounded-[40px]  p-4  items-center space-x-1">
+                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
                   </span>
@@ -422,7 +423,7 @@ const Accommodation = () => {
                     </div>
                     <div className="flex items-center " onClick={HandClickMenuPeople}>
                       <FaUser fontSize={15}  color="black"/>
-                      <span className="" >4 huésped</span>
+                      <span className="" >{adults} huésped</span>
                     </div>
                     <div className="flex items-center bg-black  justify-center   lg:text-[15px]  text-[12px]  cursor-pointer z-40 lg:w-[250px] 
                       w-[80px] text-white lg:py-4 py-2    rounded-full hover:bg-[ff7a45px] transition duration-200 " onClick={PostHotelByIdHotel}>
