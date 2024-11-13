@@ -387,16 +387,16 @@ const subtotal = getCartSubtotal()
  */
 const [menuOpen, setMenuOpen] = useState(false);
 const rooms = [
-  {title: 'Room Estándar superior', price:240000 , image:"https://grupo-hoteles.com/storage/app/7/rooms/702137671-37-rooms-slider-1-estandar_superior_lleras_park_concept_medellin_poblado_medellin_economico_colombia_antioquia.webp", 
-    features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
-  {title: 'Room Estándar',price:218000, image: "https://grupo-hoteles.com/storage/app/7/rooms/1353190353-38-rooms-slider-2-Habitacion-Estandar-Hotel-lleras-park-concept-hotel-poblado-economico-slider-principal-1.webp", 
-    features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
+  {title: 'Room Estándar superior', price:180000 , image:"https://grupo-hoteles.com/storage/app/7/rooms/702137671-37-rooms-slider-1-estandar_superior_lleras_park_concept_medellin_poblado_medellin_economico_colombia_antioquia.webp", 
+    features: ['Cama doble', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
+  {title: 'Room Estándar',price:160000, image: "https://grupo-hoteles.com/storage/app/7/rooms/1353190353-38-rooms-slider-2-Habitacion-Estandar-Hotel-lleras-park-concept-hotel-poblado-economico-slider-principal-1.webp", 
+    features: ['Cama doble', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
   {title: 'Room Doble superior twin',price:260000, image: "https://grupo-hoteles.com/storage/app/7/rooms/585930631-39-rooms-slider-2-slider_1_doble_superior_twin_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia_med.webp", 
-    features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
-  {title: 'Room Suite junior',price:312000, image: "https://grupo-hoteles.com/storage/app/7/rooms/286234936-40-rooms-slider-1-rooms-slider-1-superior_junior_jacuzzi_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia..webp", 
-   features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
-  {title: 'Room Familiar',price:720000, image: "https://grupo-hoteles.com/storage/app/7/rooms/625520311-42-rooms-slider-1-one_million_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia_zona_rosa.webp", 
-   features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
+    features: ['Cama doble', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
+  {title: 'Room Suite junior',price:407000, image: "https://grupo-hoteles.com/storage/app/7/rooms/286234936-40-rooms-slider-1-rooms-slider-1-superior_junior_jacuzzi_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia..webp", 
+   features: ['Cama king', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
+  {title: 'Room One Million',price:799000, image: "https://grupo-hoteles.com/storage/app/7/rooms/625520311-42-rooms-slider-1-one_million_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia_zona_rosa.webp", 
+   features: ['Cama queen', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
 ];
 /**
  * 
@@ -456,6 +456,7 @@ const faqs = [
     return (
       <>
       <BookNowButton />
+      <WhatsappButton />
          <div className="relative w-full h-[1000px]">
             <img
               src="https://h-img1.cloudbeds.com/uploads/315191/img_3151~~66be7ab2bae2b.jpg"
@@ -465,7 +466,7 @@ const faqs = [
               <h1 className="font-davinci text-4xl sm:text-6xl md:text-7xl mb-2 sm:mb-4"></h1>
                   <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Lleras Park</h2>
                   <p className="mt-2 text-base opacity-90 md:text-xl lg:text-3xl font-lora font-normal">
-                    Más que un hotel, una experiencia artística
+                    Descansa cómodamente tras vivir la vibrante noche del Parque Lleras.  
                   </p>
 
                   {visible && (
@@ -606,7 +607,7 @@ const faqs = [
             <Events  />
           </div>
 
-      
+          <WhatsappButton />
 
           <AccordionAsk faqs={faqs} />
           <Footer />

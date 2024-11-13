@@ -16,12 +16,13 @@ const TitleWelcome  =() =>{
                 <div className="md:w-1/2 p-4">
                     <h2 className="text-3xl font-normal text-white mb-4 font-lora text-[30px] text-center ">¡Parque Lleras!</h2>
                 <p className="text-justify text-white	 mb-4">
-                situado en el vibrante Parque Lleras, epicentro de la vida nocturna, la gastronomía y la cultura en Medellín. Inspirado en la rica cultura callejera de la ciudad, nuestro hotel te ofrece un espacio único, donde el arte urbano cobra vida y te invita a disfrutar de una experiencia verdaderamente memorable.
-                Nuestras habitaciones, decoradas con obras de artistas locales, crean un ambiente único y acogedor que celebra la creatividad de Medellín. En nuestra terraza, ubicada en la azotea, podrás disfrutar de impresionantes vistas del Parque Lleras mientras te relajas con un cóctel artesanal. Además, nuestro restaurante te sorprenderá con una deliciosa cocina local, reinventada con un toque moderno y sofisticado.
+                ¿Buscas un lugar cómodo y tranquilo para descansar después de disfrutar la vibrante vida nocturna del Parque Lleras?  
                 </p>
                 <p className=" text-justify text-white	 ">
-                    Nuestras habitaciones están decoradas con obras de artistas locales, creando un ambiente estimulante y acogedor. Además, contamos con una terraza en la azotea con impresionantes vistas de la ciudad, un bar donde podrás disfrutar de cócteles artesanales y un restaurante que sirve cocina local con un toque moderno.
+                Ubicado en el corazón del vibrante Parque Lleras, el Hotel Lleras Park Concept ofrece un espacio ideal para aquellos que buscan disfrutar de la vida nocturna de Medellín y, al mismo tiempo, un lugar acogedor y cómodo para descansar. Nuestras habitaciones están diseñadas para cubrir diferentes necesidades, desde estancias individuales hasta opciones amplias para grupos, ofreciendo una excelente relación calidad-precio en una de las zonas más activas de la ciudad.
                 </p>
+
+               
                 </div>
             </div>
         </div>)

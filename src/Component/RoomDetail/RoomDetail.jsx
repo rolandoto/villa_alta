@@ -9,7 +9,7 @@ const RoomDetail =({rooms}) =>{
             <div className="container max-w-7xl mx-auto text-center">
                 <h2 className="text-3xl font-normal text-center text-white  font-lora mb-8">Nuestras habitaciones</h2>
                 <p className="text-white  mb-8">
-                    Cada habitación está decorada con obras de artistas locales, creando un ambiente único e inspirador.
+                    
                 </p>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
                         {rooms.map((room, index) => (

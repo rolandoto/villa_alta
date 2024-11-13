@@ -13,15 +13,9 @@ const RoomPresentaion =() =>{
                 <div className="md:w-1/2 p-4 text-">
                     <h2 className="text-3xl font-normal text-center  text-black text-[30px] font-lora ">Reserva tu habitación hoy mismo</h2>
                     <p className="text-gray-700 text-justify mt-8 mb-4">
-                    Nuestras habitaciones están diseñadas para ofrecer comodidad y estilo, a la vez que te sumergen en la vibrante escena artística de Medellín. Cada habitación está decorada con obras de artistas locales, creando un ambiente único e inspirador.
-                    </p>
-                    <p className="text-gray-700 text-justify mb-4">
-                   
-                    Nuestras habitaciones están diseñadas para ofrecer comodidad y estilo, a la vez que te sumergen en la vibrante escena artística de Medellín. Cada habitación está decorada con obras de artistas locales, creando un ambiente único e inspirador.
-                    Lleras Park , a solo unos pasos del icónico Llera Park, conocido por su animada vida nocturna, restaurantes y bares de moda. Es la ubicación perfecta para explorar la ciudad y descubrir todo lo que Medellín tiene para ofrecer.
+                    Cada habitación cuenta con baño privado, Wi-Fi gratuito, aire acondicionado. Las opciones de alojamiento incluyen desde Habitaciones Estándar para una estancia práctica y funcional, hasta lujosas suites como la Suite Junior y la exclusiva Habitación Aurum, que ofrece jacuzzi y turco para una experiencia de relajación total. Además, para quienes buscan algo verdaderamente único, nuestro Apartamento Joker cuenta con cuatro habitaciones, una cocina equipada, y una decoración temática que crea un ambiente de diversión y sofisticación.
                     </p>
                     <button onClick={HandNext}  className="text-white rounded-full items-center  justify-center flex   bg-black  mt-4  w-[200px] p-3  ">
-                       
                         Reservar   <FiArrowRight fontSize={23}/> </button>
                 </div>
                 <div className="md:w-1/2 p-4">

@@ -53,11 +53,13 @@ const Footer =() =>{
                 </div>
                 
                 </div>
-                <div className="text-center border-t-1  mx-auto max-w-7xl  text-white mt-8">
+                <div className="text-center border-t-1  mx-auto max-w-7xl  text-black mt-8">
+               
                     <div className=" flex  flex-col sm:flex-row  justify-between mt-8 mx-auto max-w-7xl items-center">
                             <div>
-                                Copyright © 2024 – All Rights Reserved Gallery Hotel
+                            © Copyright. Todos los derechos reservados.
                             </div>
+                          
                                     <div className=" ">
                                     <div className="flex space-x-4">
                                     <img 
@@ -69,6 +71,7 @@ const Footer =() =>{
                                     </div>
                             </div>
                         </div>
+                
                 </div>
             </footer>
     )
