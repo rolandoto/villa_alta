@@ -5,7 +5,7 @@ import "./style.css"
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import Search from "../../Component/Search/Search";
-import {  MainProduct, SectionSearch} from "../../Ui/Style/GeneralStyle";
+import {  MainProduct} from "../../Ui/Style/GeneralStyle";
 import CardAccomodation from "../../Component/CardAccomodation/CardAccomodation";
 import CalenderSearch from "../../Component/CalenderSearch/CalenderSearch";
 import UseHotelActions from "../../Actions/useHotelsActions";
@@ -17,15 +17,12 @@ import UseCalenderSearch from "../../Hooks/UseCalenderSearch";
 import { SlCalender } from "react-icons/sl";
 import EmpyCart from "../../Component/EmpyCart/EmpyCart";
 import Cart from "../../Component/Cart/Cart";
-import { IconFaUser, IconRiCloseLargeLine } from "../../Component/Icons/Icons";
+import {IconRiCloseLargeLine } from "../../Component/Icons/Icons";
 import UseCart from "../../Hooks/UseCart";
 import LoadingOverlay from "../../Component/LoadingCreateReserva/LoadingOverlay";
-import HeaderAccomodation from "../../Component/HeaderAccomodation/HeaderAccomodation";
-import Footer from "../../Component/Footer/Footer";
 import useRoomsPromotions from "../../Actions/useRoomsPromotions";
 import WhatsappButton from "../../Component/WhatsappButton/WhatsappButton";
 import { Environment } from "../../Config/Config";
-import { Link } from "react-router-dom";
 import Header from "../../Component/Header/Header";
 import { FaUser } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
@@ -54,13 +51,7 @@ const Accommodation = () => {
 
 
     const [promotion,setPromotions] =useState(false)
-    const [visible, setVisible] = useState(false);
-      
-
-    const handSubmitCupon =() =>{
-      setPromotions(true)
-      setVisible(false)
-    }
+  
 
     const {getCartSubtotal} = UseCart()
     const subtotal = getCartSubtotal()
@@ -71,14 +62,13 @@ const Accommodation = () => {
     const formattedEndDate = endDate ? moment(endDate).format('YYYY-MM-DD') : '';
     const formattedStartDateToString = moment(state[0]?.startDate).format('DD MMM YYYY').toLowerCase();
     const formattedEndDateToString = moment(state[0]?.endDate).format('DD MMM YYYY').toLowerCase();
-
-
     const formattedEnd = moment(state[0]?.endDate).format('DD MMM').toLowerCase();
     const formattedStart = moment(state[0]?.startDate).format('DD MMM').toLowerCase();
-
-
     const [scrolledbook, setScrolledBook] = useState(false);
-    
+    const [coupon, setCoupon] = useState(""); // Estado para el cupón
+    const [isVisible, setIsVisible] = useState(true); // Estado para mostrar/ocultar el banner
+  
+   
     useEffect(() => {
       const handleScroll = () => {
         if (window.scrollY > 100) {
@@ -86,11 +76,9 @@ const Accommodation = () => {
         } if(window.scrollY > 200){
           setScrolledBook(true)
         } else {
-        
           setScrolledBook(false)
         }
       };
-  
       window.addEventListener("scroll", handleScroll);
   
       return () => {
@@ -98,17 +86,17 @@ const Accommodation = () => {
       };
     }, []);
 
-
-
     const PostHotelByIdHotel = useCallback(async () => {
         setContextMenuPosition(false);
         setContextShowMenuPeople(false)
-        await getHotel({propertyID:Environment.propertyID,startDate:formattedStartDate, endDate: formattedEndDate,token:Environment.Token,counPeople:totalCountAdults });
+        await getHotel({propertyID:Environment.propertyID,startDate:formattedStartDate, endDate: formattedEndDate,token:Environment.Token,counPeople:totalCountAdults,promoCode:coupon });
     }, [formattedStartDate,formattedEndDate,totalCountAdults]);
 
     useEffect(() =>{
       PostHotelByIdHotel()
     },[])
+
+   
 
     const HandClickMenuPeople =() =>{
       if(contextShowMenuPeople){
@@ -141,79 +129,6 @@ const Accommodation = () => {
       setContextShowMenuPeople(false)
     }
 
-    const {RoomsGetPromotions,loadingGetRoomsProtions,errorGetRoomsProtions}= useSelector((state) => state.RoomsPromotios)
-  
-    const  {GetRoomsPromotions} = useRoomsPromotions()
-  
-    const FetchDate =async() =>{
-          await GetRoomsPromotions({id:4})
-    }
-
-
-    useEffect(() =>{
-      FetchDate ()
-    },[])
-   
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setVisible(true);
-      }, 5000); // 10000 ms = 10 segundos
-  
-      return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
-    }, []);
-    
-
-    const isTodaySelected = () => {
-      const todayIndex = moment().format('d'); // Obtiene el nombre completo del día actual
-      return RoomsGetPromotions.some(day => day.day_number === todayIndex); // Verifica si el nombre del día actual está en activeDays
-    };
-
-    const isTodaypromotions =isTodaySelected()
-    
-    const FillContentPromotions =()=>{
-
-      if(loadingGetRoomsProtions){
-       return  (
-                <div  className=" lg:flex    mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
-                <LoadingSkeleton />
-                </div> 
-       ) 
-      }if(errorGetRoomsProtions){
-        return   <p>...eror al cargar</p>
-                }
-        return <>{visible &&
-          
-          isTodaypromotions && (
-          <div className="fixed right-4  left-0 w-full m-auto h-[190px] top-44 z-40 text-white flex rounded-lg overflow-hidden shadow-lg max-w-md">
-
-              <div className="p-4  flex-1 bg-gray-700">
-                <h2 className="text-[15px] font-bold mb-2">¡OFERTA EXCLUSIVA SOLO PARA TI!</h2>
-                <p className="text-sm mb-3">
-                  Reserva una de nuestras  comidas habitaciónes y unten un 10% de descuento
-                </p>
-                <button  onClick={handSubmitCupon}  className="bg-white w-[200px] md:w-[200px]  text-gray-800 px-4 py-1 rounded text-sm font-semibold hover:bg-gray-200 transition-colors">
-                  APLICAR DESCUENTO
-                </button>
-              </div>
-              <div className="w-1/2 relative">
-                <img 
-                  src="https://grupo-hoteles.com/storage/app/6/rooms/206865655-14-rooms-slider-3-hotel-cartagena-dc-economico-habitacion-clasica-seleccion.webp" 
-                  alt="Luxury Suite" 
-                  className="object-cover h-[190px] w-full"
-                />
-                <button onClick={() => setVisible(false)} className="absolute  w-6 h-6  top-1 right-1 text-white bg-gray-800 rounded-full flex items-center justify-center">
-                  ×
-                </button>
-            </div>
-          </div>
-      )}</>
-    }
-    const [dates, setDates] = useState('');
-    const [rooms, setRooms] = useState(1);
-    const [guests, setGuests] = useState(1);
-    const [promoCode, setPromoCode] = useState('');
-  
-    
     const FillContent =()=>{
       if(!formattedStartDate && !formattedEndDate){
         return   <EmpyCart title={" Busca tu reserva en el calendario."} />
@@ -229,7 +144,7 @@ const Accommodation = () => {
                 }
         return <> 
         
-        <div className="p-4  rounded-[40px]   bg-[#817c70]  m-auto max-w-5xl flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="p-4  rounded-[40px]   bg-black  m-auto max-w-5xl flex flex-col md:flex-row justify-between items-start md:items-center">
                       <div className="mb-4 md:mb-0">
                         <h1 className="text-3xl text-white font-bold">Medellín, Colombia</h1>
                         <p className="text-white">Mostrando {hotel?.data?.length} Tipo de habitaciones</p>
@@ -240,6 +155,7 @@ const Accommodation = () => {
          {hotel?.data?.map((List,index) => <CardAccomodation  
                                                               counPeople={hotel.counPeople}
                                                               endDate={hotel.endDate}
+                                                              validPromotion={hotel.valid}
                                                               startDate={hotel.startDate}
                                                               nightsToday={hotel.nights}
                                                               promotion={promotion} 
@@ -247,23 +163,51 @@ const Accommodation = () => {
                                                               key={index} {...List}/>)}</>
     }
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1;
-    /**
-     * <div
-            className="relative  bg-cover bg-center h-full"
-            style={{
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundAttachment:"fixed",
-              backgroundImage: "url('https://github.com/rolandoto/image-pms/blob/main/MG_8648-scaled.jpg?raw=true')", // aquí pones la ruta de la imagen
-            }}
-          >
-     * 
-     */
+   
       return (<div  className="" >
-      <div
-            className="relative  bg-cover bg-center h-full"
-            
-          >
+      <div className="relative  bg-cover bg-center h-full">
+     
+          {isVisible && <div className="fixed top-48 left-0 right-4 flex justify-center z-40">
+              <div className="w-[90%] md:w-full max-w-md bg-black text-white rounded-3xl shadow-lg overflow-hidden flex">
+                
+                {/* Contenedor de la Oferta */}
+                <div className="p-4 flex-1">
+                  <h2 className="text-sm md:text-base font-bold mb-2">
+                    ¡OFERTA EXCLUSIVA SOLO PARA TI! APLICA TU CUPÓN
+                  </h2>
+                  <input
+                    type="text"
+                    placeholder="Ingresa tu cupón"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
+                    className="w-full text-black p-2  rounded-lg mb-2  focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  />
+                  <button  onClick={() => setIsVisible(false)} className="bg-white w-full text-gray-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors">
+                    APLICAR
+                  </button>
+                </div>
+
+                {/* Imagen de la Habitación */}
+                <div className="w-1/2 relative">
+                  <img
+                    src="https://h-img1.cloudbeds.com/uploads/315191/img_0549_featured~~67c0ff202b0c7.png"
+                    alt="Luxury Suite"
+                    className="object-cover h-full w-full"
+                  />
+
+                  {/* Botón para cerrar la oferta */}
+                  <button
+                    onClick={() => setIsVisible(false)}
+                    aria-label="Cerrar oferta"
+                    className="absolute w-6 h-6 top-2 right-2 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-600 transition-colors"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>}
+
+        
             <Header/>
             <Toaster position="bottom-right"  richColors   />
             {loadingCart && <LoadingOverlay title={"Cargando..."} />}
@@ -283,7 +227,7 @@ const Accommodation = () => {
           </div>
           <div className=" lg:flex hidden p-2 lg:px-8" >
               <MainProduct className="m-auto flex ">
-                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
+                <div className="flex lg:w-[47%] w-[100%] justify-center bg-black rounded-[40px]  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
                   </span>
@@ -298,7 +242,7 @@ const Accommodation = () => {
       
             <div className="lg:hidden flex  p-2 lg:px-8" >
               <MainProduct className="m-auto ">
-                <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
+                <div className="flex lg:w-[47%] w-[100%] justify-center bg-black rounded-[40px]  p-4  items-center space-x-1">
                   <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
                   <span className=" text-white">Elegir un espacio
                   </span>
@@ -306,6 +250,8 @@ const Accommodation = () => {
                
               </MainProduct>
             </div>
+
+            
 
           <div className="hidden lg:block  ">
               {contextMenuPosition && (
@@ -435,9 +381,7 @@ const Accommodation = () => {
                  )}
                 <div >
                 
-                <div className="p-2">
-                    {FillContentPromotions()}
-                  </div>
+               
                 
                     {FillContent()}
                     

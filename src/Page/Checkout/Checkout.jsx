@@ -10,14 +10,11 @@ import LoadingOverlay from '../../Component/LoadingCreateReserva/LoadingOverlay'
 import useFormValues from '../../Hooks/useFormValues';
 import useFetchData from '../../Hooks/useFetchData';
 import useValidation from '../../Hooks/ValidateFormValues';
-import HeaderCheckout from '../../Component/HeaderCheckout/HeaderCheckout';
 import FormCheckout from '../../Component/FormCheckout/FormCheckout';
-import Footer from '../../Component/Footer/Footer';
 import ConfirmationMessage from '../../Component/ConfirmationMessage/ConfirmationMessage';
 import WhatsappButton from '../../Component/WhatsappButton/WhatsappButton';
 import { Environment } from '../../Config/Config';
-import { Link } from 'react-router-dom';
-import { MainProduct, SectionSearch } from '../../Ui/Style/GeneralStyle';
+import { MainProduct } from '../../Ui/Style/GeneralStyle';
 import SearchGlobal from '../../Component/SearchGlobal/SearchGlobal';
 
 const Checkout  =() =>{
@@ -38,8 +35,7 @@ const Checkout  =() =>{
     const cardNumberString = cardNumberArray.join("");
     const now = moment().format('YYYY-MM-DD HH:mm:ss');
 
-    console.log(cart)
-
+   
     const validate = useValidation();
 
     const Rooms = cart.map(item => ({
@@ -100,15 +96,6 @@ const Checkout  =() =>{
 
 
 
-    /*const togglePanel = () => {
-      setIsOpen(!isOpen);
-    };
-*/
-
-
-const [menuOpen, setMenuOpen] = useState(false);
-
-
     const FillContent =() =>{
 
         if(Boolean(reservation)){
@@ -131,37 +118,14 @@ const [menuOpen, setMenuOpen] = useState(false);
         }
     }
 
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 100) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
-        }
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
-
+ 
 
 
     return (<>
-     <div
-            className="relative  bg-cover bg-center h-full"
-          
-          >
-    {loadingCart && <LoadingOverlay title={"Cargando..."} />}
-    {loading && <LoadingOverlay title={"Creando reserva..."} />}  
-    
-    <Header/>
-    
-         
+     <div className="relative  bg-cover bg-center h-full">
+        {loadingCart && <LoadingOverlay title={"Cargando..."} />}
+        {loading && <LoadingOverlay title={"Creando reserva..."} />}  
+        <Header/>
         <div className="p-2 lg:px-8">
         <SearchGlobal />
         </div>
@@ -173,7 +137,7 @@ const [menuOpen, setMenuOpen] = useState(false);
                     <span className=" text-black">Elegir un espacio
                     </span>
                     </div>
-                    <div className=" flex  border-confirme  bg-[#817c70] p-4 items-center space-x-1">
+                    <div className=" flex  border-confirme  bg-black p-4 items-center space-x-1">
                     <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
                     <span className="text-white">Confirmación</span>
                     </div>
@@ -182,7 +146,7 @@ const [menuOpen, setMenuOpen] = useState(false);
 
                 <div className="lg:hidden flex  p-2 lg:px-8" >
                 <MainProduct className="m-auto ">
-                    <div className="flex lg:w-[47%] w-[100%] justify-center bg-[#817c70] rounded-[40px]  p-4  items-center space-x-1">
+                    <div className="flex lg:w-[47%] w-[100%] justify-center bg-black rounded-[40px]  p-4  items-center space-x-1">
                     <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
                     <span className=" text-white">Confirmación
                     </span>

@@ -47,93 +47,10 @@ const Home =() =>{
     fetchDate()
   },[])
 
-  const FillContent =()=>{
-    if(errorHotel){
-      return   <h1>Error en el servicio</h1>
-              }
-  }
-
-  const FindIdHotel=(hotel) =>{
-		return hotel.id_hotel ==7
-	}
-	
-	const hotel = hotelList.find(FindIdHotel)
-
-
-const subtotal = getCartSubtotal()
-
-  const reviews = [
-
-    {
-      id: 1,
-      name: "Robinson Vasquez",
-      date: "hace un mes",
-      rating: 4,
-      text: "Un ambiente tranquilo, buena ubicación!",
-      avatar: "https://github.com/rolandoto/image-pms/blob/main/Robinson(3).png?raw=true", // Add the path to the avatar image if available
-    },
-    {
-      id: 2,
-      name: "Bárbara Pérez",
-      date: "hace un mes",
-      rating: 5,
-      text: "",
-      avatar: "https://github.com/rolandoto/image-pms/blob/main/Cielo.png?raw=true", // Add the path to the avatar image if available
-    },
-    {
-      id: 3,
-      name: "Esleidy Largo",
-      date: "",
-      rating: 5,
-      text: "",
-      avatar: "https://github.com/rolandoto/image-pms/blob/main/Esleidy(3).png?raw=true", // Add the path to the avatar image if available
-    },
-   
-    {
-      id: 4,
-      name: "IMPORT JHEYSSI SAS",
-      date: "hace 5 meses",
-      rating: 5,
-      text: "Un poquito lejos del centro, sobre la iluminación es perfecta para descansar y la ubicación estratégica para encender las luces por zonas me parece muy bueno para el precio! Más amabilidad es lo único que podría pedir, con esto no digo que son groseros, mejor dicho son intermedio! 👍",
-      avatar: "https://github.com/rolandoto/image-pms/blob/main/importadora(2).png?raw=true",
-    },
-    {
-      id: 5,
-      name: "Angie gil",
-      date: "hace un mes",
-      rating: 5,
-      text: "Es un lugar muy agradable, con un restaurante encantador, buena atención al cliente, las habitaciones aseadas y ordenadas; el único defecto es que las habitaciones no cuentan con agua caliente y no hay TV por cable, pero por lo demás todo está súper bien.      ",
-      avatar: "https://github.com/rolandoto/image-pms/blob/main/angie(2).png?raw=true",
-    }
-  ];
-  
-  const features = [
-      { icon: <IconsFaGlassMartini/>, title: 'Cóctel de bienvenida' },
-      { icon: <IconsGiForkKnifeSpoon/>, title: 'Desayuno incluido' },
-      { icon: <IconsFaConciergeBell/>, title: 'Recepción 24 horas' },
-      { icon: <IconsaCar/>, title: 'Variedad de transporte', description: 'Metro, tranvía, autobús, taxi' },
-      { icon: <IconsRiBankFill/>, title: 'Vida cultural y nocturna', description: 'Bares, museos, restaurantes' },
-      { icon: <IconsFaSquareParking/>, title: 'Parqueadero gratis*', description: 'Sujeto a disponibilidad' },
-      { icon: <IconsGiForkKnifeSpoon/>, title: 'Restaurante - Bar  ', description: ' con vista panorámica' },
-      { icon: <IconsFaStore/>, title: 'Alianzas comerciales', description: 'Servicio de taxi, gimnasio, tours, médico, comunicaciones.' },
-      { icon: <IconsFaBanSmoking/>, title: 'Espacios libre de humo', description: "" },
-    ];
     
       const roomSectionRef = useRef(null);
       const roomEventsSectionRef = useRef(null);
 
-      const scrollToRoomSection = () => {
-        if (roomSectionRef.current) {
-            roomSectionRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-  
-
-    const scrollToRoomSectionEvent = () => {
-      if (roomEventsSectionRef.current) {
-          roomEventsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    };
 
       const [contextShowMenuPeople, setContextShowMenuPeople] = useState(false);
       const {handleSelect,state,
@@ -188,204 +105,11 @@ const subtotal = getCartSubtotal()
       setContextShowMenuPeople(false)
     }             
 
-   /* const faqs = [
-      {
-        question: '¿Cuáles son los sitios turísticos de la ciudad y si están cerca al hotel?',
-        answer: (
-          <ul className="list-disc list-inside">
-            <li>Teatros (3 a 9 min caminando)</li>
-            <li>Museo de Antioquia</li>
-            <li>Plaza Botero</li>
-            <li>Jardín Botánico de Medellín</li>
-            <li>Parque Lleras</li>
-            <li>Comuna 13</li>
-          </ul>
-        ),
-      },
-      {
-        question: '¿Cómo es la seguridad del sector? ¿se puede salir en la noche?',
-        answer: 'La seguridad del sector es buena, pero siempre se recomienda tomar precauciones normales como en cualquier ciudad. Es seguro salir en la noche, especialmente en áreas concurridas y turísticas.',
-      },
-      {
-        question: '¿Cuáles son los mejores centros comerciales de la ciudad de Medellín?',
-        answer: (
-          <ul className="list-disc list-inside">
-            <li>Centro Comercial Santa Fe</li>
-            <li>Centro Comercial El Tesoro</li>
-            <li>Centro Comercial Oviedo</li>
-            <li>Centro Comercial Premium Plaza</li>
-          </ul>
-        ),
-      },
-      {
-        question: '¿Dónde puedo cambiar divisas?',
-        answer: 'Puede cambiar divisas en casas de cambio ubicadas en centros comerciales, en el aeropuerto, y en diversas partes del centro de la ciudad.',
-      },
-    ];
-
-    const rooms = [
-      {  title: 'Room Box Ventilador', price:99000 , image:"https://grupo-hoteles.com/storage/app/4/rooms/203289556-10-rooms-slider-1-habitacion_Estandar_Hotel_en_Medellin_Gallery_Hotel-01.webp", 
-          features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV'] },
-      { title: 'Room Box Aire',price:109000, image: "https://grupo-hoteles.com/storage/app/4/rooms/1046121300-11-rooms-slider-1-habitacion_Aire_Hotel_en_Medellin_Gallery_Hotel-01.webp", features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado'] },
-      { title: 'Room Box Jacuzzi',price:169000, image: "https://grupo-hoteles.com/storage/app/4/rooms/1563326590-12-rooms-slider-1-habitacion_Jacuzzi_Hotel_en_Medellin_Gallery_Hotel-02.webp", features: ['Cama matrimonial', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado','Jacuzzi'] },
-    ];
-*/
+ 
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1; // Cambia 768 según tu punto de ruptura deseado
 
-   /* const videoRef = useRef(null);
-
-    useEffect(() => {
-      if (videoRef.current) {
-        videoRef.current.play();
-      }
-    }, []);
-    */
-
-    const [scrolled, setScrolled] = useState(false);
-    const [scrolledbook, setScrolledBook] = useState(false);
-      
-      useEffect(() => {
-        const handleScroll = () => {
-          if (window.scrollY > 100) {
-            setScrolled(true);
-          } if(window.scrollY > 200){
-            setScrolledBook(true)
-          } else {
-            setScrolled(false);
-            setScrolledBook(false)
-          }
-        };
-    
-        window.addEventListener("scroll", handleScroll);
-    
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }, []);
-
-    const [visible, setVisible] = useState(false);
-    
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setVisible(true);
-      }, 4000); // 10000 ms = 10 segundos
-  
-      return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
-    }, []);
-
-
-   
-/**
- * 
- * <div className="relative w-full h-screen  flex items-center justify-center">
-  <div className="relative w-[750px] h-[750px]">
  
-    <img 
-        src="https://kiinliving.com/C01.svg" 
-        alt="Circular line decoration" 
-        className="absolute z-40 top-[-20%] left-[-1%] w-[160%] h-[142%] object-cover"
-      />
-    <div className="relative w-full h-full rounded-full overflow-hidden">
-      <img 
-        src="https://github.com/rolandoto/image-pms/blob/main/WhatsApp%20Image%202024-08-08%20at%2010.22.01%20PM.jpeg?raw=true" 
-        alt="Luxury bedroom" 
-        className="w-full h-full object-cover"
-      />
-    </div>
 
-  
-    <div className="absolute top-[15%] left-[-10%] text-left">
-      <h2 className="text-6xl text-white font-serif">The</h2>
-      <h1 className="text-9xl text-white font-serif">Ultimate</h1>
-      <p className="text-xl text-white mt-2">Mid and long term</p>
-    </div>
-    
-   
-    <div className="absolute bottom-[20%] right-[-10%] text-right">
-      <h3 className="text-6xl text-white font-serif">Rental</h3>
-      <h3 className="text-6xl text-white font-serif">paradise.</h3>
-    </div>
-  </div>
-
-  <section className="relative flex items-center h-screen  text-white">
-      <div className="absolute inset-x-0 right-[10%] top-[0%] flex justify-center">
-        <div className="h-[300px] w-[1px] bg-white"></div>
-      </div>
-      <div className="text-center">
-        <h1 className="text-lg sm:text-xl lg:text-2xl font-serif mb-4">
-          "An all-inclusive resort living in Medellín"
-        </h1>
-        <p className="text-sm sm:text-base lg:text-lg font-serif">
-          Fully furnished<br />Luxury apartments
-        </p>
-      </div>
-    </section>
-  </div>
-
-
-
-  <div className="relative w-full h-screen  flex items-center justify-center">
-  <div className="relative w-[900px] h-[450px] flex">
-   
-    <div className="absolute left-[160px] top-[80px] text-right z-10 w-1/2">
-      <h1 className="text-5xl text-white font-serif leading-tight">
-        Unmatch social-centric<br />
-        building for nomads.
-      </h1>
-      <p className="text-lg text-white  mt-4">
-        The first hypermenized residential project in town.
-      </p>
-    </div>
-
-    <div className="absolute right-0 w-[40%] h-full overflow-hidden rounded-3xl">
-      <img
-        src="https://cms.kiinliving.com/uploads/attachments/clthpgiai008f6hqs3gad32b2-home002.webp"
-        alt="Social space for nomads"
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-    <img 
-      src="https://kiinliving.com/C02.svg"
-      alt="Decorative curve"
-      className="absolute z-20 top-[-20%] right-[-50%] w-[140%] h-[140%] object-contain"
-    />
-  </div>
-</div>
-
-
-*
-
-  <div className="relative w-full h-screen  flex items-center justify-center">
-  <div className="relative w-[900px] h-[450px] flex">
-   
-    <div className="absolute left-[160px] top-[80px] text-right z-10 w-1/2">
-      <h1 className="text-5xl text-white font-serif leading-tight">
-        Unmatch social-centric<br />
-        building for nomads.
-      </h1>
-      <p className="text-lg text-white  mt-4">
-        The first hypermenized residential project in town.
-      </p>
-    </div>
-
-    <div className="absolute right-0 w-[40%] h-full overflow-hidden rounded-3xl">
-      <img
-        src="https://cms.kiinliving.com/uploads/attachments/clthpgiai008f6hqs3gad32b2-home002.webp"
-        alt="Social space for nomads"
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-    <img 
-      src="https://kiinliving.com/C02.svg"
-      alt="Decorative curve"
-      className="absolute z-20 top-[-20%] right-[-50%] w-[140%] h-[140%] object-contain"
-    />
-  </div>
-</div> 
- */
-const [menuOpen, setMenuOpen] = useState(false);
 const rooms = [
   {title: 'Room Estándar superior', price:180000 , image:"https://grupo-hoteles.com/storage/app/7/rooms/702137671-37-rooms-slider-1-estandar_superior_lleras_park_concept_medellin_poblado_medellin_economico_colombia_antioquia.webp", 
     features: ['Cama doble', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
@@ -439,19 +163,6 @@ const faqs = [
   },
 ];
 
-/**
- * 
- *   <video
-              ref={videoRef}
-              src="https://galleryhotel.co/static/media/vuelo.bc10cc2282c8f1da5fcc.mp4"
-              className="w-full h-full object-cover"
-              muted
-              loop
-              playsInline
-              autoPlay
-            />
- * 
- */
 
     return (
       <>
@@ -469,7 +180,7 @@ const faqs = [
                     Descansa cómodamente tras vivir la vibrante noche del Parque Lleras.  
                   </p>
 
-                  {visible && (
+              
                     <CalenderSearchHome 
                       HandClickMenuPeople={HandClickMenuPeople} 
                       formattedStartDateToString={formattedStartDateToString}
@@ -480,7 +191,7 @@ const faqs = [
                       totalCountAdults={totalCountAdults}
                     />
                     
-                  )}
+                
                 
               <div className="hidden lg:block  ">
                 {contextShowMenuPeople && 
@@ -592,23 +303,16 @@ const faqs = [
               </div>} 
 
         </div>
-           
           </div>
           <TitleWelcome />
-     
           <RoomPresentaion />
           <div ref={roomSectionRef} >   
             <RoomDetail ref={roomSectionRef}  rooms={rooms} />
           </div>
-
-        
-
           <div ref={roomEventsSectionRef} >
             <Events  />
           </div>
-
           <WhatsappButton />
-
           <AccordionAsk faqs={faqs} />
           <Footer />
     </>

@@ -242,14 +242,14 @@ const PostHotelByIdHotel = async ({id,desde,hasta,counPeople}) => {
       }
   };
 
-  const getAvailableRoomTypes = async ({propertyID,startDate,endDate,token,counPeople}) => {
+  const getAvailableRoomTypes = async ({propertyID,startDate,endDate,token,counPeople,promoCode}) => {
     try {
         const resp = await fetch(`${config.serverRoute}/api/hotels/cloubeds/getAvailableRoomTypes`, {
           method: "POST",
           headers: {
             'Content-type': 'application/json'
           },
-          body: JSON.stringify({propertyID,startDate,endDate,token,counPeople})
+          body: JSON.stringify({propertyID,startDate,endDate,token,counPeople,promoCode})
         });
         if (!resp.ok) {
           throw new Error('Response is not ok');
