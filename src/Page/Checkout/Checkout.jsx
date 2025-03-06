@@ -40,7 +40,9 @@ const Checkout  =() =>{
 
     const Rooms = cart.map(item => ({
         "roomTypeID": item.roomTypeID,
-        "quantity": item.quantity
+        "quantity": item.quantity,
+        "rateID": 2550029,
+        
     }));
 
 
@@ -55,18 +57,20 @@ const Checkout  =() =>{
     }));
 
 
-    
     const night = cart.map(item => ({
         startDate: item?.startDate,
         endDate: item?.endDate,
-        price: item?.Price
+        price: item?.Price,
+        validCode: item?.validCode
     }));
 
    
     const subtotalPayment =  night[0]?.price
     const StartDate = night[0]?.startDate
     const EndDate = night[0]?.endDate
+    const validCode = night[0]?.validCode
 
+  
     const handleSubmit = async(e) => {
         e.preventDefault();
         const errors = validate(formValues);
@@ -74,6 +78,7 @@ const Checkout  =() =>{
         if (Object.keys(errors).length === 0) {
         await PostCreateHotel({ propertyID:Environment.propertyID,
                                 token:Environment.Token,
+                                promoCode:validCode,
                                 startDate:StartDate,
                                 endDate:EndDate,
                                 guestFirstName:formValues.name,
@@ -90,7 +95,7 @@ const Checkout  =() =>{
                                 cvc:formValues.cvc,
                                 card_holder:formValues.cardName,
                                 subtotal:subtotalPayment
-                            })} 
+                            })}     
     
     };
 

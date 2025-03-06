@@ -26,7 +26,8 @@ const useReservationCreate =() =>{
                                     exp_year,
                                     cvc,
                                     card_holder,
-                                    subtotal}) =>{
+                                    subtotal,
+                                    promoCode}) =>{
         dispatch(loading())
         try {
             const response  = await HttpClient.PostpostReservation({propertyID,
@@ -46,7 +47,8 @@ const useReservationCreate =() =>{
                                                                     exp_year,
                                                                     cvc,
                                                                     card_holder,
-                                                                    subtotal})
+                                                                    subtotal,
+                                                                    promoCode})
             if(response){
                 dispatch(setCreateReservation(response)) 
                 RemoveCartAll()

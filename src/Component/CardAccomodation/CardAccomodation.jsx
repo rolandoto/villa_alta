@@ -27,7 +27,10 @@ const CardAccomodation =({  roomTypeName,
                             nightsToday,
                             validPromotion,
                             roomTypeDescription,
-                            roomTypeFeatures}) =>{
+                            roomTypeFeatures,
+                            
+                            validCode
+                          }) =>{
 
    
     const {cart} = useSelector(state => state.Cart);
@@ -35,8 +38,6 @@ const CardAccomodation =({  roomTypeName,
     const discountRate = 0.19; // 19% de descuento
     const discountedPrice = originalPrice * (1 - discountRate);   
     const validPromotions =promotion ? discountedPrice :  roomRate
-                              
-    console.log(validPromotion)
 
 
     const {AddCart } =useCartActions()
@@ -49,10 +50,10 @@ const CardAccomodation =({  roomTypeName,
             if(existingRoom.quantity +1 > roomsAvailable){
                 toast.error("no hay habitaciones")
             }else{
-                AddCart({ roomTypeID, roomTypeName,quantity: 1,Price:roomRate,roomsAvailable,startDate,endDate,room_image:roomTypePhotos[0].image,nights:nightsToday,person:counPeople,persontotal:counPeople}); 
+                AddCart({ roomTypeID, roomTypeName,quantity: 1,Price:roomRate,roomsAvailable,startDate,endDate,room_image:roomTypePhotos[0].image,nights:nightsToday,person:counPeople,persontotal:counPeople,validCode}); 
             }
         }else{
-            AddCart({ roomTypeID, roomTypeName,quantity: 1,Price:roomRate,roomsAvailable,startDate,endDate,room_image:roomTypePhotos[0].image,nights:nightsToday,person:counPeople,persontotal:counPeople}); 
+            AddCart({ roomTypeID, roomTypeName,quantity: 1,Price:roomRate,roomsAvailable,startDate,endDate,room_image:roomTypePhotos[0].image,nights:nightsToday,person:counPeople,persontotal:counPeople,validCode}); 
         }
     };
 

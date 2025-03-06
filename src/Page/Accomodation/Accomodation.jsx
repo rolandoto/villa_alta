@@ -51,8 +51,6 @@ const Accommodation = () => {
 
 
     const [promotion,setPromotions] =useState(false)
-  
-
     const {getCartSubtotal} = UseCart()
     const subtotal = getCartSubtotal()
     const [checkbox,setCheckBox] =useState(false)
@@ -65,7 +63,7 @@ const Accommodation = () => {
     const formattedEnd = moment(state[0]?.endDate).format('DD MMM').toLowerCase();
     const formattedStart = moment(state[0]?.startDate).format('DD MMM').toLowerCase();
     const [scrolledbook, setScrolledBook] = useState(false);
-    const [coupon, setCoupon] = useState(""); // Estado para el cupón
+    const [coupon, setCoupon] = useState(); // Estado para el cupón
     const [isVisible, setIsVisible] = useState(true); // Estado para mostrar/ocultar el banner
   
    
@@ -90,11 +88,11 @@ const Accommodation = () => {
         setContextMenuPosition(false);
         setContextShowMenuPeople(false)
         await getHotel({propertyID:Environment.propertyID,startDate:formattedStartDate, endDate: formattedEndDate,token:Environment.Token,counPeople:totalCountAdults,promoCode:coupon });
-    }, [formattedStartDate,formattedEndDate,totalCountAdults]);
+    }, [formattedStartDate,formattedEndDate,totalCountAdults,isVisible]);
 
     useEffect(() =>{
       PostHotelByIdHotel()
-    },[])
+    },[isVisible])
 
    
 
@@ -158,6 +156,7 @@ const Accommodation = () => {
                                                               validPromotion={hotel.valid}
                                                               startDate={hotel.startDate}
                                                               nightsToday={hotel.nights}
+                                                              validCode={hotel.validCode}
                                                               promotion={promotion} 
                                                               totalCountAdults={totalCountAdults}
                                                               key={index} {...List}/>)}</>

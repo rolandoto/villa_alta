@@ -61,7 +61,8 @@ const PostHotelByIdHotel = async ({id,desde,hasta,counPeople}) => {
                                     exp_year,
                                     cvc,
                                     card_holder,
-                                    subtotal}) => {
+                                    subtotal,
+                                    promoCode}) => {
     try {
         const resp = await fetch(`${config.serverRoute}/api/hotels/cloubeds/PostpostReservation`, {
           method: "POST",
@@ -85,7 +86,8 @@ const PostHotelByIdHotel = async ({id,desde,hasta,counPeople}) => {
                                 exp_year,
                                 cvc,
                                 card_holder,
-                                subtotal})
+                                subtotal,
+                                promoCode})
         });
     
         if (!resp.ok) {
