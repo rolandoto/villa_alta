@@ -53,8 +53,8 @@ const Header =() =>{
           Villa Alta
         </div>
         <nav className="hidden md:flex space-x-8 text-base font-light">
-          <a href="#habitaciones" className=" text-[25px] text-white">Reservas</a>
-          <a href="#galeria" className=" text-[25px] text-white">Galería</a>
+          <a href="/Accomodation" className=" text-[25px] text-white">Reservas</a>
+          <a href="/Gallery" className=" text-[25px] text-white">Galería</a>
         </nav>
         <div className="flex items-center space-x-2 text-sm">
          
