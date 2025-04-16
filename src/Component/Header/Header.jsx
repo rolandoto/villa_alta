@@ -47,54 +47,20 @@ const Header =() =>{
 
 
     return (
-        <SectionSearch  >
-        <header
-           className={`fixed z-50 top-0 left-0 right-0 transition-colors duration-300 ${
-             scrolled ? "bg-[#4141416c] text-white" : "bg-[#4141416c] text-white"
-           }`}
-         >
-           <nav className="border-b p-2 border-white flex justify-between items-center space-x-6 max-w-[97%] mx-auto">
-             <div className="text-2xl sm:text-3xl font-lora"><Link to="/"  > Lleras Park             </Link> </div>
-             <div className="hidden md:flex space-x-6">
-               <Link to="/Rooms" className="text-[15px] hover:underline">
-               HABITACIONES
-               </Link>
-               <a href="#" className="text-[15px]hover:underline">
-               COMODIDADES
-               </a>
-               <Link to="/Events" className="text-[15px] hover:underline">
-             PRÓXIMOS EVENTOS
-           </Link>
-             
-             </div>
-             <a  
-              target="_blank"
-              href="https://www.google.com/maps?ll=6.20835,-75.567854&z=15&t=m&hl=en&gl=CO&mapclient=embed&cid=5510893515100828768"
-             className="bg-black text-white rounded-full px-3 sm:px-4 py-2 text-xs sm:text-base">
-              
-               COMO LLEGAR
-             </a>
-             <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-               <RxHamburgerMenu color="white" fontSize={25} />
-             </button>
-           </nav>
-          {menuOpen && (
-              <div className="md:hidden bg-[#4141416c] text-white py-2">
-              <Link to="/Rooms" className="block px-4 py-2 ">
-              HABITACIONES
-              </Link>
-            
-              <a href="#" className="block px-4 py-2 ">
-              COMODIDADES
-              </a>
-              <Link to="/Events" className="block px-4 py-2  text-[15px] hover:underline">
-                    PRÓXIMOS EVENTOS
-                  </Link>
-                    
-            </div>
-          )}
-        </header>         
-     </SectionSearch>
+      <header className="bg-black font-serif text-white fixed top-0 left-0 w-full z-50 shadow-md">
+      <div className=" flex items-center justify-between px-4 md:px-8 py-4">
+        <div className="text-white text-[40px] font-bold  tracking-widest">
+          Villa Alta
+        </div>
+        <nav className="hidden md:flex space-x-8 text-base font-light">
+          <a href="#habitaciones" className=" text-[25px] text-white">Reservas</a>
+          <a href="#galeria" className=" text-[25px] text-white">Galería</a>
+        </nav>
+        <div className="flex items-center space-x-2 text-sm">
+         
+        </div>
+      </div>
+    </header>
     )
 
 }

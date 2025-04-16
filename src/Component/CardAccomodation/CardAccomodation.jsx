@@ -1,14 +1,10 @@
-import React, { Fragment, useEffect, useState }  from "react";
-import { ButtonSearch, ImgAccomodation, ImginProduct, MainAccomodationRoom, MainAccomodationSection, MainProduct } from "../../Ui/Style/GeneralStyle";
-import ButtonAccomodation from "../ButtonAccomodation/ButtonAccomodation";
-import DescripctionAccomodation from "../DescripctionAccomodation/DescripctionAccomodation";
-import TitleDinner from "../TitleDinner/TitleDinner";
+import React, { useEffect, useState }  from "react";
+import { ButtonSearch, MainAccomodationSection } from "../../Ui/Style/GeneralStyle";
 import useCartActions from "../../Actions/useCartActions";
 import { useSelector } from "react-redux";
 import {toast} from "sonner"
 import { IconFaUser } from "../Icons/Icons";
-import { IconShower, IconTowels, IconsPiBedThin, IconsSnow, IconsTv, IconsWifi } from "../Icons/Icons"
-import { FiChevronLeft,FiChevronRight  } from "react-icons/fi";
+import { IconShower, IconsSnow, IconsTv, IconsWifi } from "../Icons/Icons"
 import { GiComputerFan } from "react-icons/gi";
 import { FiArrowRight } from "react-icons/fi";
 import { PiBathtubLight } from "react-icons/pi";
@@ -57,48 +53,7 @@ const CardAccomodation =({  roomTypeName,
         }
     };
 
-/**
- * 
- * <MainAccomodationRoom className=" lg:flex    mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8"   >     
-                    <MainProduct className="lg:flex block bg-white shadow-md"    >
-                        <Fragment>
-                            <TitleDinner />
-                         
-                            <ImginProduct   className="w-auto" src={roomTypePhotos[0].image}  alt="Hotel Image"/>
-                    
-                        </Fragment>
-                        <DescripctionAccomodation max_people={maxGuests} promotion={promotion} cantidad={cantidad}   title={roomTypeName}  />
-                        <ButtonAccomodation 
-                                validPromotions={validPromotions}
-                                max_people={maxGuests}
-                                totalCountAdults={counPeople}
-                                promotion={promotion}
-                                handleAddToCart={handleAddToCart}
-                                price={roomRate} 
-                                nights={nightsToday}
-                                person={counPeople}  />
-                    </MainProduct> 
-            </MainAccomodationRoom>
- * 
 
-             <button
-                onClick={handlePrev}
-                className="absolute -top-36 md:-top-44 lg:-top-44 left-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
-                              transition duration-200 hover:scale-110 hover:bg-white
-                              hover:text-sm hover:duration-200"
-              >
-                <FiChevronLeft fontSize={25} color="black" />
-              </button>
-              <button
-                    onClick={handleNext}
-                    className="absolute -top-36 md:-top-44 lg:-top-44 right-2 transform -translate-y-1/2 bg-[#ffffff81] p-2 rounded-full shadow-lg 
-                              transition duration-200 hover:scale-110 hover:bg-white
-                              hover:text-sm hover:duration-200"
-                  >
-                    
-                <FiChevronRight fontSize={25} color="black"/>
-              </button>
- */
         
       const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -143,7 +98,7 @@ const CardAccomodation =({  roomTypeName,
   const [showMore, setShowMore] = useState(false);
 
   // Límite de caracteres a mostrar antes de "Ver más"
-  const characterLimit = 0;
+    const characterLimit = 20;
 
   // Función para alternar la visibilidad de todo el contenido
   const toggleShowMore = () => {
@@ -226,7 +181,7 @@ const CardAccomodation =({  roomTypeName,
               </button>
             ))}
           </div>
-          
+            
           {/* Conditional rendering of content based on active tab */}
           <div className="mt-4 lg:flex   block justify-between  max-w-[95%] mx-auto">
             {activeTab === 'Detalle' && (

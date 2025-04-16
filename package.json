@@ -12,22 +12,24 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "date-fns": "^3.6.0",
+    "lucide-react": "^0.488.0",
     "moment": "^2.30.1",
     "react": "^18.3.1",
     "react-content-loader": "^7.0.0",
     "react-date-range": "^2.0.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
+    "react-masonry-css": "^1.0.16",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-tooltip": "^5.27.0",
     "sonner": "^1.4.41",
     "styled-components": "^6.1.11",
-    "swiper": "^11.1.12",
+    "swiper": "^11.2.6",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "/Accomodation",
+  "homepage": "/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -54,7 +56,7 @@
   },
   "devDependencies": {
     "install": "^0.13.0",
-    "npm": "^10.8.1",
+    "npm": "^10.9.2",
     "tailwindcss": "^3.4.3"
   }
 }

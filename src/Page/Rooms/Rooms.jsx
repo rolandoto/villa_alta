@@ -125,8 +125,6 @@ const Rooms =() =>{
     await getRoomsTypes({token:Environment.Token,propertyID:Environment.propertyID})
   }
 
-  console.log(RoomsType)
-
   const [scrolledbook, setScrolledBook] = useState(false);
       
     useEffect(() => {

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-  background-color:  #f0f0f0 !important; 
+  background-color:  black !important; 
 }
 .container {
   height: 100vh;
@@ -14,6 +14,18 @@ body{
 
 .container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+.my-masonry-grid {
+  display: -webkit-box; 
+  display: -ms-flexbox; 
+  display: flex;
+  margin-left: -1rem;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 1rem;
+  background-clip: padding-box;
 }
 
 .content {

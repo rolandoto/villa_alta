@@ -94,6 +94,8 @@ const Accommodation = () => {
       PostHotelByIdHotel()
     },[isVisible])
 
+
+    
    
 
     const HandClickMenuPeople =() =>{

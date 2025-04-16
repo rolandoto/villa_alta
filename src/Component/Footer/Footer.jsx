@@ -1,79 +1,74 @@
 import React from "react"
-import {  IconFaFacebookF, IconFaInstagram, IconFaMapMarkerAlt, IconFaWhatsapp, IconFaYoutube, IconsMdEmail } from "../Icons/Icons"
 import pdf from "../../Image/LLERASPARK.pdf"
+import { FaInstagram, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+
 const Footer =() =>{
 
-    const handleFacebook = () => {
-        window.open("https://www.facebook.com/llerasparkconcept", "_blank");
-    };
-
-    const handleInstagram = () => {
-        window.open("https://www.instagram.com/llerasparkconcept_/", "_blank");
-    };
-
     return (
-            <footer className="bg-white   text-black py-8">
-                <div className="mx-auto max-w-7xl p-4  flex flex-col md:flex-row justify-between items-start md:items-center">
-                <div className="flex">
-                    <img
-                        src="https://github.com/rolandoto/lleraspark/blob/main/public/lleraspark.png?raw=true"
-                        alt="Logo de Gallery Hotel" 
-                        width="100" 
-                        height="100"
-                        className="w-48 mb-4"
-                    />
+        <footer className="bg-black font-serif text-white py-12">
+            <div className=" mx-auto px-4 md:px-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {/* Dirección */}
+                <div className="flex flex-col items-center md:items-start">
+                    <h2 className="text-4xl md:text-5xl mb-6">VILLA ALTA</h2>
+                    <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2">
+                        <FaMapMarkerAlt className="text-[#f2ecd9]" />
+                        <span>
+                        Centro Histórico, CL Callejon De Los Estribos, Cartagena, Colombia 130001
+                        </span>
+                    </div>
+                    </div>
                 </div>
 
-                <div>
-                    <div className="">
-                        <ul className="space-y-2">
-                            <li className="flex items-center"> <IconFaWhatsapp /> +57 305 289 77 66</li>
-                            <li className="flex items-center mr-6">  <IconsMdEmail />  reservas@lleraspark.com</li>
-                            <li className="flex items-center"> <IconFaMapMarkerAlt/>  Cra. 38 #8 - 83                            </li>
-                        </ul>
-                    
+                <div className="flex flex-col items-center md:items-start">
+                    <h3 className="text-4xl md:text-5xl mb-6">CONTACTO</h3>
+                    <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-2">
+                        <FaPhoneAlt className="text-[#f2ecd9]" />
+                        <a href="tel:+573215062187" className="text-lg hover:text-[#f2ecd9] transition-colors">
+                        +57 321 5062187
+                        </a>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <MdEmail className="text-[#f2ecd9]" />
+                        <a href="mailto:reservas@selvario36hotel.com" className="text-lg hover:text-[#f2ecd9] transition-colors">
+                            hotelvillaaltac@gmail.com
+                        </a>
                     </div>
                     
-                    <div className="w-[350px] lg:w-[280px] lg:w-122 " >
-                            <div className="flex justify-center space-x-4 mt-4">
-                                <IconFaInstagram   onclick={handleInstagram} />
-                                <IconFaFacebookF  onclick={handleFacebook} />
-                             
-                            </div>
+                    
                     </div>
                 </div>
-               
-                <div className=" ">
-                    <div class=" flex items-center justify-center ">
-                    <div class="w-full max-w-md mt-6">
-                            <h2 class="text-center text-xl font-semibold mb-6">Navegación</h2>
-                            <a target="_blank" href={pdf} className="text-black"> Términos y Condiciones del sitio web</a>.
-                        </div>
-                    </div>
-                </div>
+
                 
+                <div className="flex flex-col items-center md:items-start">
+                    <h3 className="text-4xl md:text-5xl mb-6">SOCIAL</h3>
+                    <a
+                    href="https://www.instagram.com/villaalta.ctg/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-lg hover:text-[#f2ecd9] transition-colors"
+                    >
+                    <FaInstagram className="text-[#f2ecd9]" />
+                    @villaalta.ctg
+                    </a>
                 </div>
-                <div className="text-center border-t-1  mx-auto max-w-7xl  text-black mt-8">
-               
-                    <div className=" flex  flex-col sm:flex-row  justify-between mt-8 mx-auto max-w-7xl items-center">
-                            <div>
-                            © Copyright. Todos los derechos reservados.
-                            </div>
-                          
-                                    <div className=" ">
-                                    <div className="flex space-x-4">
-                                    <img 
-                                        src="https://github.com/rolandoto/image-pms/blob/main/payment.png?raw=true" 
-                                        alt="Métodos de pago" 
-                                        width="200" 
-                                        height="100" 
-                                    />
-                                    </div>
-                            </div>
-                        </div>
-                
                 </div>
-            </footer>
+
+            
+                <div className="mt-16 text-center text-lg text-neutral-400">
+                <p>
+                    © 2025 VILLA ALTA. TODOS LOS DERECHOS RESERVADOS.
+                    <a href={pdf} className="ml-1 underline hover:text-[#f2ecd9]">
+                    TÉRMINOS Y CONDICIONES
+                    </a>
+                </p>
+                </div>
+      </div>
+    </footer>
     )
 }
 export default Footer
+

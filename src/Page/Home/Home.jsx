@@ -1,55 +1,163 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect,useState } from "react"
 import UseCalenderSearch from "../../Hooks/UseCalenderSearch";
-import { DateRange } from 'react-date-range';
-import esLocale from 'date-fns/locale/es';
-import Search from "../../Component/Search/Search";
-import {Link, useNavigate } from "react-router-dom";
-import Header from "../../Component/Header/Header";
-import CalenderSearchHome from "../../Component/CalenderSearch/CalenderSearchHome";
-import TitleWelcome from "../../Component/TitleWelcome/TitleWelcome";
-import Features from "../../Component/Features/Features";
-import Footer from "../../Component/Footer/Footer";
-import AccordionAsk from "../../Component/AccordionAsk/AccordionAsk";
-import Events from "../../Component/Events/Events";
-import RoomDetail from "../../Component/RoomDetail/RoomDetail";
-import RoomPresentaion from "../../Component/RoomPresentation/RoomPresentation";
+import {useNavigate } from "react-router-dom";
+import Header from "../../Component/Header/Header"
 import "./home.css"
-import { IconRiCloseLargeLine, IconsFaBanSmoking, IconsFaConciergeBell, IconsFaGlassMartini, IconsFaSquareParking, IconsFaStore, IconsGiForkKnifeSpoon, IconsRiBankFill, IconsaCar } from "../../Component/Icons/Icons";
 import 'react-date-range/dist/styles.css'; // import the default styles
 import 'react-date-range/dist/theme/default.css'; // import the default theme
 import moment from 'moment';
 import 'moment/locale/es';
-import UseCart from "../../Hooks/UseCart";
-import Cart from "../../Component/Cart/Cart";
 import UseHotelActions from "../../Actions/useHotelsActions";
-import { useSelector } from "react-redux";
 import WhatsappButton from "../../Component/WhatsappButton/WhatsappButton";
-import BookNowButton from "../../Component/BookNowButton/BookNowButton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules"; // 👈 importa Autoplay
+import "swiper/css";
+import "swiper/css/navigation";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Importa las flechas de React Icons
+import { Environment } from "../../Config/Config";
+import { useSelector } from "react-redux";
+import { FaWhatsapp } from "react-icons/fa";
+import { MdConnectedTv } from "react-icons/md";
+import { IconShower, IconsSnow, IconsTv } from "../../Component/Icons/Icons";
+import { TbFridge } from "react-icons/tb";
+import Footer from "../../Component/Footer/Footer";
 
 const Home =() =>{
   const navigate = useNavigate();
   moment.locale('es');
   
+
+
+
   useEffect(() => {
     // Scrolls to the top of the document on component mount
     window.scrollTo(0, 0);
 }, []);
 
-  const {getCartSubtotal} = UseCart()
-  const {hotelList,loadingHotel,errorHotel}= useSelector((state) => state.Hotel)
-  const {getListHotel} =UseHotelActions()
+const images = [
+  "https://selvario36hotel.com/wp-content/uploads/2025/04/home-banner-1-desktop-2-1.webp"
+];  
+
+const {ErrorRoomTypes,RoomsType,LoadingRoomTypes}= useSelector((state) => state.Hotel)
+const {getRoomsTypes} =  UseHotelActions()
 
   const fetchDate =async() =>{
-    await getListHotel()
+    await getRoomsTypes({token:Environment.Token,propertyID:Environment.propertyID})
   }
 
   useEffect(() =>{
     fetchDate()
   },[])
 
-    
-      const roomSectionRef = useRef(null);
-      const roomEventsSectionRef = useRef(null);
+
+  
+  const PostHotelByIdHotel = useCallback(async () => {
+    setContextMenuPosition(false);
+    navigate("/Accomodation");
+  }, []);
+
+  
+  const amenities = [
+    { icon: <MdConnectedTv  fontSize={40}/>, text: "Wifi" },
+    { icon: <IconsSnow  fontSize={40} />,  text: "Aire Acondicionado" },
+    { icon:<IconsTv  fontSize={40}/>, text: "TV" },
+    { icon:<IconShower    fontSize={40}/>,text: "Baño privado" },
+    { icon:<TbFridge    fontSize={40}/>,text: "Minibar" },
+  ];
+  const FillContent =()=>{
+    if(LoadingRoomTypes){
+      return  <div  className=" lg:flex  mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
+              <h1>Cargando...</h1>
+              </div> 
+    }
+    if(ErrorRoomTypes){
+     return  (
+              <div  className=" lg:flex    mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
+              error al cargar
+              </div> 
+     ) 
+    }
+   return <> {RoomsType.map((seccion, idx) => (
+            <section
+            key={idx}
+            className={`flex ${
+              idx % 2 !== 0 ? "bg-black" : "bg-[#807451]"} mx-auto flex-col md:flex-row h-auto md:h-[600px] ${idx % 2 !== 0 ? "md:flex-row-reverse" : ""}  overflow-hidden m-auto `}>
+     
+            <div className="w-full md:w-1/2 text-[#F7F5E5]  p-8 md:p-16 flex flex-col justify-center items-center text-center">
+              <h2 className="text-4xl md:text-5xl font-serif mb-6">{seccion.roomTypeName}</h2>
+              <p className="text-sm md:text-base mb-12">
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: seccion.roomTypeDescription
+                    ? seccion.roomTypeDescription.slice(0, 500) + '...'
+                    : '',
+                }}>
+
+                </span>
+              </p>
+              <div className="grid grid-cols-4 gap-6 mb-12 w-full">
+                {amenities.map((amenity, index) => (
+                  <div key={index} className="flex flex-col items-center">
+                    <div className="mb-2">
+                      {amenity.icon}
+                    </div>
+                    <span className="text-xs text-center">{amenity.text}</span>
+                  </div>
+                ))}
+              </div>
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={PostHotelByIdHotel}
+                className="bg-[#f2ecd9] rounded-3xl text-[#a39672] px-6 py-3 font-medium text-sm uppercase">
+                RESERVA AHORA
+              </button>
+              
+              <a href="https://wa.me/3215062187" className="text-white">
+                <div className="bg-white bg-opacity-20 rounded-full p-3">
+                  <FaWhatsapp className="w-6 h-6" />
+                </div>
+              </a>
+            </div>
+            </div>
+   
+          <div className="w-full md:w-1/3 h-[300px] md:h-full p-4 md:p-20">
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }}
+              loop
+              centeredSlides
+              slidesPerView={1}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+              }}
+              speed={1000}
+              className="h-full  overflow-hidden"
+            >
+              {seccion?.roomTypePhotos?.map((img, i) => (
+                <SwiperSlide key={i}>
+                  {({ isActive }) => (
+                    <a href="https://www.ejemplo.com" target="_blank" rel="noopener noreferrer">
+                      <div
+                        className={`h-full w-full bg-center bg-cover transition-transform duration-[3000ms] ease-in-out ${
+                          isActive ? "scale-105" : ""
+                        }`}
+                        style={{ backgroundImage: `url(${img})` }}
+                      />
+                    </a>
+                  )}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+  </section>
+  ))}
+
+          </>
+  }
 
 
       const [contextShowMenuPeople, setContextShowMenuPeople] = useState(false);
@@ -70,11 +178,6 @@ const Home =() =>{
 
     const formattedEndDateToString = moment(state?.[0]?.endDate ?? '').format('DD MMM YYYY').toLowerCase();
     
-
-    const PostHotelByIdHotel = useCallback(async () => {
-      setContextMenuPosition(false);
-      navigate("/Accomodation");
-    }, []);
 
 
     const HandClickMenuPeople =() =>{
@@ -108,72 +211,9 @@ const Home =() =>{
  
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1; // Cambia 768 según tu punto de ruptura deseado
 
- 
-
-const rooms = [
-  {title: 'Room Estándar superior', price:180000 , image:"https://grupo-hoteles.com/storage/app/7/rooms/702137671-37-rooms-slider-1-estandar_superior_lleras_park_concept_medellin_poblado_medellin_economico_colombia_antioquia.webp", 
-    features: ['Cama doble', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
-  {title: 'Room Estándar',price:160000, image: "https://grupo-hoteles.com/storage/app/7/rooms/1353190353-38-rooms-slider-2-Habitacion-Estandar-Hotel-lleras-park-concept-hotel-poblado-economico-slider-principal-1.webp", 
-    features: ['Cama doble', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV',"Aire Acondicionado"] },
-  {title: 'Room Doble superior twin',price:260000, image: "https://grupo-hoteles.com/storage/app/7/rooms/585930631-39-rooms-slider-2-slider_1_doble_superior_twin_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia_med.webp", 
-    features: ['Cama doble', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
-  {title: 'Room Suite junior',price:407000, image: "https://grupo-hoteles.com/storage/app/7/rooms/286234936-40-rooms-slider-1-rooms-slider-1-superior_junior_jacuzzi_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia..webp", 
-   features: ['Cama king', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
-  {title: 'Room One Million',price:799000, image: "https://grupo-hoteles.com/storage/app/7/rooms/625520311-42-rooms-slider-1-one_million_lleras_park_concept_medellin_poblado_medellin_economica_antioquia_colombia_zona_rosa.webp", 
-   features: ['Cama queen', 'Baño privado con ducha', 'Wi-Fi gratuito', 'Smart TV','Aire Acondicionado']},
-];
-/**
- * 
- *  
- * 
- */
-
-const faqs = [
-  {
-    question: '¿Cuáles son los sitios turísticos de la ciudad y si están cerca al hotel?',
-    answer: (
-      <ul className="list-disc list-inside">
-        <li>Teatros (3 a 9 min caminando)</li>
-        <li>Museo de Antioquia</li>
-        <li>Plaza Botero</li>
-        <li>Jardín Botánico de Medellín</li>
-        <li>Parque Lleras</li>
-        <li>Comuna 13</li>
-      </ul>
-    ),
-  },
-  {
-    question: '¿Cómo es la seguridad del sector? ¿se puede salir en la noche?',
-    answer: 'La seguridad del sector es buena, pero siempre se recomienda tomar precauciones normales como en cualquier ciudad. Es seguro salir en la noche, especialmente en áreas concurridas y turísticas.',
-  },
-  {
-    question: '¿Cuáles son los mejores centros comerciales de la ciudad de Medellín?',
-    answer: (
-      <ul className="list-disc list-inside">
-        <li>Centro Comercial Santa Fe</li>
-        <li>Centro Comercial El Tesoro</li>
-        <li>Centro Comercial Oviedo</li>
-        <li>Centro Comercial Premium Plaza</li>
-      </ul>
-    ),
-  },
-  {
-    question: '¿Dónde puedo cambiar divisas?',
-    answer: 'Puede cambiar divisas en casas de cambio ubicadas en centros comerciales, en el aeropuerto, y en diversas partes del centro de la ciudad.',
-  },
-];
-
-
-    return (
-      <>
-      <BookNowButton />
-      <WhatsappButton />
-         <div className="relative w-full h-[1000px]">
-            <img
-              src="https://h-img1.cloudbeds.com/uploads/315191/img_3151~~66be7ab2bae2b.jpg"
-              className="w-full h-full object-bottom" />
-        <Header />
-              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
+    /**
+     * 
+     *       <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
               <h1 className="font-davinci text-4xl sm:text-6xl md:text-7xl mb-2 sm:mb-4"></h1>
                   <h2 className="font-lora text-5xl sm:text-7xl opacity-90 md:text-9xl">Lleras Park</h2>
                   <p className="mt-2 text-base opacity-90 md:text-xl lg:text-3xl font-lora font-normal">
@@ -303,18 +343,109 @@ const faqs = [
               </div>} 
 
         </div>
+     * 
+     */
+
+
+    return (
+      <>
+      <Header />
+      <div className="w-full h-screen bg-black">
+      <Swiper
+      modules={[Navigation, Autoplay]}
+      navigation={{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }}
+      loop
+      centeredSlides
+      slidesPerView={1}
+      autoplay={{
+        delay: 4000,
+        disableOnInteraction: false,
+      }}
+      speed={1000}
+      className="h-full text-white"
+    >
+     {images.map((img, index) => (
+      <SwiperSlide key={index}>
+        {({ isActive }) => (
+          <a href="https://www.ejemplo.com"  rel="noopener noreferrer">
+            <div
+              className={`cursor-pointer h-full w-full bg-center bg-cover transition-transform duration-[5000ms] ease-in-out ${isActive ? "scale-out-effect" : ""}`}
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          </a>
+        )}
+      </SwiperSlide>
+    ))}
+
+      {/* Flechas de navegación personalizadas */}
+      <div className="swiper-button-prev">
+        <FaChevronLeft  className=" size-48 text-white" /> {/* Flecha izquierda */}
+      </div>
+      <div className="swiper-button-next">
+        <FaChevronRight   className="text-white" /> {/* Flecha derecha */}
+      </div>
+    </Swiper>
+    </div>
+
+  
+  {FillContent()}
+
+
+  <section className="bg-[#f6f2df] text-black py-16 px-6 md:px-20 font-serif">
+      <div className="max-w-6xl mx-auto text-center">
+        {/* Título */}
+        <div className="relative mb-10 flex items-center justify-center">
+       
+          <h1 className="text-4xl md:text-5xl font-bold text-[#002d1e]">
+            Villa Alta, <span className="italic">Cartagena</span>
+          </h1>
+      
+        </div>
+
+        {/* Contenido */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-justify text-lg leading-relaxed">
+          <div>
+            <p>
+              Entre murallas centenarias y callejones cargados de historia, una fachada azul celeste se alza como
+              reflejo del cielo caribeño. Villa Alta no es solo un hotel: es un faro de distinción y sofisticación en el
+              corazón del centro histórico de Cartagena.
+            </p>
+            <br />
+            <p>
+              Nuestra casa no es solo un lugar para hospedarse; es una experiencia. Al cruzar su umbral, los huéspedes
+              son recibidos por un interior vibrante, lleno de color, glamour y texturas cuidadosamente seleccionadas.
+            </p>
           </div>
-          <TitleWelcome />
-          <RoomPresentaion />
-          <div ref={roomSectionRef} >   
-            <RoomDetail ref={roomSectionRef}  rooms={rooms} />
+          <div>
+            <p>
+              Cada rincón ha sido diseñado para despertar los sentidos, fusionando detalles elegantes con toques
+              extravagantes que crean una atmósfera inigualable.
+            </p>
+            <br />
+            <p>
+              Villa Alta representa la perfecta unión entre la herencia histórica y el diseño contemporáneo. Es un
+              espacio donde las historias del pasado se entrelazan con la visión de una nueva generación, dando lugar a
+              una experiencia marcada por la elegancia, la exclusividad y el carácter.
+            </p>
           </div>
-          <div ref={roomEventsSectionRef} >
-            <Events  />
-          </div>
-          <WhatsappButton />
-          <AccordionAsk faqs={faqs} />
-          <Footer />
+        </div>
+
+        {/* Botón */}
+        <div className="mt-10">
+          <a
+            href="#habitaciones"
+            className="inline-block border-2 border-black rounded-full px-6 py-2 text-lg font-bold hover:bg-black hover:text-white transition-colors"
+          >
+            HABITACIONES
+          </a>
+        </div>
+      </div>
+    </section>
+  <Footer/>
+  
     </>
     )   
 }

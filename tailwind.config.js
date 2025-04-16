@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-      'davinci': ['TRJN DaVinci Text', 'sans-serif'],
+      davinci: ['TRJN DaVinci Text', 'sans-serif'],
+      migra: ['"Migra"', 'sans-serif'],
       },
     },
   },
