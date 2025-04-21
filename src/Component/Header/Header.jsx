@@ -50,14 +50,15 @@ const Header =() =>{
       <header className="bg-black font-serif text-white fixed top-0 left-0 w-full z-50 shadow-md">
       <div className=" flex items-center justify-between px-4 md:px-8 py-4">
         <div className="text-white text-[40px] font-bold  tracking-widest">
+          <Link to={"/"}>
           Villa Alta
+          </Link>
         </div>
         <nav className="hidden md:flex space-x-8 text-base font-light">
           <a href="/Accomodation" className=" text-[25px] text-white">Reservas</a>
           <a href="/Gallery" className=" text-[25px] text-white">Galería</a>
         </nav>
         <div className="flex items-center space-x-2 text-sm">
-         
         </div>
       </div>
     </header>

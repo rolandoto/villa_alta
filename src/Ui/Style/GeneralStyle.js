@@ -121,10 +121,10 @@ export const MainProduct = styled.div`
 background: white;
 max-width: 1000px;
 width: 100%;
-box-shadow: 17px 20px 40px rgba(0, 0, 0, .21) ;
+
 justify-content: space-between;
 align-items: center;
-border-radius:45px;
+border-radius:0;
  animation: ${fadeIn} 0.8s ease forwards; // Apply the fadeIn animation
   &.fade-in {
     animation: ${fadeIn} 0.3s ease forwards; // Apply the fadeIn animation
@@ -289,7 +289,7 @@ export const ContainerButtonSearch = styled.div`
 padding: 13px;
 `
 export const ButtonSearch = styled.button`
-border-radius: 25px;
+border-radius:5px;
 
 
 

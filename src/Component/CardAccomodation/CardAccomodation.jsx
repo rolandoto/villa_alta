@@ -3,12 +3,34 @@ import { ButtonSearch, MainAccomodationSection } from "../../Ui/Style/GeneralSty
 import useCartActions from "../../Actions/useCartActions";
 import { useSelector } from "react-redux";
 import {toast} from "sonner"
-import { IconFaUser } from "../Icons/Icons";
+import { IconFaUser, IconMdOutlineKingBed } from "../Icons/Icons";
 import { IconShower, IconsSnow, IconsTv, IconsWifi } from "../Icons/Icons"
 import { GiComputerFan } from "react-icons/gi";
 import { FiArrowRight } from "react-icons/fi";
 import { PiBathtubLight } from "react-icons/pi";
 
+
+const RadioButton = ({ name, id, checked, onChange, children }) => {
+  return (
+    <label className="flex items-center gap-2">
+      <div className="relative flex items-center justify-center">
+        <input 
+          type="radio" 
+          name={name} 
+          id={id} 
+          className="hidden" 
+          checked={checked} 
+          onChange={onChange} 
+        />
+        <div className={`w-5 h-5 border ${checked ? 'border-green-700' : 'border-gray-400'} rounded-full flex items-center justify-center`}>
+          {checked && <div className="w-3 h-3 bg-green-700 rounded-full"></div>}
+        </div>
+      </div>
+      {children}
+    </label>
+  );
+};
+    
 
 const CardAccomodation =({  roomTypeName,
                             maxGuests,
@@ -35,6 +57,42 @@ const CardAccomodation =({  roomTypeName,
     const discountedPrice = originalPrice * (1 - discountRate);   
     const validPromotions =promotion ? discountedPrice :  roomRate
 
+      // Formatear precio en formato COP
+      const formatPrice = (price) => {
+        return `COP ${price.toLocaleString('es-CO')}`;
+      };
+  
+
+    const   offerOptions= [
+        { 
+          id: "late-escape-1", 
+          label: "12% off Late Escape", 
+          benefits: [
+            "1 Free Express Massage for 2 per stay",
+            "Members discount applied"
+          ], 
+          price: 0,
+          default: true
+        },
+        { 
+          id: "late-escape-2", 
+          label: "12% off Late Escape", 
+          benefits: [
+            "1 Free Express Massage for 2 per stay",
+            "Members discount applied"
+          ], 
+          price: 103000
+        }
+      ]
+
+    const Icon = () => {
+          return (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          );
+    };
+    
 
     const {AddCart } =useCartActions()
 
@@ -97,148 +155,134 @@ const CardAccomodation =({  roomTypeName,
 
   const [showMore, setShowMore] = useState(false);
 
-  // Límite de caracteres a mostrar antes de "Ver más"
-    const characterLimit = 20;
+  const visibleAmenities = showMore ? roomTypeFeatures : roomTypeFeatures.slice(0, 3);
 
   // Función para alternar la visibilidad de todo el contenido
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
 
+
+
     return (   
-    <MainAccomodationSection>
-    <div className="max-w-5xl  mx-auto p-4 sm:p-6 lg:p-8">
-      <div className="bg-white border shadow-lg accomodation overflow-hidden">
-        {/* Upper section with image and details */}
-       
-        <div className="flex flex-col md:flex-row items-start md:items-center">
-          <div className="w-full md:w-1/2 p-4">
-            <img
-              src={roomTypePhotos[currentIndex].image}
-              alt="room"
-              className={`w-full h-auto ${animationClass}  accomodation `}
-            />
-             <div className="relative w-full   p-4">
-             
-
-              <div className="flex justify-center mt-0">
-                {roomTypePhotos.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-2 w-2 mx-1 rounded-full ${
-                      index === currentIndex ? "bg-gray-800" : "bg-gray-400"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        
-          <div className="w-full md:w-1/2 p-4">
-            <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">{roomTypeName}</h2>
-            <div className="flex flex-col pr-4 sm:flex-row justify-between mt-4">
-              <div className="text-center mb-4 sm:mb-0">
-                <p className="text-gray-600">Máxima ocupación</p>
-                <div className="flex justify-center">
-                  {[...Array(counPeople)].map((_, i) => (
-                    <IconFaUser key={i} color="black" />
-                  ))}
-                  {counPeople < maxGuests && (
-                    [...Array(maxGuests - counPeople)].map((_, i) => (
-                      <IconFaUser key={i + counPeople} color="#b3b3b3" />
-                    ))
-                  )}
-                </div>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-600">Estancia</p>
-                <p className="font-bold">Noches: {nightsToday}</p>
-              </div>
-            </div>
-            <div className="mt-4">
-              <div className="flex px-3 py-2 rounded-full items-center justify-between border">
-                <button className="text-sm sm:text-base">Tarifa estándar</button>
-                {validPromotion && <div className="inline-block border  bg-red-600 text-white font-bold text-small px-2 py-2 rounded-md">
-                  -10%
-                </div>
-                 }
-                <p className="font-bold">${parseInt(validPromotions).toLocaleString('es-CO')} cop</p>
-              </div>
-            </div>
-          </div>
-        </div>
-    
-        {/* Tabs content */}
-        <div className="lg:p-0 p-4">
-          <div className="border-b flex flex-wrap justify-center max-w-[95%] mx-auto">
-            {['Detalle'].map((tab) => (
-              <button
-                key={tab}
-                className={`text-gray-600 pb-2 mb-2 text-sm sm:text-base ${activeTab === tab ? 'border-b-2 border-black' : ''}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-            
-          {/* Conditional rendering of content based on active tab */}
-          <div className="mt-4 lg:flex   block justify-between  max-w-[95%] mx-auto">
-            {activeTab === 'Detalle' && (
-              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
-                {roomTypeFeatures.map((Service, index) => {
-                  const wifi = Service === "Internet inalámbrico (WiFi)" && <IconsWifi />;
-                  const Aire = Service === "Aire Condicionado" && <IconsSnow />;
-                  const tv = Service === "Televisión por cable" && <IconsTv />;
-                  const bathRoom = Service === "baño privado" && <IconShower />;
-                  const fan =  Service =="Ventiladores de Techo" && <GiComputerFan fontSize={35} />
-                  const Jacuzzi = "Jacuzzi privado" && <PiBathtubLight fontSize={35} />
-                  return (
-                    <div key={index} className="flex items-center space-x-3">
-                      <span className={`flex items-center ${Service}`}>
-                        {bathRoom || tv || Aire || wifi || fan || Jacuzzi } {Service}
-                      </span>
+          <div  className="max-w-lg  border border-gray-200  overflow-hidden bg-white shadow-sm">        
+                    <div className="relative">
+                      <img 
+                        src={roomTypePhotos[currentIndex].image}
+                        alt={roomTypeName} 
+                        className={`w-full object-cover  h-auto ${animationClass}   `}
+                      />
+                     
                     </div>
-                  );
-                })}
-               
-              </div>
-            )}
+                    
+                    <div className="p-4 border-b border-gray-200">
+                      <div className="flex flex-col gap-3">
 
+                      <div className=" bottom-2 left-2 flex gap-4 text-gray-600 text-sm">
+                        <div className="flex items-center gap-1  bg-opacity-60 px-2 py-1 rounded">
+                             <IconFaUser  />
+                          <span>{counPeople}</span>
+                        </div>
+                       
+                        
 
-          <div className="lg:block hidden rounded-3xl lg:w-[70%]">
-              <p className="text-justify" dangerouslySetInnerHTML={{ __html: roomTypeDescription }}></p>
-            </div>
+                        <div className="flex items-center gap-1 bg-opacity-60 px-2 py-1 rounded">
+                          <IconMdOutlineKingBed/>
+                          <span>1</span>
+                        </div>
+                      </div>
 
-            {/* Bloque para dispositivos grandes, con opción de "Ver más" */}
-            <div className="lg:hidden  rounded-3xl lg:w-[70%]">
-              <p className="text-justify">
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: showMore
-                      ? roomTypeDescription
-                      : `${roomTypeDescription.slice(0, characterLimit)}...`,
-                  }}
-                ></span>
-              </p>
-              <button
-                className=" hover:underline"
-                onClick={toggleShowMore}
-              >
-                {showMore ? "Ver menos" : "Ver más información"}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="p-4 flex justify-between">
-            <ButtonSearch onClick={handleAddToCart} className="  justify-center  items-center    flex  cursor-pointer z-40   w-[250px] bg-black text-white py-4    rounded-full hover:bg-[ff7a45px] transition duration-200">
-                Selecionar <FiArrowRight fontSize={25}/>
-            </ButtonSearch>
-       
-        </div>
-      </div>
-    </div>
-    </MainAccomodationSection>
+                      </div>
+                    </div>
+                    {/* Room Title and Amenities */}
+                    <div className="p-4 border-b border-gray-200">
+                      <h2 className="text-lg font-bold text-green-900 mb-2">{roomTypeName}</h2>
+                      <div className="text-gray-600 flex flex-col gap-1">
+                        {visibleAmenities.map((amenity, index) => (
+                          <div key={index} className="flex items-center gap-2">
+                            <Icon name={amenity} />
+                            <span>{amenity}</span>
+                          </div>
+                        ))}
+                        {roomTypeFeatures.length > 3 && (
+                          <button 
+                            onClick={toggleShowMore}
+                            className="text-green-700 mt-1 hover:underline text-sm text-left"
+                          >
+                            {showMore ?  'Ver menos' : 'Ver más'}
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Cancellation Policy */}
+                    
+
+                    {/* Offer */}
+                    <div className="p-4 border-b border-gray-200">
+                      <h3 className="font-medium mb-2">Offer</h3>
+                      <div className="flex flex-col gap-3">
+                        {offerOptions.map((offer) => (
+                          <RadioButton
+                       
+                          >
+                            <div className="w-full flex justify-between">
+                              <div>
+                                <span className="text-sm font-medium">{offer.label}</span>
+                                <div className="mt-1 text-sm">
+                                  {offer.benefits.map((benefit, idx) => (
+                                    <div key={idx} className="flex items-center gap-1">
+                                      <Icon name="check" />
+                                      <span>{benefit}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                              {offer.price > 0 && (
+                                <span className="text-sm">+ {formatPrice(offer.price)}</span>
+                              )}
+                            </div>
+                          </RadioButton>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Accommodation Plan */}
+                    <div className="p-4 border-b border-gray-200">
+                      <h3 className="font-medium mb-2">Accommodation plan</h3>
+                      <div className="flex flex-col gap-3">
+                          <RadioButton>
+                            <div className="flex justify-between w-full">
+                              <span className="text-sm">Only room</span>
+                              
+                                <span className="text-sm">+ONline room</span>
+                              
+                            </div>
+                          </RadioButton>
+                      </div>
+                    </div>
+
+                    {/* Price and Booking */}
+                    <div className="p-4">
+                      <div className="bg-[#a39672] rounded-xl text-white px-2 py-1 text-xs inline-block mb-2">
+                        Members benefits applied -{10}%
+                      </div>
+                      <div className="flex justify-between items-start mb-1">
+                        <div className="flex items-end gap-1">
+                          <span className="text-2xl font-bold">{formatPrice(roomRate)}</span>
+                          <span className="text-sm text-gray-500 line-through">{formatPrice(roomRate)}</span>
+                        </div>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-4">
+                        <p>{formatPrice(roomRate)} for {roomRate} nights</p>
+                        <p>Taxes excluded</p>
+                        <a href="#" className="f2ecd9 hover:underline">Price details</a>
+                      </div>
+                      <button className="w-full bg-[#a39672] text-white py-2 px-4 rounded  transition">
+                        Book
+                      </button>
+                    </div>
+                  </div>
   )
 }
 
