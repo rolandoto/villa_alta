@@ -159,7 +159,7 @@ const Accommodation = () => {
     }
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1;
    
-      return (<div  className="bg-[#f6f6f6]" >
+      return (<div  className="bg-[#f6f6f6] h-full  " >
       <div className="relative  bg-cover bg-center h-full">
           {isVisible && <div className="fixed top-48 left-0 right-4 flex justify-center z-40">
               <div className="w-[90%] md:w-full max-w-md bg-black text-white rounded-3xl shadow-lg overflow-hidden flex">
