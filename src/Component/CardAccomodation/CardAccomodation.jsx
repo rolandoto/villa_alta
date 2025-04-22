@@ -1,35 +1,12 @@
 import React, { useEffect, useState }  from "react";
-import { ButtonSearch, MainAccomodationSection } from "../../Ui/Style/GeneralStyle";
 import useCartActions from "../../Actions/useCartActions";
 import { useSelector } from "react-redux";
 import {toast} from "sonner"
 import { IconFaUser, IconMdOutlineKingBed } from "../Icons/Icons";
-import { IconShower, IconsSnow, IconsTv, IconsWifi } from "../Icons/Icons"
-import { GiComputerFan } from "react-icons/gi";
-import { FiArrowRight } from "react-icons/fi";
-import { PiBathtubLight } from "react-icons/pi";
+import RadioButton from "../RadioButton/RadioButton";
 
 
-const RadioButton = ({ name, id, checked, onChange, children }) => {
-  return (
-    <label className="flex items-center gap-2">
-      <div className="relative flex items-center justify-center">
-        <input 
-          type="radio" 
-          name={name} 
-          id={id} 
-          className="hidden" 
-          checked={checked} 
-          onChange={onChange} 
-        />
-        <div className={`w-5 h-5 border ${checked ? 'border-green-700' : 'border-gray-400'} rounded-full flex items-center justify-center`}>
-          {checked && <div className="w-3 h-3 bg-green-700 rounded-full"></div>}
-        </div>
-      </div>
-      {children}
-    </label>
-  );
-};
+
     
 
 const CardAccomodation =({  roomTypeName,
@@ -46,7 +23,6 @@ const CardAccomodation =({  roomTypeName,
                             validPromotion,
                             roomTypeDescription,
                             roomTypeFeatures,
-                            
                             validCode
                           }) =>{
 
@@ -63,28 +39,7 @@ const CardAccomodation =({  roomTypeName,
       };
   
 
-    const   offerOptions= [
-        { 
-          id: "late-escape-1", 
-          label: "12% off Late Escape", 
-          benefits: [
-            "1 Free Express Massage for 2 per stay",
-            "Members discount applied"
-          ], 
-          price: 0,
-          default: true
-        },
-        { 
-          id: "late-escape-2", 
-          label: "12% off Late Escape", 
-          benefits: [
-            "1 Free Express Massage for 2 per stay",
-            "Members discount applied"
-          ], 
-          price: 103000
-        }
-      ]
-
+ 
     const Icon = () => {
           return (
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,8 +50,6 @@ const CardAccomodation =({  roomTypeName,
     
 
     const {AddCart } =useCartActions()
-
-    const [activeTab, setActiveTab] = useState('Detalle');
 
     const handleAddToCart = () => {
         const existingRoom = cart.find(item => item.roomTypeID === roomTypeID);
@@ -121,12 +74,7 @@ const CardAccomodation =({  roomTypeName,
         );
       };
     
-      const handlePrev = () => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === 0 ? roomTypePhotos.length - 1 : prevIndex - 1
-        );
-      };
-
+  
 
       useEffect(() => {
         const interval = setInterval(() => {
@@ -141,27 +89,33 @@ const CardAccomodation =({  roomTypeName,
   const [animationClass, setAnimationClass] = useState('');
 
   useEffect(() => {
-    // Cada vez que el src cambie, activamos la animación
     setAnimationClass('animation');
-    // Limpiamos la animación después de que termine
     const timer = setTimeout(() => {
       setAnimationClass('');
-    }, 300); // Duración de la animación en milisegundos (0.3s)
+    }, 300); 
 
-    // Cleanup en el desmontaje o cuando cambie src
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
 
   const [showMore, setShowMore] = useState(false);
 
-  const visibleAmenities = showMore ? roomTypeFeatures : roomTypeFeatures.slice(0, 3);
 
-  // Función para alternar la visibilidad de todo el contenido
+  const [showMoreDescription, setShowMoreDescription] = useState(false);
+
+  const toggleShowMoreDescription = () => {
+    setShowMoreDescription(!showMoreDescription);
+  };
+
+
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
 
+
+  const visibleAmenities = showMore ? roomTypeFeatures : roomTypeFeatures.slice(0, 3);
+
+  const visibleDescription = showMoreDescription ? roomTypeDescription : roomTypeDescription.slice(0, 80);
 
 
     return (   
@@ -194,9 +148,9 @@ const CardAccomodation =({  roomTypeName,
 
                       </div>
                     </div>
-                    {/* Room Title and Amenities */}
+                   
                     <div className="p-4 border-b border-gray-200">
-                      <h2 className="text-lg font-bold text-green-900 mb-2">{roomTypeName}</h2>
+                      <h2 className="text-lg font-bold text-gray-900 mb-2">{roomTypeName}</h2>
                       <div className="text-gray-600 flex flex-col gap-1">
                         {visibleAmenities.map((amenity, index) => (
                           <div key={index} className="flex items-center gap-2">
@@ -207,79 +161,91 @@ const CardAccomodation =({  roomTypeName,
                         {roomTypeFeatures.length > 3 && (
                           <button 
                             onClick={toggleShowMore}
-                            className="text-green-700 mt-1 hover:underline text-sm text-left"
-                          >
+                            className="text-gray-600 mt-1 hover:underline text-sm text-left">
                             {showMore ?  'Ver menos' : 'Ver más'}
                           </button>
                         )}
                       </div>
                     </div>
 
-                    {/* Cancellation Policy */}
-                    
 
-                    {/* Offer */}
                     <div className="p-4 border-b border-gray-200">
-                      <h3 className="font-medium mb-2">Offer</h3>
-                      <div className="flex flex-col gap-3">
-                        {offerOptions.map((offer) => (
-                          <RadioButton
-                       
+                      <h2 className="text-lg font-bold text-gray-900 mb-2">Descripcion</h2>
+                      <div className="text-gray-600 flex flex-col gap-1">
+                          <div className="flex items-center gap-2"
                           >
-                            <div className="w-full flex justify-between">
+                            <span className="text-justify"  dangerouslySetInnerHTML={{
+                            __html: visibleDescription
+                          }}></span>
+                          </div>
+                      
+                        {roomTypeFeatures.length > 3 && (
+                          <button 
+
+                            onClick={toggleShowMoreDescription}
+                            className="text-gray-600 mt-1 hover:underline text-sm text-left"
+                          >
+                            {showMoreDescription ?  'Ver menos' : 'Ver más'}
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                   
+                    <div className="p-4 border-b border-gray-200">
+                      <h3 className="font-medium mb-2">Oferta</h3>
+                      <div className="flex flex-col gap-3">
+                          <RadioButton
+                            checked={true}>
+                            <div className="w-full items-center flex justify-between">
                               <div>
-                                <span className="text-sm font-medium">{offer.label}</span>
                                 <div className="mt-1 text-sm">
-                                  {offer.benefits.map((benefit, idx) => (
-                                    <div key={idx} className="flex items-center gap-1">
+                                    <div className="flex items-center gap-1">
                                       <Icon name="check" />
-                                      <span>{benefit}</span>
+                                      <span>Descuento para miembros aplicado</span>
                                     </div>
-                                  ))}
                                 </div>
                               </div>
-                              {offer.price > 0 && (
-                                <span className="text-sm">+ {formatPrice(offer.price)}</span>
-                              )}
+                                <span className="text-sm">+ {formatPrice(validPromotions)}</span>
                             </div>
                           </RadioButton>
-                        ))}
                       </div>
                     </div>
-
-                    {/* Accommodation Plan */}
                     <div className="p-4 border-b border-gray-200">
-                      <h3 className="font-medium mb-2">Accommodation plan</h3>
+                      <h3 className="font-medium mb-2">Plan de alojamiento</h3>
                       <div className="flex flex-col gap-3">
-                          <RadioButton>
-                            <div className="flex justify-between w-full">
-                              <span className="text-sm">Only room</span>
-                              
-                                <span className="text-sm">+ONline room</span>
-                              
-                            </div>
-                          </RadioButton>
+                        <RadioButton
+                        checked={true}
+                          >
+                          <Icon name="check" />
+                          <div className="flex justify-between w-full">
+                            <span className="text-sm">Solo habitación</span>
+                            <span className="text-sm">+ Habitación online</span>
+                          </div>
+                        </RadioButton>
+                        <RadioButton
+                        checked={true}
+                          >
+                          <Icon name="check" />
+                          <div className="flex justify-between w-full">
+                            <span className="text-sm">Desayuno</span>
+                            <span className="text-sm">+ Habitación online</span>
+                          </div>
+                        </RadioButton>
                       </div>
                     </div>
-
-                    {/* Price and Booking */}
                     <div className="p-4">
-                      <div className="bg-[#a39672] rounded-xl text-white px-2 py-1 text-xs inline-block mb-2">
-                        Members benefits applied -{10}%
-                      </div>
+                       {validPromotion && 
+                       <div className="bg-[#a39672] rounded-xl text-white px-2 py-1 text-xs inline-block mb-2">
+                       Beneficios para miembros aplicados -{10}%
+                     </div> } 
                       <div className="flex justify-between items-start mb-1">
                         <div className="flex items-end gap-1">
-                          <span className="text-2xl font-bold">{formatPrice(roomRate)}</span>
-                          <span className="text-sm text-gray-500 line-through">{formatPrice(roomRate)}</span>
+                          <span className="text-2xl font-bold">{formatPrice(validPromotions)}</span>
                         </div>
                       </div>
-                      <div className="text-sm text-gray-600 mb-4">
-                        <p>{formatPrice(roomRate)} for {roomRate} nights</p>
-                        <p>Taxes excluded</p>
-                        <a href="#" className="f2ecd9 hover:underline">Price details</a>
-                      </div>
-                      <button className="w-full bg-[#a39672] text-white py-2 px-4 rounded  transition">
-                        Book
+                      <button onClick={handleAddToCart} className="w-full bg-[#a39672] text-white py-2 px-4 rounded  transition">
+                        Reservar
                       </button>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, {useState} from 'react'
 
 const Autoconext = React.createContext({})
@@ -29,21 +30,32 @@ export const AutoProvider =({children}) =>{
         setChildrem(childrem - 1);
       }
     }
+
+  // Obtener la fecha de hoy y mañana usando el objeto Date
   
-    const [state, setState] = useState([
-      {
-        startDate: null,
-        endDate: null,
-        key: 'selection',
-        showDateDisplay: true,
-        color: 'transparent',
-      }
-    ]);
+  const today = new Date();                          // Hoy
+  const tomorrow = new Date(today);                  // Clonar la fecha de hoy
+  tomorrow.setDate(tomorrow.getDate() + 1);          // Sumar un día
+
+  // Establecer el estado usando objetos Date completos
+  const [state, setState] = useState([
+    {
+      startDate: today,       // Objeto Date de hoy
+      endDate: tomorrow,      // Objeto Date de mañana
+      key: 'selection',
+      showDateDisplay: true,
+      color: 'transparent',
+    }
+  ]);
+
   
     const [isStartDateSelected, setIsStartDateSelected] = useState(false);
  
-const handleSelect = (ranges) => {
-  const { startDate, endDate } = ranges.selection;
+  const handleSelect = (ranges) => {
+    const { startDate, endDate } = ranges.selection;
+
+
+
 
   setState([
       {

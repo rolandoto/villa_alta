@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect,useState } from "react"
 import UseCalenderSearch from "../../Hooks/UseCalenderSearch";
-import {useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import Header from "../../Component/Header/Header"
 import "./home.css"
 import 'react-date-range/dist/styles.css'; // import the default styles
@@ -25,9 +25,6 @@ import Footer from "../../Component/Footer/Footer";
 const Home =() =>{
   const navigate = useNavigate();
   moment.locale('es');
-  
-
-
 
   useEffect(() => {
     // Scrolls to the top of the document on component mount
@@ -35,7 +32,7 @@ const Home =() =>{
 }, []);
 
 const images = [
-  "https://selvario36hotel.com/wp-content/uploads/2025/04/home-banner-1-desktop-2-1.webp"
+  "https://h-img2.cloudbeds.com/uploads/316944/suite_duplex_-5cama_gallery~~67fe878e078e0.jpg"
 ];  
 
 const {ErrorRoomTypes,RoomsType,LoadingRoomTypes}= useSelector((state) => state.Hotel)
@@ -52,7 +49,6 @@ const {getRoomsTypes} =  UseHotelActions()
 
   
   const PostHotelByIdHotel = useCallback(async () => {
-    setContextMenuPosition(false);
     navigate("/Accomodation");
   }, []);
 
@@ -140,14 +136,14 @@ const {getRoomsTypes} =  UseHotelActions()
               {seccion?.roomTypePhotos?.map((img, i) => (
                 <SwiperSlide key={i}>
                   {({ isActive }) => (
-                    <a href="https://www.ejemplo.com" target="_blank" rel="noopener noreferrer">
+                    <Link to="/Accomodation" >
                       <div
                         className={`h-full w-full bg-center bg-cover transition-transform duration-[3000ms] ease-in-out ${
                           isActive ? "scale-105" : ""
                         }`}
                         style={{ backgroundImage: `url(${img})` }}
                       />
-                    </a>
+                    </Link>
                   )}
                 </SwiperSlide>
               ))}
@@ -158,59 +154,6 @@ const {getRoomsTypes} =  UseHotelActions()
 
           </>
   }
-
-
-      const [contextShowMenuPeople, setContextShowMenuPeople] = useState(false);
-      const {handleSelect,state,
-            setContextMenuPosition,
-            contextMenuPosition,
-            handChangeAdults,
-            handChangeChildrem,
-            handDecreaseAdults,
-            handDecreaseChildren,
-            totalCountAdults,
-            adults,
-            childrem ,
-            getClassNameForDate } =  UseCalenderSearch()
-        
-      
-    const formattedStartDateToString = moment(state?.[0]?.startDate ?? '').format('DD MMM YYYY').toLowerCase();
-
-    const formattedEndDateToString = moment(state?.[0]?.endDate ?? '').format('DD MMM YYYY').toLowerCase();
-    
-
-
-    const HandClickMenuPeople =() =>{
-      if(contextShowMenuPeople){
-        setContextShowMenuPeople(false)
-      }else if(!contextShowMenuPeople){
-        setContextShowMenuPeople(true)
-      }
-      setContextMenuPosition(false)
-    }
-  
-    const HandClickMenu =() =>{
-      if(contextMenuPosition){
-        setContextMenuPosition(false)
-      }else if(!contextMenuPosition){
-        setContextMenuPosition(true)
-      }
-      setContextShowMenuPeople(false)
-    }
-       
-  
-    const HandClickMenuEnd =() =>{
-      if(contextMenuPosition){
-        setContextMenuPosition(false)
-      }else if(!contextMenuPosition){
-        setContextMenuPosition(true)
-      }
-      setContextShowMenuPeople(false)
-    }             
-
- 
-    const monthsToShow = window.innerWidth >= 700 ? 2 : 1; // Cambia 768 según tu punto de ruptura deseado
-
 
     return (
       <>
@@ -235,12 +178,12 @@ const {getRoomsTypes} =  UseHotelActions()
      {images.map((img, index) => (
       <SwiperSlide key={index}>
         {({ isActive }) => (
-          <a href="https://www.ejemplo.com"  rel="noopener noreferrer">
+          <Link to="/Accomodation"  rel="noopener noreferrer">
             <div
               className={`cursor-pointer h-full w-full bg-center bg-cover transition-transform duration-[5000ms] ease-in-out ${isActive ? "scale-out-effect" : ""}`}
               style={{ backgroundImage: `url(${img})` }}
             />
-          </a>
+          </Link>
         )}
       </SwiperSlide>
     ))}

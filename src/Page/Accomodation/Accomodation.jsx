@@ -5,7 +5,6 @@ import "./style.css"
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import Search from "../../Component/Search/Search";
-import {  MainProduct} from "../../Ui/Style/GeneralStyle";
 import CardAccomodation from "../../Component/CardAccomodation/CardAccomodation";
 import CalenderSearch from "../../Component/CalenderSearch/CalenderSearch";
 import UseHotelActions from "../../Actions/useHotelsActions";
@@ -20,14 +19,12 @@ import Cart from "../../Component/Cart/Cart";
 import {IconRiCloseLargeLine } from "../../Component/Icons/Icons";
 import UseCart from "../../Hooks/UseCart";
 import LoadingOverlay from "../../Component/LoadingCreateReserva/LoadingOverlay";
-import useRoomsPromotions from "../../Actions/useRoomsPromotions";
 import WhatsappButton from "../../Component/WhatsappButton/WhatsappButton";
 import { Environment } from "../../Config/Config";
-import Header from "../../Component/Header/Header";
 import { FaUser } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
-
-import { CheckCircle, Tag, Coffee, Clock, ArrowRight, Info, Camera } from 'lucide-react';
+import {  Tag, Coffee, Clock} from 'lucide-react';
+import HeaderStep from "../../Component/Header/HeaderStep";
 
 const Accommodation = () => {
 
@@ -63,32 +60,8 @@ const Accommodation = () => {
     const formattedEndDateToString = moment(state[0]?.endDate).format('DD MMM YYYY').toLowerCase();
     const formattedEnd = moment(state[0]?.endDate).format('DD MMM').toLowerCase();
     const formattedStart = moment(state[0]?.startDate).format('DD MMM').toLowerCase();
-    const [scrolledbook, setScrolledBook] = useState(false);
     const [coupon, setCoupon] = useState(); // Estado para el cupón
     const [isVisible, setIsVisible] = useState(true); // Estado para mostrar/ocultar el banner
-  
-   
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 100) {
-        
-        } if(window.scrollY > 200){
-          setScrolledBook(true)
-        } else {
-          setScrolledBook(false)
-        }
-      };
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
-
-    
-
-
-    
 
     const PostHotelByIdHotel = useCallback(async () => {
         setContextMenuPosition(false);
@@ -101,8 +74,6 @@ const Accommodation = () => {
     },[isVisible])
 
 
-    
-   
 
     const HandClickMenuPeople =() =>{
       if(contextShowMenuPeople){
@@ -135,20 +106,14 @@ const Accommodation = () => {
       setContextShowMenuPeople(false)
     }
 
- 
-  
-    // Formatear precio en formato COP
-    const formatPrice = (price) => {
-      return `COP ${price.toLocaleString('es-CO')}`;
-    };
-
+    
     const FillContent =()=>{
       if(!formattedStartDate && !formattedEndDate){
         return   <EmpyCart title={" Busca tu reserva en el calendario."} />
       }
       if(loading){
        return  (
-                <div  className=" lg:flex    mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
+                <div  className=" lg:flex    mx-auto   max-w-7xl items-center justify-between p-4 lg:px-8">
                 <LoadingSkeleton />
                 </div> 
        ) 
@@ -214,15 +179,12 @@ const Accommodation = () => {
                   </button>
                 </div>
 
-                {/* Imagen de la Habitación */}
                 <div className="w-1/2 relative">
                   <img
-                    src="https://h-img1.cloudbeds.com/uploads/315191/img_0549_featured~~67c0ff202b0c7.png"
+                    src="https://h-img3.cloudbeds.com/uploads/316944/suite_alcoba_1_featured~~67fe873b3ea83.jpg"
                     alt="Luxury Suite"
                     className="object-cover h-full w-full"
                   />
-
-                  {/* Botón para cerrar la oferta */}
                   <button
                     onClick={() => setIsVisible(false)}
                     aria-label="Cerrar oferta"
@@ -235,9 +197,8 @@ const Accommodation = () => {
             </div>}
 
             <div className="hidden md:block">
-              <Header />
+              <HeaderStep currentStep={1} />
             </div>
-            
             <Toaster position="bottom-right"  richColors   />
             {loadingCart && <LoadingOverlay title={"Cargando..."} />}
             <WhatsappButton />
@@ -263,7 +224,6 @@ const Accommodation = () => {
                   rangeColors={["rgb(255 104 0 / 36%);"]}
                   minDate={new Date()}
                   onChange={handleSelect}
-                 
                   months={2}
                   dayContentRenderer={(date) => {
                     const className = getClassNameForDate(date);
@@ -381,7 +341,6 @@ const Accommodation = () => {
                 </div>
                 <div >
                 {FillContent()}
-               
                 </div>
               </div>    
             </div>

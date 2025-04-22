@@ -18,24 +18,8 @@ const FormCheckout=({Country,handleSubmit,loading,formErrors,handleChange,formVa
     },[])
 
     //docuimetn
-    const FindIdHotel=(hotel) =>{
-        return hotel.id_hotel ==7
-    }
-    
-    const hotel = hotelList.find(FindIdHotel) 
-  
-    const FillContent =()=>{
-        if(loadingHotel){
-                return <p>cargando</p>
-        }
-
-        if(errorHotel){
-            return   <h1>Error en el servicio</h1>
-        }
-        return  hotel?.nombre
-    }
-
-    return (<div className= " " >
+   
+    return (<div className= "mt-9" >
                 <div className="flex justify-center   min-h-screen">
                     <div className="bg-white p-6 rounded-3xl shadow-lg w-full max-w-5xl">
                     <div className="flex flex-col md:flex-row">
@@ -54,8 +38,8 @@ const FormCheckout=({Country,handleSubmit,loading,formErrors,handleChange,formVa
                             <div className="p-6 border border-gray-300 rounded-lg">
                                 <h2 className="text-xl font-bold mb-4">Resumen de tu reserva</h2>
                                     <div className="mb-4">
-                                        <h3 className="text-lg font-semibold">{FillContent()}</h3>
-                                        <p className="text-gray-600">Cl. 47 #41 - 55, Medellín, Colombia</p>
+                                        <h3 className="text-lg font-semibold">Villa alta guest house</h3>
+                                        <p className="text-gray-600">Centro Histórico, CL Callejon De Los Estribos, Cartagena, Colombia 130001</p>
                                     </div>
                                     {cart.map((itemCardRoom,e) =>(
                                     <CardCheckout key={e}   {...itemCardRoom} />
