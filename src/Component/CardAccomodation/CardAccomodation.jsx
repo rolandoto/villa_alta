@@ -10,7 +10,7 @@ import RadioButton from "../RadioButton/RadioButton";
     
 
 const CardAccomodation =({  roomTypeName,
-                            maxGuests,
+                            //maxGuests,
                             roomRate,
                             roomTypePhotos,
                             promotion
@@ -107,11 +107,9 @@ const CardAccomodation =({  roomTypeName,
     setShowMoreDescription(!showMoreDescription);
   };
 
-
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
-
 
   const visibleAmenities = showMore ? roomTypeFeatures : roomTypeFeatures.slice(0, 3);
 
@@ -138,8 +136,6 @@ const CardAccomodation =({  roomTypeName,
                           <span>{counPeople}</span>
                         </div>
                        
-                        
-
                         <div className="flex items-center gap-1 bg-opacity-60 px-2 py-1 rounded">
                           <IconMdOutlineKingBed/>
                           <span>1</span>

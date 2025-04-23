@@ -43,13 +43,10 @@ const {getRoomsTypes} =  UseHotelActions()
     fetchDate()
   },[])
 
-
-  
   const PostHotelByIdHotel = useCallback(async () => {
     navigate("/Accomodation");
   }, []);
 
-  
   const amenities = [
     { icon: <MdConnectedTv  fontSize={40}/>, text: "Wifi" },
     { icon: <IconsSnow  fontSize={40} />,  text: "Aire Acondicionado" },
@@ -58,7 +55,6 @@ const {getRoomsTypes} =  UseHotelActions()
     { icon:<TbFridge    fontSize={40}/>,text: "Minibar" },
   ];
 
-  
   const FillContent =()=>{
     if(LoadingRoomTypes){
       return  <div  className=" lg:flex  mx-auto   max-w-5xl items-center justify-between p-4 lg:px-8">
