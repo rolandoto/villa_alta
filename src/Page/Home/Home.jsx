@@ -117,7 +117,7 @@ const {getRoomsTypes} =  UseHotelActions()
     <button 
   onClick={PostHotelByIdHotel}
   aria-label="Reserva con nosotros"
-  className="fixed bottom-4 right-4 bg-[#000000] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#5c2a2a] transition-all animate-bounce z-50 text-sm sm:text-base"
+  className="fixed top-8 right-4 bg-[#5c2a2a] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#5c2a2a] transition-all animate-bounce z-50 text-sm sm:text-base"
 >
   Reserva con nosotros
 </button>
