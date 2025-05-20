@@ -64,7 +64,7 @@ const Checkout  =() =>{
     }));
 
    
-    const subtotalPayment =  night[0]?.price
+    const subtotalPayment = night.reduce((total, item) => total + (item.price || 0), 0);
     const StartDate = night[0]?.startDate
     const EndDate = night[0]?.endDate
     const validCode = night[0]?.validCode

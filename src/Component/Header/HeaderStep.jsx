@@ -80,7 +80,6 @@ const HeaderStep =({currentStep}) =>{
         </div>
       </header>
     )
-
 }
 
 export default HeaderStep

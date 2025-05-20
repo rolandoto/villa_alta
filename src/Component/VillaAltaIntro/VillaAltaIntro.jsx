@@ -4,12 +4,12 @@
 const VillaAltaIntro =() =>{
 
     return  <>
-     <section className="bg-[#f6f2df] text-black py-16 px-6 md:px-20 font-serif">
+     <section className="bg-[#f6f2df]  font-playfair text-black py-16 px-6 md:px-20 ">
       <div className="max-w-6xl mx-auto text-center">
        
         <div className="relative mb-10 flex items-center justify-center">
        
-          <h1 className="text-4xl md:text-5xl font-bold text-[#002d1e]">
+          <h1 className="text-4xl md:text-5xl  text-[#002d1e]">
             Villa Alta, <span className="italic">Cartagena</span>
           </h1>
       
@@ -41,14 +41,7 @@ const VillaAltaIntro =() =>{
             </p>
           </div>
         </div>
-        <div className="mt-10">
-          <a
-            href="#habitaciones"
-            className="inline-block border-2 border-black rounded-full px-6 py-2 text-lg font-bold hover:bg-black hover:text-white transition-colors"
-          >
-            HABITACIONES
-          </a>
-        </div>
+        
       </div>
     </section>
     
