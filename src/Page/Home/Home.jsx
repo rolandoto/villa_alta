@@ -80,13 +80,13 @@ const {getRoomsTypes} =  UseHotelActions()
                       ))}
               
                       <div className="bg-[#471b1b] p-6 sm:p-8 flex flex-col justify-center">
-                        <h2 className="text-2xl sm:text-3xl font-playfair text-white font-light border-b border-white/30 pb-2 mb-4">
+                        <h2 className="text-2xl sm:text-3xl tracking-[0.2em]  text-white font-light border-b-2 border-white pb-2 mb-4">
                           {seccion.roomTypeName}
                         </h2>
               
                         <div className="space-y-2">
                           {amenities.map((amenity, index) => (
-                            <p key={index} className="text-base sm:text-lg italic text-white/90 font-light">
+                            <p key={index} className="text-base sm:text-lg tracking-[0.2em] text-white/90 font-light">
                               {amenity.text}
                             </p>
                           ))}
@@ -96,10 +96,8 @@ const {getRoomsTypes} =  UseHotelActions()
                   </div>
                 </div>
               </div>
-
         ))}
-
-          </>
+    </>
   }
 
     return (
