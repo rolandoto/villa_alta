@@ -16,6 +16,7 @@ import { IconShower, IconsSnow, IconsTv } from "../../Component/Icons/Icons";
 import { TbFridge } from "react-icons/tb";
 import Footer from "../../Component/Footer/Footer";
 import VillaAltaIntro from "../../Component/VillaAltaIntro/VillaAltaIntro";
+import { Helmet } from "react-helmet";
 
 const Home =() =>{
   const navigate = useNavigate();
@@ -102,7 +103,17 @@ const {getRoomsTypes} =  UseHotelActions()
 
     return (
       <>
- 
+  
+       <Helmet>
+            <title>Black Friday - 10% de Descuento Hotel villa alta guest house</title>
+            <meta name="description" content={`Reserva en hotel la naval y obtén un 10% de descuento con el código hotel la naval Oferta por tiempo limitado.`} />
+            <meta name="keywords" content="hotel, descuento, reserva, promoción, alojamiento, oferta especial" />
+            <meta property="og:title" content={`Código de Descuento hotel la naval`} />
+            <meta property="og:description" content={`Aprovecha un 10% de descuento en hotel la naval. Usa el código promocional hotel la naval al reservar.`} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://www.hotellanaval.co/" />
+        </Helmet>
+
     <div className="relative w-full h-screen overflow-hidden">
       <img 
         src="https://www.villaaltaguesthouse.com/alta.jpg" 

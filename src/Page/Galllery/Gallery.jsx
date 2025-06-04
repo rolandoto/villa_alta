@@ -1,6 +1,7 @@
 import react from "react"
 import Header from "../../Component/Header/Header"
 import Masonry from "react-masonry-css";
+import { Helmet } from "react-helmet";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -40,8 +41,13 @@ const Gallery =() =>{
       ];  
 
     return <>
-    
         <Header />
+        <Helmet>
+                <title>Galleria Hotel villa alta guest house</title>
+                <meta name="description" content="Habitaciones Black Friday - 10% de Descuento en hotel la naval." />
+                <link rel="canonical" href="https://www.villaaltaguesthouse.com/gallery" />
+        </Helmet>
+
 
         <div className="p-4">
       <Masonry

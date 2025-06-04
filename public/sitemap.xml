@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
   <url>
-    <loc>https://www.villaaltaguesthouse.com</loc>
-    <priority>1.0</priority>
+    <loc>https://www.villaaltaguesthouse.com/.co/</loc>
   </url>
   <url>
     <loc>https://www.villaaltaguesthouse.com/Accomodation</loc>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.villaaltaguesthouse.com/Checkout</loc>
+  </url>
+  <url>
+    <loc>https://www.villaaltaguesthouse.com/Events</loc>
+  </url>
+    <url>
+    <loc>https://www.villaaltaguesthouse.com/gallery</loc>
   </url>
 </urlset>

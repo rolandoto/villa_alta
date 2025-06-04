@@ -26,6 +26,7 @@ import { FiArrowRight } from "react-icons/fi";
 import {  Tag, Coffee, Clock} from 'lucide-react';
 import HeaderStep from "../../Component/Header/HeaderStep";
 import FooterAccomodation from "../../Component/Footer/FooterAccomodation";
+import { Helmet } from "react-helmet";
 
 const Accommodation = () => {
 
@@ -158,6 +159,11 @@ const Accommodation = () => {
     const monthsToShow = window.innerWidth >= 700 ? 2 : 1;
    
       return (<div  className="bg-[#f6f6f6] h-full  " >
+                <Helmet>
+                      <title>Habitaciones Hotel villa alta guest house</title>
+                      <meta name="description" content="Habitaciones Black Friday - 10% de Descuento en hotel la naval." />
+                      <link rel="canonical" href="https://www.villaaltaguesthouse.com/Accomodation" />
+                </Helmet>
                 <div className="relative  bg-cover bg-center h-full">
                   {isVisible && <div className="fixed top-48 left-0 right-4 flex justify-center z-40">
                       <div className="w-[90%] md:w-full max-w-md bg-black text-white rounded-3xl shadow-lg overflow-hidden flex">

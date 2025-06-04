@@ -15,6 +15,7 @@ import ConfirmationMessage from '../../Component/ConfirmationMessage/Confirmatio
 import WhatsappButton from '../../Component/WhatsappButton/WhatsappButton';
 import { Environment } from '../../Config/Config';
 import HeaderStep from '../../Component/Header/HeaderStep';
+import { Helmet } from 'react-helmet';
 
 const Checkout  =() =>{
     useFetchData();
@@ -127,6 +128,11 @@ const Checkout  =() =>{
 
     return (<>
      <div className="relative  bg-[#f6f6f6]  bg-cover bg-center h-full">
+     <Helmet>
+        <title>Checkout Hotel villa alta guest house </title>
+        <meta name="description" content="Habitaciones Black Friday - 10% de Descuento en hotel la naval." />
+        <link rel="canonical" href="https://www.villaaltaguesthouse.com/Checkout" />
+    </Helmet>
         {loadingCart && <LoadingOverlay title={"Cargando..."} />}
         {loading && <LoadingOverlay title={"Creando reserva..."} />}  
               <HeaderStep currentStep={2} />

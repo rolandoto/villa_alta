@@ -9,6 +9,7 @@ import SearchGlobal from "../../Component/SearchGlobal/SearchGlobal";
 import { MainProduct, SectionSearch } from "../../Ui/Style/GeneralStyle";
 import BookNowButton from "../../Component/BookNowButton/BookNowButton";
 import LoadingSkeleton from "../../Component/LoadingSkeleton/LoadingSkeleton";
+import { Helmet } from "react-helmet";
 
 const DetailEvents =() =>{
 
@@ -128,6 +129,12 @@ const DetailEvents =() =>{
             <Header/>
 
         
+            <Helmet>
+                <title>Detalle de eventos  Hotel villa alta guest house</title>
+                <meta name="description" content="Habitaciones Black Friday - 10% de Descuento en hotel la naval." />
+                <link rel="canonical" href="https://www.villaaltaguesthouse.com/events" />
+            </Helmet>
+
 
             <div className="lg:hidden flex  p-2 lg:px-8" >
               <MainProduct className="m-auto ">
