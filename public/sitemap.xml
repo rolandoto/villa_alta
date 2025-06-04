@@ -3,7 +3,7 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 >
   <url>
-    <loc>https://www.villaaltaguesthouse.com/.co/</loc>
+    <loc>https://www.villaaltaguesthouse.com/</loc>
   </url>
   <url>
     <loc>https://www.villaaltaguesthouse.com/Accomodation</loc>
@@ -14,7 +14,7 @@
   <url>
     <loc>https://www.villaaltaguesthouse.com/Events</loc>
   </url>
-    <url>
+  <url>
     <loc>https://www.villaaltaguesthouse.com/gallery</loc>
   </url>
 </urlset>
