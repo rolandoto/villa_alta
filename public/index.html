@@ -1,47 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/villa.jpeg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/villa.jpeg" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Hotel Villa Alta </title>
-    <meta name="description" content="Hotel Villa Alta , el lugar ideal para descansar con confort, lujo y buen precio.">
+    
+    <!-- SEO -->
+    <title>Hotel Villa Alta</title>
+    <meta name="description" content="Hotel Villa Alta, el lugar ideal para descansar con confort, lujo y buen precio.">
     <meta name="keywords" content="hotel villa alta, hospedaje, turismo, descanso, habitaciones, Colombia">
     <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
     <meta property="og:title" content="Hotel Villa Alta" />
     <meta property="og:description" content="Descubre el mejor lugar para descansar en familia o pareja" />
     <meta property="og:url" content="https://www.villaaltaguesthouse.com/" />
     <meta property="og:type" content="website" />
+    
+    <!-- Favicon e íconos -->
+    <link rel="icon" href="%PUBLIC_URL%/villa.jpeg" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/villa.jpeg" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Google Search Console -->
     <meta name="google-site-verification" content="k6IGz3NXc6RdlDaKRMWVKxM4vKOb1mSEe2Up8laYegI" />
-  </head>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Hotel",
-      "name": "Villa Alta Guesthouse",
-      "url": "https://www.villaaltaguesthouse.com",
-      "description": "Hospédate en Villa Alta Guesthouse. Disfruta de nuestras cómodas habitaciones, eventos y un entorno único.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ciudad",
-        "addressRegion": "Región",
-        "addressCountry": "CO"
-      },
-      "image": "https://raw.githubusercontent.com/rolandoto/image-pms/refs/heads/main/WhatsApp%20Image%202025-04-22%20at%2010.10.51%20AM.jpeg"
-    }
+
+    <!-- Datos estructurados (Schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Hotel",
+        "name": "Villa Alta Guesthouse",
+        "url": "https://www.villaaltaguesthouse.com",
+        "description": "Hospédate en Villa Alta Guesthouse. Disfruta de nuestras cómodas habitaciones, eventos y un entorno único.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ciudad",
+          "addressRegion": "Región",
+          "addressCountry": "CO"
+        },
+        "image": "https://raw.githubusercontent.com/rolandoto/image-pms/refs/heads/main/WhatsApp%20Image%202025-04-22%20at%2010.10.51%20AM.jpeg"
+      }
     </script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HMV6LVL9KT');
-  </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMV6LVL9KT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HMV6LVL9KT');
+    </script>
+  </head>
   <body>
     <noscript>Necesitas habilitar JavaScript para ejecutar esta aplicación.</noscript>
     <div id="root"></div>
-   
   </body>
 </html>
