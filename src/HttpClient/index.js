@@ -64,7 +64,7 @@ const PostHotelByIdHotel = async ({id,desde,hasta,counPeople}) => {
                                     subtotal,
                                     promoCode}) => {
     try {
-        const resp = await fetch(`${config.serverRoute}/api/hotels/cloubeds/PostpostReservation`, {
+        const resp = await fetch(`${config.serverRoute}/api/hotels/cloubeds/TestEpaycopse`, {
           method: "POST",
           headers: {
             'Content-type': 'application/json'
