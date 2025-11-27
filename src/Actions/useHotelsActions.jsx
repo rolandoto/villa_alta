@@ -66,7 +66,7 @@ const UseHotelActions =() =>{
                 }
             } catch (error) {
                 dispatch(setListBanksError(error.message || "Error al cargar los bancos"));
-    }
+        }
     };
 
     return {
