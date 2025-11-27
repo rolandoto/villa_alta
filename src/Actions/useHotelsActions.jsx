@@ -1,5 +1,7 @@
 import { useAppDispatch } from "../Hooks/Redux"
-import { loading,setHotel,setError,setListHotel,setlistoHotelError,loadingHotel, loadingRoomsTypes, setRoomsTypes, setErrorRoomsTypes } from "../reducers/ApiHotelByIdReduccers"
+import { loading,setHotel,setError,setListHotel,setlistoHotelError,loadingHotel, loadingRoomsTypes, setRoomsTypes, setErrorRoomsTypes,
+    loadingBanks, setListBanks, setListBanksError
+ } from "../reducers/ApiHotelByIdReduccers"
 import HttpClient from "../HttpClient"
 
 const UseHotelActions =() =>{
@@ -52,10 +54,26 @@ const UseHotelActions =() =>{
         }
     }
 
+    
+    const getListBanks = async () => {
+        try {
+                dispatch(loadingBanks());
+                const response = await HttpClient.GetBanskPse();
+                if (response) {
+                dispatch(setListBanks(response));
+                } else {
+                dispatch(setListBanksError("No se encontraron bancos"));
+                }
+            } catch (error) {
+                dispatch(setListBanksError(error.message || "Error al cargar los bancos"));
+    }
+    };
+
     return {
         getHotel,
         getListHotel,
-        getRoomsTypes
+        getRoomsTypes,
+        getListBanks
     }
 
 }

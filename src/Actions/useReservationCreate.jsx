@@ -63,6 +63,59 @@ const useReservationCreate =() =>{
         }
     }
 
+
+    const PostCreateHotelPse =async({propertyID,
+                                    token,
+                                    startDate,
+                                    endDate,
+                                    guestFirstName,
+                                    guestLastName,
+                                    guestEmail,
+                                    guestPhone,
+                                    rooms,
+                                    adults,
+                                    children,
+                                    dateCreated,
+                                    bank,
+                                    subtotal,
+                                    promoCode}) =>{
+        dispatch(loading())
+        try {
+
+           
+            const response  = await HttpClient.PostpostReservationPse({propertyID,
+                                                                    token,
+                                                                    startDate,
+                                                                    endDate,
+                                                                    guestFirstName,
+                                                                    guestLastName,
+                                                                    guestEmail,
+                                                                    guestPhone,
+                                                                    rooms,
+                                                                    adults,
+                                                                    children,
+                                                                    dateCreated,
+                                                                    bank,
+                                                                    subtotal,
+                                                                    promoCode})
+           
+            if(response){
+                dispatch(setCreateReservation(response)) 
+                window.location.href = response          
+                RemoveCartAll()
+                toast.success(`Exitoso`)
+            }else{
+                dispatch(setError("no found")) 
+                toast.error(`error en el servicio`)
+            }
+        } catch (error) {
+            dispatch(setError("no found")) 
+            toast.error(`error en el servicio ` )
+        }
+    }
+
+
+
     const getCountry =async() =>{
         dispatch(loadingCountry())
         try {
@@ -82,6 +135,7 @@ const useReservationCreate =() =>{
 
     return {
         PostCreateHotel,
+        PostCreateHotelPse,
         getCountry
     }
 

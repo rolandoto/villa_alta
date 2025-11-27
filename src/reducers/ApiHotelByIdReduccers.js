@@ -11,7 +11,11 @@ export const initialState ={
 
     RoomsType:[],
     LoadingRoomTypes:false,
-    ErrorRoomTypes:false
+    ErrorRoomTypes:false,
+
+    banks: [],
+    loadingBanks: false,
+    errorBanks: null,
 
 }
 
@@ -58,6 +62,20 @@ export const ApiHotelByIdReduccers = createSlice({
             state.LoadingRoomTypes = false
             state.ErrorRoomTypes = true
         },
+
+        loadingBanks: (state) => {
+            state.loadingBanks = true;
+            state.errorBanks = null;
+        },
+        setListBanks: (state, action) => {
+            state.banks = action.payload;
+            state.loadingBanks = false;
+        },
+        setListBanksError: (state, action) => {
+            state.loadingBanks = false;
+            state.errorBanks = true;
+        },
+
     }
 })
 
@@ -69,6 +87,9 @@ export const {  loading,
                 setlistoHotelError,
                 loadingRoomsTypes,
                 setRoomsTypes,
-                setErrorRoomsTypes} = ApiHotelByIdReduccers.actions
+                setErrorRoomsTypes,
+                loadingBanks,
+                setListBanks,
+                setListBanksError} = ApiHotelByIdReduccers.actions
 
 export default  ApiHotelByIdReduccers.reducer
