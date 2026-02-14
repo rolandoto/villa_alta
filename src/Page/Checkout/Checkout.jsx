@@ -42,7 +42,7 @@ const Checkout  =() =>{
     const Rooms = cart.map(item => ({
         "roomTypeID": item.roomTypeID,
         "quantity": item.quantity,
-        "rateID": 2550029,
+        "roomRateID": item.roomRateID,
     }));
 
     const adults = cart.map(item => ({

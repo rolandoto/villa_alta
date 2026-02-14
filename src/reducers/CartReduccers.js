@@ -18,7 +18,7 @@ export const CartReduccers = createSlice({
             state.errorCart = "false"
         },
         addItemToCart: (state, action) => {
-            const { roomTypeID, quantity, Price, roomsAvailable, startDate, endDate, room_image, nights, person, roomTypeName, persontotal ,validCode} = action.payload;
+            const { roomTypeID, quantity, Price, roomsAvailable, startDate, endDate, room_image, nights, person, roomTypeName, persontotal ,validCode,roomRateID} = action.payload;
             const existingRoom = state.cart.find(item => item.roomTypeID === roomTypeID);
         
             if (existingRoom) {
@@ -42,6 +42,7 @@ export const CartReduccers = createSlice({
                 state.cart.push({
                     roomTypeID,
                     quantity,
+                    roomRateID,
                     Price: Price * quantity,
                     roomsAvailable,
                     startDate,
